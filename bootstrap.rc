@@ -1,0 +1,6 @@
+
+
+if [ -f ~/bin/env/ubuntu.bash.rc ]; then
+  source ~/bin/env/ubuntu.bash.rc
+fi
+

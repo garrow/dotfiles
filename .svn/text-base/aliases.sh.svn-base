@@ -1,0 +1,44 @@
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='ls -alhF'
+alias la='ls -Ah'
+alias l='ls -CFhl'
+
+
+alias go='gnome-open'
+alias v=vim
+alias shot="gnome-screenshot --interactive"
+
+##### GIT ######
+alias gs='git status $1'
+alias gsl='git-smart-log'
+alias gd='git diff'
+alias gds='git diff --staged'
+
+
+
+
+####### SVN ######
+alias sd='svndiff'
+alias ss='svn status $* | svnstat.rb'
+alias si="svn info"
+alias sup='svn update --ignore-externals'
+alias supall='svn update'
+alias slc='svn log --stop-on-copy'
+alias sbs='si|grep URL;slc -v'
+#alias rake_completion='compgen -W $(rake -s -T | cut -d " " -f 2 | cut -d "[" -f 1)'
+alias isod='date +%Y.%m.%d.%R'
+alias rb="rhythmbox-client"
+alias ack='ack-grep'
+alias cbranch="svn info |grep URL | cut -d '/' -f6"
