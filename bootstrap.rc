@@ -1,6 +1,7 @@
 
+bashrc_location=~/bin/env/ubuntu.bashrc.sh
 
-if [ -f ~/bin/env/ubuntu.bash.rc ]; then
-  source ~/bin/env/ubuntu.bash.rc
+if [ -f $bashrc_location ]; then
+  source $bashrc_location
 fi
 
