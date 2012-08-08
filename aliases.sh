@@ -35,7 +35,7 @@ alias gs='git status $1'
 alias gsl='git-smart-log'
 alias gd='git diff'
 alias gds='git diff --staged'
-
+alias gap='git add --patch'
 
 
 
