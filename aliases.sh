@@ -30,6 +30,7 @@ alias shot="gnome-screenshot --interactive"
 alias rld="source ~/.bashrc"
 
 ##### GIT ######
+alias g=git
 alias gs='git status $1'
 alias gsl='git-smart-log'
 alias gd='git diff'
