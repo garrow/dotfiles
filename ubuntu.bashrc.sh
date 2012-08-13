@@ -112,6 +112,7 @@ _rake_completions()
 	return 0
 }
 #complete -F _rake_completions rake 
+complete -o bashdefault -o default -o nospace -F _git g
 complete -C /home/garrowb/bin/rake-complete -o default rake
 
 #compgen -W $(rake -s -T | cut -d " " -f 2 | cut -d "[" -f 1)
