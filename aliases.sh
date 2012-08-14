@@ -10,7 +10,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# Grep 
+### Grep
 alias pgrep='grep --color=never'  # Pipe grep
 
 alias pbcopy='xclip -selection clipboard'
@@ -19,22 +19,19 @@ alias pbpaste='xclip -selection clipboard -o'
 alias isod='date +%Y.%m.%d.%R'
 alias tod='date +%H:%M:%S'
 
+### Misc tools
+alias go='gnome-open'
+alias v=vim
+alias shot="gnome-screenshot --interactive"
+alias rld="source ~/.bashrc"
 alias rb="rhythmbox-client"
 alias ack='ack-grep'
-
 
 # -l long-listing-format
 alias ls_custom='ls -l --human-readable --file-type'
 alias l='ls_custom --no-group' # Simple format
 alias ll='l --almost-all'      # Include hidden files
 alias la='ls_custom --all'     # Include everything
-
-
-alias go='gnome-open'
-alias v=vim
-alias shot="gnome-screenshot --interactive"
-
-alias rld="source ~/.bashrc"
 
 ##### GIT ######
 alias g=git
