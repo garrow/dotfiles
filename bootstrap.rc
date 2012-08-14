@@ -1,7 +1,0 @@
-
-bashrc_location=~/bin/env/ubuntu.bashrc.sh
-
-if [ -f $bashrc_location ]; then
-  source $bashrc_location
-fi
-

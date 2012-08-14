@@ -24,3 +24,21 @@ fi
 }
 
 
+function ctail () 
+{
+if [ "$1" != "" ]; then
+tail -f $1 | ctail.php $2 ;
+fi
+}
+
+# Grep highlight.
+function grep_highlight ()
+{
+#local pat
+#pat='($
+if [ "$1" != "" ]; then
+    grep -P --color=always "(\$|$1)"
+fi
+}
+
+alias ghl=grep_highlight

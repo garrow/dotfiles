@@ -9,19 +9,22 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
-alias pgrep='grep --color=never'  
+
+# Grep 
+alias pgrep='grep --color=never'  # Pipe grep
 
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
+alias isod='date +%Y.%m.%d.%R'
+alias tod='date +%H:%M:%S'
+alias rb="rhythmbox-client"
+alias ack='ack-grep'
 
-
-# some more ls aliases
-
+# Some more ls aliases
 alias l='ls -Chl --file-type'
 alias ll='ls -lah --file-type'
 alias la='ll -A'
-
 
 alias go='gnome-open'
 alias v=vim
@@ -34,10 +37,8 @@ alias g=git
 alias gs='git status $1'
 alias gsl='git-smart-log'
 alias gd='git diff'
-alias gds='git diff --staged'
+alias gds='git diff --color --staged '
 alias gap='git add --patch'
-
-
 
 ####### SVN ######
 alias sd='svndiff'
@@ -49,11 +50,7 @@ alias supall='svn update'
 alias slc='svn log --stop-on-copy'
 alias sbs='si|grep URL;slc -v'
 #alias rake_completion='compgen -W $(rake -s -T | cut -d " " -f 2 | cut -d "[" -f 1)'
-alias isod='date +%Y.%m.%d.%R'
-alias rb="rhythmbox-client"
-alias ack='ack-grep'
 alias cbranch="svn info |grep URL | cut -d '/' -f6"
-
 
 ####### Rails ########
 alias rprod='export RAILS_ENV=production && renv'
@@ -63,5 +60,5 @@ alias rstage='export RAILS_ENV=staging && renv'
 alias renv='echo $RAILS_ENV'
 alias rdefault='unset RAILS_ENV'
 
-alias tod='date +%H:%M:%S'
+
 alias spec="time rspec"
