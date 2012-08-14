@@ -9,13 +9,14 @@
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
 
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
-
+  
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -78,18 +79,14 @@ export LESS="-R"
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/bin/env/aliases.sh ]; then
-    . ~/bin/env/aliases.sh
-fi
+sourceables=( aliases functions prompt git_bash_completion )
 
-if [ -f ~/bin/env/functions.sh ]; then
-	. ~/bin/env/functions.sh
-fi
-
-if [ -f ~/bin/env/prompt.sh ]; then
-	. ~/bin/env/prompt.sh
-fi
-
+for element in "${sourceables[@]}"
+do
+    element_path="${base_env_path}/${element}.sh"
+    echo "$element_path" # DEBUG
+    source $element_path
+done    
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -98,9 +95,9 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-if [ -f /etc/bash_completion.d/git ] && ! shopt -oq posix; then
-    . /etc/bash_completion.d/git
-fi
+# if [ -f /etc/bash_completion.d/git ] && ! shopt -oq posix; then
+#     . /etc/bash_completion.d/git
+# fi
 
 
 _rake_completions()
@@ -113,24 +110,11 @@ _rake_completions()
 }
 #complete -F _rake_completions rake 
 complete -o bashdefault -o default -o nospace -F _git g
-complete -C /home/garrowb/bin/rake-complete -o default rake
+# complete -C /home/garrowb/bin/rake-complete -o default rake
 
 #compgen -W $(rake -s -T | cut -d " " -f 2 | cut -d "[" -f 1)
 
-function ctail () 
-{
-if [ "$1" != "" ]; then
-tail -f $1 | ctail.php $2 ;
-fi
-}
-function ghl ()
-{
-#local pat
-#pat='($
-if [ "$1" != "" ]; then
-    grep -P "(\$|$1)"
-fi
-}
+
 
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
