@@ -22,10 +22,13 @@ alias tod='date +%H:%M:%S'
 alias rb="rhythmbox-client"
 alias ack='ack-grep'
 
-# Some more ls aliases
-alias l='ls -Chl --file-type'
-alias ll='ls -lah --file-type'
-alias la='ll -A'
+
+# -l long-listing-format
+alias ls_custom='ls -l --human-readable --file-type'
+alias l='ls_custom --no-group' # Simple format
+alias ll='l --almost-all'      # Include hidden files
+alias la='ls_custom --all'     # Include everything
+
 
 alias go='gnome-open'
 alias v=vim
