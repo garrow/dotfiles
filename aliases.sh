@@ -18,6 +18,7 @@ alias pbpaste='xclip -selection clipboard -o'
 
 alias isod='date +%Y.%m.%d.%R'
 alias tod='date +%H:%M:%S'
+
 alias rb="rhythmbox-client"
 alias ack='ack-grep'
 
