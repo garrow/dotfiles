@@ -66,8 +66,7 @@ xterm*|rxvt*)
 esac
 
 
-
-export PATH="/var/lib/gems/1.8/bin:/home/garrowb/.gem/ruby/1.8/bin:$PATH"
+# Attempt to force Java apps to support xmonad.
 export _JAVA_AWT_WM_NONREPARENTING=1
 [[ -s "/home/garrowb/.rvm/scripts/rvm" ]] && source "/home/garrowb/.rvm/scripts/rvm"
 
