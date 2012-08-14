@@ -86,7 +86,7 @@ do
     element_path="${base_env_path}/${element}.sh"
     echo "$element_path" # DEBUG
     source $element_path
-done    
+done
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
