@@ -105,11 +105,8 @@ GIT_PS1_SHOWDIRTYSTATE=1     # *
 GIT_PS1_SHOWSTASHSTATE=1     # $
 GIT_PS1_SHOWUNTRACKEDFILES=1 # %
 
-
-
-
 REPO_STATUS='(${prompt_char})'
-                                   # \[\033[01;34m\]
+# \[\033[01;34m\]
 
 #PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 

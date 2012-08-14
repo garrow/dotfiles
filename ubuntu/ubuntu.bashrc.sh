@@ -95,8 +95,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-
-
 complete -o bashdefault -o default -o nospace -F _git g
 
 ## Rake completion attempts - disabled for the moment for speed.
@@ -111,8 +109,5 @@ complete -o bashdefault -o default -o nospace -F _git g
 #complete -F _rake_completions rake
 #complete -C /home/garrowb/bin/rake-complete -o default rake
 #compgen -W $(rake -s -T | cut -d " " -f 2 | cut -d "[" -f 1)
-
-
-
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
