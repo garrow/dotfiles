@@ -68,6 +68,8 @@ esac
 
 # Attempt to force Java apps to support xmonad.
 export _JAVA_AWT_WM_NONREPARENTING=1
+
+
 [[ -s "/home/garrowb/.rvm/scripts/rvm" ]] && source "/home/garrowb/.rvm/scripts/rvm"
 
 export LESS="-R"
@@ -93,23 +95,21 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# if [ -f /etc/bash_completion.d/git ] && ! shopt -oq posix; then
-#     . /etc/bash_completion.d/git
-# fi
 
 
-_rake_completions()
-{
-	local curw
-	COMPREPLY=()
-	curw=${COMP_WORDS[COMP_CWORD]}
-	COMPREPLY=(compgen -W '$(rake -s -T | cut -d " " -f 2 | cut -d "[" -f 1)')
-	return 0
-}
-#complete -F _rake_completions rake 
 complete -o bashdefault -o default -o nospace -F _git g
-# complete -C /home/garrowb/bin/rake-complete -o default rake
 
+## Rake completion attempts - disabled for the moment for speed.
+# _rake_completions()
+# {
+#     local curw
+#     COMPREPLY=()
+#     curw=${COMP_WORDS[COMP_CWORD]}
+#     COMPREPLY=(compgen -W '$(rake -s -T | cut -d " " -f 2 | cut -d "[" -f 1)')
+#     return 0
+# }
+#complete -F _rake_completions rake
+#complete -C /home/garrowb/bin/rake-complete -o default rake
 #compgen -W $(rake -s -T | cut -d " " -f 2 | cut -d "[" -f 1)
 
 
