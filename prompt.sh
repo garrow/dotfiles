@@ -75,7 +75,7 @@ On_IWhite='\[\033[0;107m\]'   # White
 function prompt_char {
     if [[ -d './.svn/' ]]; then echo '§' && return; fi
     git branch >/dev/null 2>/dev/null && echo '±' && return
-    hg root >/dev/null 2>/dev/null && echo '☿' && return
+    #hg root >/dev/null 2>/dev/null && echo '☿' && return
 #    svn info  >/dev/null 2>/dev/null && echo '§' && return
     echo '○' 
 }
