@@ -84,7 +84,7 @@ sourceables=( aliases functions prompt git_bash_completion )
 for element in "${sourceables[@]}"
 do
     element_path="${base_env_path}/${element}.sh"
-    echo "$element_path" # DEBUG
+    # if [ $DEBUG_DOTFILES ]; then echo "$element_path"; fi # DEBUG
     source $element_path
 done
 
