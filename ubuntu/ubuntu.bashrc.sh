@@ -70,8 +70,11 @@ esac
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # RVM
-# Disabled, use load_rvm alias to dynamically load for ruby dev shells
-# [[ -s "/home/garrowb/.rvm/scripts/rvm" ]] && source "/home/garrowb/.rvm/scripts/rvm"
+# Only automatically load when a new terminal is loaded where an rvmrc exists, 
+# Otherwise use the `load_rvm` alias to manually load for the current shell.
+if [[ -f "${PWD}/.rvmrc" ]]; then
+    [[ -s "/home/garrowb/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm"
+fi
 
 export LESS="-R"
 
