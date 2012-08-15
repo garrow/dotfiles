@@ -81,15 +81,12 @@ function prompt_char {
 }
 
 
-export RVM_DEFAULT_RUBY="$(rvm list default string)"
-
-function repo_dirty {
-  echo ''
-}
-
+export RVM_DEFAULT_RUBY="$(${HOME}/.rvm/bin/rvm list default string )"
 
 function rb_ver {
-  if [ "$RVM_DEFAULT_RUBY" != "$RUBY_VERSION" ]; then 
+  if [ "$RUBY_VERSION" == "" ]; then
+    echo "! " # RVM is disabled.
+  elif [ "$RVM_DEFAULT_RUBY" != "$RUBY_VERSION" ]; then
     echo "◇$(echo $RUBY_VERSION| cut -d- -f2) "
   fi
 }

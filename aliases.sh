@@ -10,6 +10,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+alias load_rvm='source "/home/garrowb/.rvm/scripts/rvm"'
+
+
 ### Grep
 alias pgrep='grep --color=never'  # Pipe grep
 

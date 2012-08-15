@@ -69,8 +69,9 @@ esac
 # Attempt to force Java apps to support xmonad.
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-
-[[ -s "/home/garrowb/.rvm/scripts/rvm" ]] && source "/home/garrowb/.rvm/scripts/rvm"
+# RVM
+# Disabled, use load_rvm alias to dynamically load for ruby dev shells
+# [[ -s "/home/garrowb/.rvm/scripts/rvm" ]] && source "/home/garrowb/.rvm/scripts/rvm"
 
 export LESS="-R"
 
