@@ -1,4 +1,4 @@
-export base_env_path=/home/garrowb/bin/env
+export base_env_path=${HOME}/bin/env
 
 # Hard coded for the moment
 export bashrc_location=${base_env_path}/ubuntu/ubuntu.bashrc.sh
