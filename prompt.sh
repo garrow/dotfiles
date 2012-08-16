@@ -85,7 +85,7 @@ export RVM_DEFAULT_RUBY="$(${HOME}/.rvm/bin/rvm list default string )"
 
 function rb_ver {
   if [ "$RUBY_VERSION" == "" ]; then
-    echo "! " # RVM is disabled.
+    echo "!" # RVM is disabled.
   elif [ "$RVM_DEFAULT_RUBY" != "$RUBY_VERSION" ]; then
     echo "◇$(echo $RUBY_VERSION| cut -d- -f2) "
   fi
