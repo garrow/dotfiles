@@ -10,7 +10,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-alias load_rvm='source "/home/garrowb/.rvm/scripts/rvm"'
+alias load_rvm='source "${HOME}/.rvm/scripts/rvm"'
 
 
 ### Grep
