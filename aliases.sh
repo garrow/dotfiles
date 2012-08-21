@@ -38,7 +38,7 @@ alias la='ls_custom --all'     # Include everything
 
 ##### GIT ######
 alias g=git
-alias gs='git status $1'
+alias gs='git status'
 alias gsl='git log --pretty="format:%Cblue%h%d%Creset %ar %Cgreen%an%Creset %s" --graph'
 alias gd='git diff'
 alias gds='git diff --color --staged '
