@@ -4,3 +4,6 @@ install:
 dependencies:
 	sudo apt-get install git vim xclip ack-grep realpath curl
 
+desktop:
+	sudo apt-get install xmonad 
+
