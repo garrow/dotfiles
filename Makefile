@@ -5,5 +5,13 @@ dependencies:
 	sudo apt-get install git vim xclip ack-grep realpath curl
 
 desktop:
-	sudo apt-get install xmonad dzen2 evolution pidgin glipper
+	sudo apt-get install xmonad dzen2 evolution pidgin glipper keepassx
+
+development:
+	sudo apt-get install postgresql postgresql-contrib pgadmin3
+
+
+
+
+
 
