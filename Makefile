@@ -8,7 +8,7 @@ desktop:
 	sudo apt-get install xmonad dzen2 evolution pidgin glipper keepassx
 
 development:
-	sudo apt-get install postgresql postgresql-contrib pgadmin3
+	sudo apt-get install postgresql postgresql-contrib pgadmin3 subversion
 
 
 
