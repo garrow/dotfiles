@@ -2,7 +2,7 @@ install:
 	ln --verbose --force --symbolic ${PWD}/bootstrap.rc.sh ${HOME}/.bashrc 
 
 dependencies:
-	sudo apt-get install git vim xclip ack-grep realpath curl
+	sudo apt-get install git vim xclip ack-grep realpath curl colordiff
 
 desktop:
 	sudo apt-get install xmonad dzen2 evolution pidgin glipper keepassx
