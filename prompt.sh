@@ -84,8 +84,9 @@ function prompt_char {
 export RVM_DEFAULT_RUBY="$(${HOME}/.rvm/bin/rvm list default string )"
 
 function rb_ver {
-  if [ "$RUBY_VERSION" == "" ]; then
-    echo "!" # RVM is disabled.
+  local rvm_loaded=`type -t rvm | grep -c '^function$'`
+  if [ "$rvm_loaded" != "1" ]; then
+    echo "ᴚ" # RVM is disabled.
   elif [ "$RVM_DEFAULT_RUBY" != "$RUBY_VERSION" ]; then
     echo "◇$(echo $RUBY_VERSION| cut -d- -f2) "
   fi
@@ -108,7 +109,7 @@ GIT_PS1_SHOWUNTRACKEDFILES=1 # %
 #PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 
 #PROMPT_COMMAND='echo -ne "\w \$(rb_ver)\$(rails_e)"'
-PS1="\[\033[01;34m\]\w\[\033[00m\] \$(__git_ps1 \"<%s>\" ) $Red\$(rb_ver)$Blue\$(rails_e)$Color_Off\$(prompt_char) "
+PS1="\[\033[01;34m\]\w\[\033[00m\] \$(__git_ps1 \"<%s>\" )$Red\$(rb_ver)$Blue\$(rails_e)$Color_Off\$(prompt_char) "
 #PS1="\[\033[01;34m\]\w\[\033[00m\] $Red\$(rb_ver)$Blue\$(rails_e)$Color_Off\$(prompt_char) "
 PROMPT_COMMAND='echo -ne "\033]0;$(prompt_char) ${PWD} $(rb_ver)$(rails_e)\007"'
 
