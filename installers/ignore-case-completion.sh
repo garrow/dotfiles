@@ -13,7 +13,7 @@ function install_nocase_completion()
 		if [ $gres -gt 0 ] ; then
 			echo "Not installed, installing"
 
-			echo -e $install_string  > $inputrc
+			echo -e $install_string  >> $inputrc
 		fi
 		echo $inputrc
 	fi
