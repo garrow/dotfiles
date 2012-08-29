@@ -1,6 +1,5 @@
 dep 'terminal' do
-
-end
+	requires 'xclip.bin', 'vim.bin', 'realpath.bin', 'curl.bin', 'colordiff.bin', 'csvtool.bin'end
 
 dep 'ack' do
 	met? { in_path? 'ack-grep' }
@@ -17,6 +16,14 @@ dep 'ack.bin' do
 		via :apt, 'ack-grep'
 	}	
 end
+
+dep 'xclip.bin'
+dep 'vim.bin'
+dep 'realpath.bin'
+dep 'curl.bin'
+dep 'colordiff.bin'
+dep 'csvtool.bin'
+
 
 
 
