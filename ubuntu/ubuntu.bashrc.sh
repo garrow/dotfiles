@@ -76,7 +76,7 @@ if [[ -f "${PWD}/.rvmrc" ]] && [[ -s "${HOME}/.rvm/scripts/rvm" ]]; then
     source "${HOME}/.rvm/scripts/rvm"
 fi
 
-export LESS="-R"
+export LESS="-FRX"
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
