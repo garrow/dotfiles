@@ -39,11 +39,14 @@ alias la='ls_custom --all'     # Include everything
 ##### GIT ######
 alias g=git
 alias gs='git status'
+alias gse='git status --ignored'
 alias gsl='git log --pretty="format:%Cblue%h%d%Creset %ar %Cgreen%an%Creset %s" --graph'
 alias gr='gsl -n 10'
 alias gd='git diff'
 alias gds='git diff --color --staged '
 alias gap='git add --patch'
+alias grp='git reset --patch'
+
 
 ####### SVN ######
 alias sd='svndiff'
