@@ -5,10 +5,15 @@ end
 
 # Xmonad
 dep 'xmonad-shell' do
-	requires 'xmonad.bin', 'dzen2.bin' #, 'xmonad-config'
+	requires 'xmonad.bin', 'dzen2.bin', 'dmenu.bin', 'gmrun.bin' #, 'xmonad-config'
 end
 dep 'xmonad.bin'
 dep 'dzen2.bin'
+dep 'dmenu.bin' do
+  requires 'suckless-tools.lib'
+end
+dep 'suckless-tools.lib'
+dep 'gmrun.bin'
 
 # Communications
 dep 'communications' do
