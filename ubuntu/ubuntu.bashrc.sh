@@ -95,6 +95,14 @@ do
     fi
 done
 
+
+extras=$HOME/.extras.rc.sh
+if [[ -f $extras ]]; then
+    source $extras
+else
+    echo "Error loading sourceable component at ${extras}, file does not exist."
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
