@@ -1,17 +1,5 @@
-dep 'terminal' do
-	requires 'ack-grep.bin', 'curl.bin', 'colordiff.bin', 'csvtool.bin', 'dos2unix.bin', 'realpath.bin', 'vim.bin', 'xclip.bin','screen.bin'
-end
+require './dep_helper'
 
-dep 'ack-grep.bin'
-dep 'screen.bin'
-dep 'xclip.bin'
-dep 'vim.bin'
-dep 'realpath.bin'
-dep 'curl.bin'
-dep 'colordiff.bin'
-dep 'csvtool.bin'
-dep 'dos2unix.bin'
+bin_libs = %w{ack-grep curl colordiff csvtool dos2unix realpath vim xclip screen tree}.collect {|lib| "#{lib}.bin" }
 
-
-
-
+dependency_package 'terminal', bin_libs

@@ -1,5 +1,7 @@
+require './dep_helper'
+
 dep 'development' do
-  requires 'python'
+  requires 'python', 'graphviz.lib', 'git_tools'
 end
 
 
@@ -7,22 +9,15 @@ dep 'postgresql.bin' do
   provides 'psql'
 end
 
-dep 'python' do
-  requires 'python.bin', 'python-psycopg2.lib', 'pylint.bin'
-end
+dependency_package 'python', %w[python.bin python-psycopg2.lib pylint.bin]
 
-dep 'python.bin'
-dep 'pylint.bin'
-dep 'python-psycopg2.lib'
+dependency_package :php, 'php5-cli.lib'
+dependency_package :git_tools, 'gitg.bin'
 
 
-dep 'php' do
-
-  requires 'php5-cli.lib'
-end
+dep 'graphviz.lib'
 
 
-  dep 'php5-cli.lib'
 
 # postgresql-contrib
 # pgadmin3
