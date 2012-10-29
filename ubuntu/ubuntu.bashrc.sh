@@ -72,9 +72,14 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # RVM
 # Only automatically load when a new terminal is loaded where an rvmrc exists,
 # Otherwise use the `load_rvm` alias to manually load for the current shell.
-if [[ -f "${PWD}/.rvmrc" ]] && [[ -s "${HOME}/.rvm/scripts/rvm" ]]; then
-    source "${HOME}/.rvm/scripts/rvm"
+force_load_rvm=yes
+if [[ -f "${PWD}/.rvmrc" ]] || [ -n "$force_load_rvm" ]; then
+	if [[ -s "${HOME}/.rvm/scripts/rvm" ]]; then
+	    source "${HOME}/.rvm/scripts/rvm"
+	fi
 fi
+unset force_load_rvm
+
 
 export LESS="-FRX"
 
