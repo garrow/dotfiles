@@ -71,3 +71,7 @@ alias rdefault='unset RAILS_ENV'
 
 
 alias spec="time rspec"
+
+
+########## Python ##########
+alias p=python
