@@ -1,7 +1,7 @@
 require './dep_helper'
 
 dep 'development' do
-  requires 'python', 'graphviz.lib', 'git_tools'
+  requires 'python', 'graphviz.lib', 'git_tools', 'utils'
 end
 
 
@@ -11,8 +11,10 @@ end
 
 dependency_package 'python', %w[python.bin python-psycopg2.lib pylint.bin]
 
-dependency_package :php, 'php5-cli.lib'
-dependency_package :git_tools, 'gitg.bin'
+dependency_package :php, %w[php5-cli.lib]
+dependency_package :git_tools, %w[gitg.bin]
+
+dependency_package :utils, %w[meld.bin]
 
 
 dep 'graphviz.lib'
