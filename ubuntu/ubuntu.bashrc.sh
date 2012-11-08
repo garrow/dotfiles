@@ -139,4 +139,8 @@ complete -o bashdefault -o default -o nospace -F _git g
 #complete -C /home/garrowb/bin/rake-complete -o default rake
 #compgen -W $(rake -s -T | cut -d " " -f 2 | cut -d "[" -f 1)
 
+PLAN9=/usr/local/plan9 export PLAN9
+PATH=$PATH:$PLAN9/bin export PATH
+
+
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
