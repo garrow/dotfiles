@@ -1,3 +1,5 @@
+source /etc/profile
+
 export base_env_path=${HOME}/bin/env
 
 # Hard coded for the moment
