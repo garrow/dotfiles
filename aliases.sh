@@ -12,6 +12,9 @@ fi
 
 alias load_rvm='source "${HOME}/.rvm/scripts/rvm"'
 
+### Butterfingers
+alias cd..='cd ..'
+
 
 ### Grep
 alias pgrep='grep --color=never'  # Pipe grep
