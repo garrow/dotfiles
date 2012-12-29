@@ -1,5 +1,5 @@
 if [ "$color_prompt" = "yes" ]; then
-    source "${base_env_path}/colours.sh"
+    source "${base_env_path}/core/colours.sh"
 fi
 
 
