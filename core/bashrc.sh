@@ -16,6 +16,7 @@ HISTFILESIZE=2000
 export CLICOLOR=1
 export LSCOLORS=dxfxcxdxbxegedabagacad
 export LS_COLORS=$LSCOLORS
+export color_prompt="yes"
 
 #check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
