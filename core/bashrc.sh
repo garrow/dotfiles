@@ -20,8 +20,8 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 export LESS="-FRX"
-
-source ${base_env_path}/distros/${distro}/bashrc.sh
+distro_env_path=${base_env_path}/distros/${distro}
+source ${distro_env_path}/bashrc.sh
 
 # Load all main sourceables
 sourceables=( aliases functions prompt git_bash_completion )
@@ -30,7 +30,7 @@ for element in "${sourceables[@]}"
 do
     core_element_path="${base_env_path}/core/${element}.sh"
     source $core_element_path
-    custom_element_path="${base_env_path}/${distro}/${element}.sh"
+    custom_element_path="${distro_env_path}/${element}.sh"
     if [[ -f $custom_element_path ]]; then
         source $custom_element_path
     else
