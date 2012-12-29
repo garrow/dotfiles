@@ -10,7 +10,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-alias load_rvm='source "${HOME}/.rvm/scripts/rvm"'
 
 ### Butterfingers
 alias cd..='cd ..'
