@@ -1,8 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
-# These two are rendered per-request by the babushka webservice.
+# The ref is rendered per-request by the babushka webservice.
 ref=master
-deprecated_hard=
 
 # Can't use $HOME, because sometimes it's not set.
 # Can't use ~, because it depends on $HOME to expand.
@@ -10,55 +9,53 @@ deprecated_hard=
 # So: write a string in which ~$(whoami) is expanded, and run it in a subshell.
 home=$(sh -c "echo ~$(whoami)")
 
-from="https://nodeload.github.com/benhoskings/babushka/tarball/$ref"
+# The name of the shell we're running on.
+shell=$(ps -c -o command -p $$ | tail -n1 | sed -e 's/^\-//')
+
+from="https://github.com/benhoskings/babushka/archive/$ref.tar.gz"
 to="$home/.babushka/bootstrap"
 
-interactive=$([ -t 0 ] && echo 'true')
+interactive=$([ -t 0 ] && echo 'true' || echo 'false')
 
-function true_with { echo -e "\n$1"; true; }
-function false_with { echo -e "\n$1"; false; }
+true_with() { echo -e "\n$1"; true; }
+false_with() { echo -e "\n$1"; false; }
 
-function has {
+has() {
   type "$1" >/dev/null 2>&1
 }
 
-function pkg_manager {
-  managers=(aptitude apt-get brew pacman yum)
-  for manager in "${managers[@]}"; do
+pkg_manager() {
+  managers="aptitude apt-get brew pacman yum pkg_add"
+  for manager in ${managers}; do
     has "$manager" && echo "$manager" && exit
   done
 }
 
-function update_manager {
+update_manager() {
   case $(pkg_manager) in
     apt-get) apt-get update -qqy ;;
     aptitude) aptitude -y update ;;
     brew) brew update ;;
+    pacman) true ;;
     yum) true ;;
+    pkg_add) true ;;
     *)
   esac
 }
 
-function install_pkgs {
+install_pkgs() {
   case $(pkg_manager) in
     apt-get) apt-get install -qqy $1 ;;
     aptitude) aptitude -y install $1 ;;
     brew) brew install $1 ;;
     pacman) pacman -Syq --noconfirm --noprogressbar $1 ;;
     yum) yum -y install $1 ;;
+    pkg_add) pkg_add -r $1 ;;
     *)
   esac
 }
 
-function warn_about_deprecated_hard {
-  if [ $deprecated_hard ]; then
-    echo ""
-    echo "### The 'hard' option is deprecated. Instead, just use the plain"
-    echo "### babushka.me/up -- it only prompts when run on a terminal now."
-  fi
-}
-
-function logo {
+logo() {
   echo ""
   echo ".       .           .   .      "
   echo "|-. ,-. |-. . . ,-. |-. | , ,-."
@@ -66,22 +63,22 @@ function logo {
   echo "^-' \`-^ ^-' \`-^ \`-' ' ' ' \` \`-^"
 }
 
-function check {
+check() {
   if ! has 'curl'; then
     if ! has $(pkg_manager); then
-      echo "Sorry, you don't have curl installed, and I couldn't find\na package manager I recognise."
+      echo "Sorry, you don't have curl installed, and I couldn't find a package manager I recognise."
       has 'wget' && echo "(You do have wget, but the version on most stock VPS images doesn't do SSL.)"
       false
     elif [ $(whoami) != 'root' ] && [ $(pkg_manager) != 'brew' ]; then
-      false_with "You don't have curl installed. I can install it via $(pkg_manager),\nbut only when running as root."
+      false_with "You don't have curl installed. I can install it via $(pkg_manager), but only when running as root."
     else
       true
     fi
   elif ! has 'ruby'; then
     if ! has $(pkg_manager); then
-      false_with "Sorry, you don't have ruby installed, and I couldn't find\na package manager I recognise."
+      false_with "Sorry, you don't have ruby installed, and I couldn't find a package manager I recognise."
     elif [ $(whoami) != 'root' ] && [ $(pkg_manager) != 'brew' ]; then
-      false_with "You don't have ruby installed. I can install it via $(pkg_manager),\nbut only when running as root."
+      false_with "You don't have ruby installed. I can install it via $(pkg_manager), but only when running as root."
     else
       true
     fi
@@ -90,7 +87,7 @@ function check {
   fi
 }
 
-function welcome {
+welcome() {
   echo ""
   echo "Hi there :)"
   echo ""
@@ -103,7 +100,7 @@ function welcome {
     echo "- You already have curl."
   else
     echo "- You don't have curl installed, so we'll install it first (using $(pkg_manager))."
-    has 'wget' && echo "  (You have wget, but the version on most stock VPS images doesn't do SSL.)"
+    has 'wget' && echo "  (You do have wget, but the version on most stock VPS images doesn't do SSL.)"
   fi
 
   if has 'ruby'; then
@@ -112,16 +109,27 @@ function welcome {
     echo "- You don't have ruby installed, so we'll install it (using $(pkg_manager))."
   fi
 
-  if [ "$interactive" = 'true' ]; then
-    echo ""
-    read -p "Sound good? [y/N] " f
-    [[ "$f" == y* ]] || [[ "$f" == Y* ]]
-  else
+  if [ "$interactive" = 'false' ]; then
     true
+  else
+    echo ""
+    confirmed=""
+    if [ "$shell" = "zsh" ]; then
+      vared -p "Sound good? [y/N] " confirmed
+    elif [ "$shell" = "bash" ]; then
+      read -e -p "Sound good? [y/N] " confirmed
+    else
+      read -p "Sound good? [y/N] " confirmed
+    fi
+    case $confirmed in
+      "y"*) true;;
+      "Y"*) true;;
+      *)    false;;
+    esac
   fi
 }
 
-function install_pkgs_if_required {
+install_pkgs_if_required() {
   if has 'ruby' && has 'curl'; then
     true # already installed
   else
@@ -141,33 +149,33 @@ function install_pkgs_if_required {
   fi
 }
 
-function clean_up_install_dir {
+clean_up_install_dir() {
   mkdir -p "$home/.babushka" &&
   cd "$home/.babushka" &&
   rm -rf "bootstrap"
   cd "$home"
 }
 
-function create_install_dir {
+create_install_dir() {
   clean_up_install_dir &&
   mkdir -p "$to" &&
   cd "$to"
 }
 
-function stream_tarball {
+stream_tarball() {
   echo ""
   echo "Right, downloading a tarball of babushka $ref."
   curl -L -\# "$from" | tar -zxf - --strip-components 1
 }
 
-function handle_install {
+handle_install() {
   echo "Invoking babushka $(cd "$to" && bin/babushka.rb --version) to handle the install."
   echo ""
   ruby "$to/bin/babushka.rb" meet babushka version="$ref" $([ "$interactive" = 'true' ] || echo '--defaults')
   [ $? -eq 0 ]
 }
 
-function on_install_success {
+on_install_success() {
   clean_up_install_dir
 
   echo ""
@@ -199,7 +207,7 @@ function on_install_success {
   true
 }
 
-function on_install_failure {
+on_install_failure() {
   echo ""
   echo "Something went wrong during the install."
   echo ""
@@ -212,14 +220,13 @@ function on_install_failure {
   false
 }
 
-function do_bootstrap {
+do_bootstrap() {
   install_pkgs_if_required &&
   create_install_dir &&
   stream_tarball &&
   handle_install && on_install_success || on_install_failure
 }
 
-warn_about_deprecated_hard
 logo
 if check; then
   if welcome; then
