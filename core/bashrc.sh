@@ -65,6 +65,3 @@ fi
 complete -o bashdefault -o default -o nospace -F _git g
 
 
-
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
