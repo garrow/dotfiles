@@ -59,8 +59,9 @@ alias rstage='export RAILS_ENV=staging && renv'
 alias renv='echo $RAILS_ENV'
 alias rdefault='unset RAILS_ENV'
 
-
+######## Ruby ########
 alias spec="time rspec"
+alias be="bundle exec"
 
 
 ########## Python ##########
