@@ -46,7 +46,7 @@ do
     fi
 done
 
-for plugin_file in `find ${base_env_path}/plugins -type f`
+for plugin_file in `find ${base_env_path}/plugins -name '*.sh' -type f`
 do
     echo $plugin_file
     source $plugin_file
