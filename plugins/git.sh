@@ -1,0 +1,12 @@
+alias __git_clean_branch_list="git branch --list --color=never |tr -d '*'"
+alias cob=__git_checkout_branch_menu
+
+function __git_checkout_branch_menu(){
+PS3="Select a branch or Ctrl+C to cancel: "
+	select opt in $branches;
+	do
+		git checkout ${opt};
+		break;
+	done
+}
+
