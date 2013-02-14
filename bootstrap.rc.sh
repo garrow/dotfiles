@@ -8,7 +8,7 @@ then
 	export distro=osx
 else
 	export distro=ubuntu
-	echo "Assume ubuntu"
+	echo "Ubuntu"
 fi
  
 export bashrc_location=${base_env_path}/${distro}/bashrc.sh
@@ -22,4 +22,4 @@ if [ -f $bashrc_location ]; then
     echo
 fi
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

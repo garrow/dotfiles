@@ -19,7 +19,8 @@ function rb_ver {
   if [ "$rvm_loaded" != "1" ]; then
     echo "ᴚ" # RVM is disabled.
   elif [ "$RVM_DEFAULT_RUBY" != "$RUBY_VERSION" ]; then
-    echo "◇$(echo $RUBY_VERSION| cut -d- -f2) "
+    echo "◇$(rvm-prompt u) "
+    #echo "◇$(echo $RUBY_VERSION| cut -d- -f2) "
   fi
 }
 
