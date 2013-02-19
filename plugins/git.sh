@@ -1,5 +1,6 @@
 alias __git_clean_branch_list="git branch --list --color=never |tr -d '*'"
 alias cob=__git_checkout_branch_menu
+alias com='git checkout master'
 
 __git_checkout_branch_menu()
 {
