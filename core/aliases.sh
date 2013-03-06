@@ -24,6 +24,7 @@ alias tod='date +%H:%M:%S'
 ### Misc tools
 alias v=vim
 alias rld="source ~/.bashrc"
+alias cwd="pwd | tr -d '\n' | pbcopy"
 
 
 ##### GIT ######
