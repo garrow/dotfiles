@@ -38,6 +38,8 @@ alias gd='git diff'
 alias gds='git diff --color --staged '
 alias gap='git add --patch'
 alias grp='git reset --patch'
+alias gcp='git checkout --patch'
+alias gvp=gcp
 
 
 ####### SVN ######
