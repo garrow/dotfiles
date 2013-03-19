@@ -1,6 +1,6 @@
 source /etc/profile
 
-export base_env_path=${HOME}/bin/env
+export base_env_path=${HOME}/.dotfiles
 
 if [ $(uname) == 'Darwin' ]
 then
