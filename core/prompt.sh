@@ -2,6 +2,9 @@ if [ "$color_prompt" = "yes" ]; then
     source "${base_env_path}/core/colours.sh"
 fi
 
+function short_path {
+    pwd | ruby ${base_env_path}/core/name.rb
+}
 
 function prompt_char {
     if [[ -d './.svn/' ]]; then echo '§' && return; fi
@@ -42,6 +45,7 @@ GIT_PS1_SHOWDIRTYSTATE=1     # *
 GIT_PS1_SHOWSTASHSTATE=1     # $
 GIT_PS1_SHOWUNTRACKEDFILES=1 # %
 
-PS1="$IBlue\w$Color_Off \$(__git_ps1 \"<%s>\" )$Red\$(rb_ver)$Blue\$(rails_e)\$(stomp_e)$Color_Off\$(prompt_char) "
+PS1="$IBlue\$(short_path)$Color_Off \$(__git_ps1 \"<%s>\" )$Red\$(rb_ver)$Blue\$(rails_e)\$(stomp_e)$Color_Off\$(prompt_char) "
+#PS1="$IBlue\w$Color_Off \$(__git_ps1 \"<%s>\" )$Red\$(rb_ver)$Blue\$(rails_e)\$(stomp_e)$Color_Off\$(prompt_char) "
 PROMPT_COMMAND='echo -ne "\033]0;$(prompt_char) ${PWD} $(rb_ver)$(rails_e)\007"'
 
