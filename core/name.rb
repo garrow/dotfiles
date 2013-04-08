@@ -41,7 +41,8 @@ def cached path
   
   begin
 	cache = Marshal::load(File.read(CACHE_PATH))
-  rescue ArgumentError
+
+  rescue Errno::ENOENT, ArgumentError
     cache = {} 
   end
 	unless cache.key? path 
