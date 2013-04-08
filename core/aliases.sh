@@ -27,21 +27,6 @@ alias rld="source ~/.bashrc"
 alias cwd="pwd | tr -d '\n' | pbcopy"
 
 
-##### GIT ######
-alias g=git
-alias gs='git status'
-alias gse='git status --ignored'
-alias gsl='git log --pretty="format:%Cblue%h%d%Creset %ar %Cgreen%an%Creset %s" --graph'
-alias gr='gsl -n 10'
-alias gra='gr --all'
-alias gd='git diff'
-alias gds='git diff --color --staged '
-alias gap='git add --patch'
-alias grp='git reset --patch'
-alias gcp='git checkout --patch'
-alias gvp=gcp
-
-
 ####### SVN ######
 alias sd='svndiff'
 alias ss='svn status $* | svnstat.rb'
