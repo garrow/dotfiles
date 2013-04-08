@@ -4,10 +4,11 @@
 ELIPSIS = '…'
 ABBREVIATION = "॰" 
 
-require 'fileutils'
+CACHE_PATH = File.join( ENV['HOME'], ".nicepath.cache")
 
 def nicer path_string
 
+  require 'fileutils'
   path_string.gsub!(ENV['HOME'], '~')
 
   elements = path_string.split('/')
@@ -36,10 +37,27 @@ def nicer path_string
   File.join(simpler_elements).gsub(ENV['HOME'], '~')
 end
 
+def cached path
+  
+  begin
+	cache = Marshal::load(File.read(CACHE_PATH))
+  rescue ArgumentError
+    cache = {} 
+  end
+	unless cache.key? path 
+		cache[path] = nicer path
+		File.open(CACHE_PATH, "w") do |f|
+			f.print(Marshal::dump(cache))
+		end
+	end
+	cache[path]
+end
+
+
 
 
 ARGF.each_line do |line|
-  puts nicer line
+  puts cached line
   break
 end
 

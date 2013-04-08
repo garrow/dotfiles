@@ -1,5 +1,6 @@
 install:
 	ln -vsf ${PWD}/bootstrap.rc.sh ${HOME}/.bashrc
+	ln -vsf ${PWD}/vim/.vimrc ${HOME}
 
 dependencies:
 	sudo apt-get install git vim xclip ack-grep realpath curl colordiff
