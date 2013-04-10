@@ -27,18 +27,6 @@ alias rld="source ~/.bashrc"
 alias cwd="pwd | tr -d '\n' | pbcopy"
 alias dud="du -hcd 1"
 
-####### SVN ######
-alias sd='svndiff'
-alias ss='svn status $* | svnstat.rb'
-alias ssq='svn status -q $* | svnstat.rb'
-alias si="svn info"
-alias sup='svn update --ignore-externals'
-alias supall='svn update'
-alias slc='svn log --stop-on-copy'
-alias sbs='si|grep URL;slc -v'
-#alias rake_completion='compgen -W $(rake -s -T | cut -d " " -f 2 | cut -d "[" -f 1)'
-alias cbranch="svn info |grep URL | cut -d '/' -f6"
-
 ####### Rails ########
 alias rprod='export RAILS_ENV=production && renv'
 alias rtest='export RAILS_ENV=test && renv'
