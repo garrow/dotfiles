@@ -25,7 +25,7 @@ alias tod='date +%H:%M:%S'
 alias v=vim
 alias rld="source ~/.bashrc"
 alias cwd="pwd | tr -d '\n' | pbcopy"
-
+alias dud="du -hcd 1"
 
 ####### SVN ######
 alias sd='svndiff'
