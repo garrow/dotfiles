@@ -12,6 +12,8 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+# Ignore SVN directories for the purpose of tab completion.
+export FIGNORE=.svn
 
 export CLICOLOR=1
 export LSCOLORS=dxfxcxdxbxegedabagacad
