@@ -15,16 +15,9 @@ function prompt_char {
 }
 
 
-export RVM_DEFAULT_RUBY="$(${HOME}/.rvm/bin/rvm list default string )"
 
 function rb_ver {
-  local rvm_loaded=`type -t rvm | grep -c '^function$'`
-  if [ "$rvm_loaded" != "1" ]; then
-    echo "ᴚ" # RVM is disabled.
-  elif [ "$RVM_DEFAULT_RUBY" != "$RUBY_VERSION" ]; then
-    echo "◇$(rvm-prompt u) "
-    #echo "◇$(echo $RUBY_VERSION| cut -d- -f2) "
-  fi
+	echo ""
 }
 
 function rails_e {
