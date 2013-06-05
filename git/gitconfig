@@ -1,0 +1,25 @@
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = always
+[alias]
+	co = checkout
+	graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	tags = log -n1 --pretty=format:%h%d
+[merge]
+    tool = 4meld
+
+[mergetool "4meld"]
+	cmd = $HOME/bin/gitmerge $BASE $LOCAL $REMOTE $MERGED
+
+[core]
+	editor = /usr/bin/vim
+
+[user]
+	name = Garrow Bedrossian
+	# Email is stored in .local config file.
+
+#### Include a .local config file, I use this to store per machine settings, e.g work vs home email addresses
+[include]
+	path = ~/.gitconfig.local
