@@ -23,3 +23,5 @@
 #### Include a .local config file, I use this to store per machine settings, e.g work vs home email addresses
 [include]
 	path = ~/.gitconfig.local
+[push]
+	default = simple
