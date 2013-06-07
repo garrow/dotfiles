@@ -1,5 +1,6 @@
 # chruby plugin, loads chruby and provides prompt helper function
-source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+#source /usr/local/share/chruby/chruby.sh
 
 function rb_ver {
 	if [ "$RUBY_VERSION" == "" ]; then
