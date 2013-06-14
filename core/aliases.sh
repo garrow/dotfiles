@@ -13,6 +13,8 @@ fi
 
 ### Butterfingers
 alias cd..='cd ..'
+alias xx='cd ..'
+alias q=l
 
 
 ### Grep

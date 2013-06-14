@@ -1,6 +1,6 @@
 set nocompatible
 filetype plugin on
-"set bg=dark
+set bg=dark
 syntax on
 
 " Learnings
@@ -11,10 +11,10 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 inoremap jk <esc>
 
 " Unlearning bad habits
-inoremap <left> <nop>
-inoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <left> <nop>
+"inoremap <left> <nop>
+"inoremap <right> <nop>
+"inoremap <up> <nop>
+"inoremap <left> <nop>
 
 " Abbreviations
 iabbrev @@ garrow.bedrossian@gmail.com
