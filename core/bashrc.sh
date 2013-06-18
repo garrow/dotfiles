@@ -42,15 +42,13 @@ do
     if [[ -f $custom_element_path ]]; then
         source $custom_element_path
     else
-	if [ $DEBUG_DOTFILES == 'true' ]; then
-        	echo "Error loading: ${custom_element_path}"
-        fi
+	debug_dotfiles "Error loading: ${custom_element_path}"
     fi
 done
 
 for plugin_file in `find ${base_env_path}/plugins -name '*.sh' -type f`
 do
-    echo $plugin_file
+    debug_dotfiles $plugin_file
     source $plugin_file
 done
 

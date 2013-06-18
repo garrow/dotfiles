@@ -1,19 +1,21 @@
 source /etc/profile
 
+export DEBUG_DOTFILES=false
+function debug_dotfiles(){
+        if [ $DEBUG_DOTFILES == 'true' ]; then
+                echo $1
+        fi
+}
 export base_env_path=${HOME}/.dotfiles
 
 if [ $(uname) == 'Darwin' ]
 then
-	echo "OSX"
 	export distro=osx
 else
 	export distro=ubuntu
-	echo "Ubuntu"
 fi
  
 export bashrc_location=${base_env_path}/${distro}/bashrc.sh
-
-export DEBUG_DOTFILES=true
 
 source ${base_env_path}/core/bashrc.sh
 
