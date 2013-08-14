@@ -28,6 +28,8 @@ alias v=vim
 alias rld="source ~/.bashrc"
 alias cwd="pwd | tr -d '\n' | pbcopy"
 alias dud="du -hcd 1"
+alias pyserve="python -m SimpleHTTPServer 8000"
+
 
 ####### Rails ########
 alias rprod='export RAILS_ENV=production && renv'
