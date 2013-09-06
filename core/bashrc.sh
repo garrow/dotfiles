@@ -20,6 +20,8 @@ export LSCOLORS=dxfxcxdxbxegedabagacad
 export LS_COLORS=$LSCOLORS
 export color_prompt="yes"
 
+export TERM=xterm-256color
+
 #check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
