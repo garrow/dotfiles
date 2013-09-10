@@ -32,5 +32,4 @@ GIT_PS1_SHOWSTASHSTATE=1     # $
 GIT_PS1_SHOWUNTRACKEDFILES=1 # %
 
 PS1="$IPurple\W$Color_Off\$(__git_ps1 \"⌥ %s\" )$Red\$(rb_ver)$Blue\$(rails_e)$Color_Off$Green\$(prompt_char)$Color_Off "
-#PROMPT_COMMAND='echo -ne "\033]0;$(prompt_char) ${PWD} $(rb_ver)$(rails_e)\007"'
-
+PROMPT_COMMAND='echo -ne "\033]0;$(prompt_char) ${PWD} $(rb_ver)$(rails_e)\007"'
