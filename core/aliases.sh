@@ -30,19 +30,5 @@ alias cwd="pwd | tr -d '\n' | pbcopy"
 alias dud="du -hcd 1"
 alias pyserve="python -m SimpleHTTPServer 8000"
 
-
-####### Rails ########
-alias rprod='export RAILS_ENV=production && renv'
-alias rtest='export RAILS_ENV=test && renv'
-alias rdev='export RAILS_ENV=development && renv'
-alias rstage='export RAILS_ENV=staging && renv'
-alias renv='echo $RAILS_ENV'
-alias rdefault='unset RAILS_ENV'
-
-######## Ruby ########
-alias spec="time rspec"
-alias be="bundle exec"
-
-
 ########## Python ##########
 alias p=python
