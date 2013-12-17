@@ -6,7 +6,7 @@ function rb_ver {
 	if [ "$RUBY_VERSION" == "" ]; then
 		echo "ᴚ"
 	elif [ "$RUBY_ENGINE" == "jruby" ]; then
-		echo "♨"
+		echo "♨ "
 	elif [ "$RUBY_VERSION" == "2.0.0" ]; then
 		echo ""
 	elif [ "$RUBY_VERSION" == "1.9.3" ]; then

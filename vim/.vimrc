@@ -1,10 +1,15 @@
 execute pathogen#infect()
 set nocompatible
 filetype plugin on
-set bg=dark
+set bg=light
 syntax on
 set encoding=utf-8
+set guifont=Inconsolata-g:h16
 
+" Enable mouse in visual mode
+" set mouse=n
+" Show partially completed command sequences in bottom row.
+set showcmd
 
 " Learnings
 let mapleader = ","
@@ -38,9 +43,6 @@ nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 " Comments
 autocmd FileType vim nnoremap <buffer> <localleader>c I" <esc>
 
-               "#'lorem' "ipsum" etc "whatever"
-
-
 " StatusLine
 set laststatus=2
 if !has('gui_running')
@@ -57,16 +59,17 @@ set autoindent
 filetype indent on
 
 " Show trailing whitespace
- highlight ExtraWhitespace ctermbg=red guibg=red
- match ExtraWhitespace /\s\+$/
- autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
- "autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
- autocmd InsertLeave * match ExtraWhitespace /\s\+$/
- autocmd BufWinLeave * call clearmatches()
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+"autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 " Highlight long lines
-set colorcolumn=120
-highlight ColorColumn ctermbg=black
+"
+"set colorcolumn=120
+"highlight ColorColumn ctermbg=black
  " highlight NonText ctermfg=0 guifg=#4a4a59
  " highlight SpecialKey guifg=#4a4a59
 
@@ -82,3 +85,23 @@ highlight clear SignColumn
 " Split window behaviour
 set splitbelow
 set splitright
+
+
+" Toggle relativenumber
+nnoremap <leader>r :set relativenumber!<cr>
+nnoremap <leader>n :set number!<cr>
+
+" Setup word wrapping
+set linebreak " Don't wrap in the middle of words
+
+" Enable semicolon ex commands
+nnoremap ; :
+
+" Marked Preview
+:nnoremap <leader>m :silent !open -a Marked2.app '%:p'<cr>
+
+" ctrlp plugin
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+" Disable gitgutter
+let g:gitgutter_enabled = 0

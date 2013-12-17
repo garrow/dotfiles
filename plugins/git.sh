@@ -15,7 +15,8 @@ alias gvp=gcp
 alias __git_clean_branch_list="git branch  --color=never |tr -d '*'"
 alias cob=__git_checkout_branch_menu
 alias com='git checkout master'
-alias gmod='git status --porcelain |cut -c4-'
+alias gmod="git diff --name-status |grep -v '^D' | tr -s '\t' |cut -f2"
+
 
 # TODO - Ensure this can handle detached HEAD states.
 
