@@ -13,8 +13,8 @@ alias gvp=gcp
 
 alias gmod="git diff --name-status |grep -v '^D' | tr -s '\t' |cut -f2"
 # Branch management
-alias coab=__git_checkout_branch_menu
-alias cob=__git_checkout_working_branches_menu
+alias cob=__git_checkout_branch_menu
+alias cow=__git_checkout_working_branches_menu
 alias cor=__git_checkout_remote_branch_menu
 alias com='git checkout master'
 
