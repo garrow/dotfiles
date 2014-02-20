@@ -15,10 +15,13 @@ alias gvp=gcp
 alias __git_current_branch='git rev-parse --abbrev-ref HEAD'
 alias __git_current_branch_revisions='git rev-list $(__git_current_branch) ^master'
 
-alias gbc="git diff --name-only $(__git_current_branch_revisions) master"
+alias gbc='git diff --name-only $(__git_current_branch_revisions) master'
+
 alias gmod="git diff --name-status |grep -v '^D' | tr -s '\t' |cut -f2"
 
 # Branch management
+alias gpushnew='git push --set-upstream origin $(__git_current_branch)'
+
 alias cob=__git_checkout_branch_menu
 alias cow=__git_checkout_working_branches_menu
 alias cor=__git_checkout_remote_branch_menu
