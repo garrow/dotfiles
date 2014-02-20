@@ -31,9 +31,14 @@ GIT_PS1_SHOWDIRTYSTATE=1     # *
 GIT_PS1_SHOWSTASHSTATE=1     # $
 GIT_PS1_SHOWUNTRACKEDFILES=1 # %
 
+# Prettify command branch name.
 function __filtered_git_ps1 {
   git_ps1_string=$(__git_ps1 "⌥ %s" )
-  echo "${git_ps1_string/⌥ master/➽}"
+  git_ps1_string="${git_ps1_string/⌥ master/Ⓜ️ }"
+  git_ps1_string="${git_ps1_string/⌥ bugfix/🐛 }"
+  git_ps1_string="${git_ps1_string/⌥ feature/💰 }"
+  git_ps1_string="${git_ps1_string/⌥ refinement/🎓 }"
+  echo $git_ps1_string
 }
 
 
