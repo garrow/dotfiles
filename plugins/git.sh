@@ -35,8 +35,13 @@ alias __git_only_remote_branch_list="cat  <(__git_local_branch_list) <(__git_loc
 
 __git_checkout_branch_menu()
 {
-PS3="Select a branch or Ctrl+C to cancel: "
-select opt in $(__git_local_branch_list); do git checkout ${opt}; break; done
+
+  PS3="Select a branch or Ctrl+C to cancel: "
+if [ $# -eq 1 ]; then
+  select opt in $(__git_local_branch_list |grep --color=never "$@"); do git checkout ${opt}; break; done
+else
+  select opt in $(__git_local_branch_list); do git checkout ${opt}; break; done
+fi
 }
 
 __git_checkout_working_branches_menu()
