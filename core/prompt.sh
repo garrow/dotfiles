@@ -34,7 +34,7 @@ function __filtered_git_ps1 {
   git_ps1_string="${git_ps1_string/bugfix/🐛 }"
   git_ps1_string="${git_ps1_string/feature/💰 }"
   git_ps1_string="${git_ps1_string/refinement/🎓 }"
-  echo "⌥ ${git_ps1_string}"
+  echo "${git_ps1_string}"
 }
 
 
