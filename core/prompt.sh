@@ -7,7 +7,8 @@ function short_path {
 }
 
 function prompt_char {
-  git branch >/dev/null 2>/dev/null && echo '±' && return
+  # ±
+  git branch >/dev/null 2>/dev/null && echo '' && return
   echo '○'
 }
 
@@ -29,12 +30,12 @@ GIT_PS1_SHOWUNTRACKEDFILES=1 # %
 
 # Prettify command branch name.
 function __filtered_git_ps1 {
-  git_ps1_string=$(__git_ps1 "⌥ %s" )
-  git_ps1_string="${git_ps1_string/⌥ master/Ⓜ️ }"
-  git_ps1_string="${git_ps1_string/⌥ bugfix/🐛 }"
-  git_ps1_string="${git_ps1_string/⌥ feature/💰 }"
-  git_ps1_string="${git_ps1_string/⌥ refinement/🎓 }"
-  echo $git_ps1_string
+  git_ps1_string=$(__git_ps1 "%s")
+  git_ps1_string="${git_ps1_string/master/Ⓜ️ }"
+  git_ps1_string="${git_ps1_string/bugfix/🐛 }"
+  git_ps1_string="${git_ps1_string/feature/💰 }"
+  git_ps1_string="${git_ps1_string/refinement/🎓 }"
+  echo "⌥ ${git_ps1_string}"
 }
 
 
