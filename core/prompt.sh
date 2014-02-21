@@ -8,8 +8,7 @@ function short_path {
 
 function prompt_char {
   # ±
-  git branch >/dev/null 2>/dev/null && echo '' && return
-  echo '○'
+  echo '🔺 '
 }
 
 function rb_ver {
@@ -39,5 +38,5 @@ function __filtered_git_ps1 {
 }
 
 
-PS1="$IPurple\W$Color_Off\$(__filtered_git_ps1)$Red\$(rb_ver)$Blue\$(rails_e)$Color_Off$Green\$(prompt_char)$Color_Off "
+PS1="$IPurple\W$Color_Off\$(__filtered_git_ps1)$Red\$(rb_ver)$Blue\$(rails_e)$Color_Off$(prompt_char)"
 PROMPT_COMMAND='echo -ne "\033]0;$(prompt_char) ${PWD} $(rb_ver)$(rails_e)\007"'
