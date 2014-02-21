@@ -1,22 +1,18 @@
 if [ "$color_prompt" = "yes" ]; then
-    source "${base_env_path}/core/colours.sh"
+  source "${base_env_path}/core/colours.sh"
 fi
 
 function short_path {
-    pwd | ruby ${base_env_path}/core/name.rb
+  pwd | ruby ${base_env_path}/core/name.rb
 }
 
 function prompt_char {
-    git branch >/dev/null 2>/dev/null && echo '±' && return
-    #hg root >/dev/null 2>/dev/null && echo '☿' && return
-    #if [[ -d './.svn/' ]]; then echo '§' && return; fi
-    echo '○'
+  git branch >/dev/null 2>/dev/null && echo '±' && return
+  echo '○'
 }
 
-
-
 function rb_ver {
-	echo ""
+  echo ""
 }
 
 function rails_e {
