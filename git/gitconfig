@@ -17,6 +17,7 @@
 
 [core]
 	editor = /usr/bin/vim
+	excludesfile = /Users/garrow/.gitignore_global
 
 [user]
 	name = Garrow Bedrossian
