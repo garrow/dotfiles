@@ -3,7 +3,6 @@ if [ "$color_prompt" = "yes" ]; then
 fi
 
 function prompt_char {
-  # ±
   echo '🔺 '
 }
 
@@ -31,7 +30,6 @@ function __filtered_git_ps1 {
   git_ps1_string="${git_ps1_string/refinement/🎓 }"
   echo "${git_ps1_string}"
 }
-
 
 PS1="$IPurple\W$Color_Off\$(__filtered_git_ps1)$Red\$(rb_ver)$Blue\$(rails_e)$Color_Off$(prompt_char)"
 PROMPT_COMMAND='echo -ne "\033]0;$(prompt_char) ${PWD} $(rb_ver)$(rails_e)\007"'

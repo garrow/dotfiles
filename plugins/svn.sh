@@ -8,5 +8,3 @@ export SVN_EDITOR=vi
 #alias slc='svn log --stop-on-copy'
 #alias sbs='si|grep URL;slc -v'
 #alias cbranch="svn info |grep URL | cut -d '/' -f6"
-
-

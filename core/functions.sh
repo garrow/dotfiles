@@ -1,30 +1,29 @@
 # color diffs for SVN
-function svndiff () 
+function svndiff ()
 {
 if [ "$1" != "" ]; then
 svn diff $@ | colordiff;
 else
-svn diff | colordiff; 
+svn diff | colordiff;
 fi
 }
 
-# Continously rerun rspec with the supplied commands. 
+# Continously rerun rspec with the supplied commands.
 # Removes the dependency on `guard`
 export RESPEC_TIME_DEFAULT=5
 export RESPEC_TIME=$RESPEC_TIME_DEFAULT
 function respec()
 {
-if [ $1 ]; then 
-    while true; do 
-        echo `tod`; 
+if [ $1 ]; then
+    while true; do
+        echo `tod`;
         rspec $@
-        sleep $RESPEC_TIME; 
+        sleep $RESPEC_TIME;
     done
 fi
 }
 
-
-function ctail () 
+function ctail ()
 {
 if [ "$1" != "" ]; then
 tail -f $1 | ctail.php $2 ;

@@ -10,12 +10,10 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-
 ### Butterfingers
 alias cd..='cd ..'
 alias xx='cd ..'
 alias q=l
-
 
 ### Grep
 alias pgrep='grep --color=never'  # Pipe grep
