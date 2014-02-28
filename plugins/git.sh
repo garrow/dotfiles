@@ -2,22 +2,28 @@ alias g=git
 alias gs='git status'
 alias gse='git status --ignored'
 alias gsl='git log --pretty="format:%Cblue%h%d%Creset %ar %Cgreen%an%Creset %s" --graph'
-alias gr='gsl -n 10'
+alias gr='gsl -n 10' # Git Recent
 alias gra='gr --all'
+
+# Diff
 alias gd='git diff'
 alias gds='git diff --color --staged '
+
+# Operate Patchwise (Interactively)
 alias gap='git add --patch'
 alias grp='git reset --patch'
 alias gcp='git checkout --patch'
 alias gvp=gcp
+alias gsp='git stash save --patch'
 
 # Changed files
 alias __git_current_branch='git rev-parse --abbrev-ref HEAD'
 alias __git_current_branch_revisions='git rev-list $(__git_current_branch) ^master'
+alias __git_current_branch_changed_files='git show --pretty="format:" --name-only $(__git_current_branch_revisions)..master |sort -u'
+alias gbc=__git_current_branch_changed_files
 
-alias gbc='git diff --name-only $(__git_current_branch_revisions) master'
-
-alias gmod="git diff --name-status |grep -v '^D' | tr -s '\t' |cut -f2"
+alias __git_modified_files="git diff --name-status |grep -v '^D' | tr -s '\t' |cut -f2"
+alias gmod=__git_modified_files
 
 # Branch management
 alias gpushnew='git push --set-upstream origin $(__git_current_branch)'
