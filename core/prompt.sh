@@ -2,10 +2,6 @@ if [ "$color_prompt" = "yes" ]; then
   source "${base_env_path}/core/colours.sh"
 fi
 
-function short_path {
-  pwd | ruby ${base_env_path}/core/name.rb
-}
-
 function prompt_char {
   # ±
   echo '🔺 '
@@ -20,7 +16,6 @@ function rails_e {
     echo "‡$RAILS_ENV " && return
   fi
 }
-
 
 #### GIT CONFIG
 GIT_PS1_SHOWDIRTYSTATE=1     # *
