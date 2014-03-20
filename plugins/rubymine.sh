@@ -1,2 +1,2 @@
-alias spelunk='xargs mine'
+alias spelunk='only_files | xargs mine'
 alias gmine='gmod | spelunk'

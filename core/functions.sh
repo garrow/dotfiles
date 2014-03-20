@@ -39,3 +39,15 @@ fi
 }
 
 alias ghl=grep_highlight
+
+# Filter arguments to only include files
+function only_files ()
+{
+while read fname; do
+  if [ -f "$fname" ]; then
+    echo $fname ;
+#  else
+#    echo "REJECTED:: $fname"
+  fi
+done
+}
