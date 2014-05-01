@@ -25,6 +25,8 @@ alias gbc=__git_current_branch_changed_files
 alias __git_modified_files="git diff --name-status |grep -v '^D' | tr -s '\t' |cut -f2"
 alias gmod=__git_modified_files
 
+alias __git_undo_whitespace_changes="git diff -b --numstat | egrep $'^0\t0\t' | cut -d$'\t' -f3- | xargs git checkout HEAD --"
+
 # Branch management
 alias gpushnew='git push --set-upstream origin $(__git_current_branch)'
 
