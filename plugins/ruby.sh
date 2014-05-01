@@ -5,5 +5,5 @@ export RUBY_GC_HEAP_FREE_SLOTS=200000
 export BUNDLE_JOBS=8
 
 alias spec="time rspec"
-alias s=spec
+alias sp=spec
 alias be="bundle exec"
