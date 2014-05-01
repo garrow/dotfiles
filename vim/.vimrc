@@ -80,7 +80,7 @@ set listchars=tab:▸\ ,eol:¬
 highlight clear SignColumn
 ",trail:\·,extends:$,nbsp:=
 " set listchars=tab:»\·,trail:\·,extends:$,nbsp:=
-      
+
 
 " Split window behaviour
 set splitbelow
@@ -99,6 +99,10 @@ nnoremap ; :
 
 " Marked Preview
 :nnoremap <leader>m :silent !open -a Marked2.app '%:p'<cr>
+" Markdown Table Thing
+command! MarkdownHeader execute 'normal Yp' | MarkdownTableRow
+command! MarkdownTableRow s/[^|]/-/g
+command! MarkdownColumnCount s/\v\|//eng
 
 " ctrlp plugin
 set runtimepath^=~/.vim/bundle/ctrlp.vim
