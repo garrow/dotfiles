@@ -24,12 +24,13 @@ GIT_PS1_SHOWUNTRACKEDFILES=1 # %
 # Prettify command branch name.
 function __filtered_git_ps1 {
   git_ps1_string=$(__git_ps1 "⌥ %s")
-  git_ps1_string="${git_ps1_string/⌥ master/Ⓜ️ }"
+  git_ps1_string="${git_ps1_string/master/Ⓜ️ }"
   git_ps1_string="${git_ps1_string/bugfix/🐛 }"
   git_ps1_string="${git_ps1_string/feature/💰 }"
   git_ps1_string="${git_ps1_string/refinement/🎓 }"
+  git_ps1_string="${git_ps1_string/spike/📌  }"
   echo "${git_ps1_string}"
 }
 
-PS1="$IPurple\W$Color_Off\$(__filtered_git_ps1)$Red\$(rb_ver)$Blue\$(rails_e)$Color_Off$(prompt_char)"
-PROMPT_COMMAND='echo -ne "\033]0;$(prompt_char) ${PWD} $(rb_ver)$(rails_e)\007"'
+PS1="$IPurple\W$Color_Off\$(__filtered_git_ps1)$Red\$(rb_ver)$Blue\$(rails_e)$Color_Off #"
+PROMPT_COMMAND='echo -ne "\033]0; ${PWD/#$HOME/~}\007"'
