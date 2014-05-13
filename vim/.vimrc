@@ -103,6 +103,10 @@ nnoremap ; :
 command! MarkdownHeader execute 'normal Yp' | MarkdownTableRow
 command! MarkdownTableRow s/[^|]/-/g
 command! MarkdownColumnCount s/\v\|//eng
+" Markdown Surround
+let g:surround_{char2nr('o')} = "**\r**"
+
+
 
 " ctrlp plugin
 set runtimepath^=~/.vim/bundle/ctrlp.vim
