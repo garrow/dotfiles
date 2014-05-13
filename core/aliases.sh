@@ -22,7 +22,7 @@ alias isod='date +%Y.%m.%d.%R'
 alias tod='date +%H:%M:%S'
 
 ### Misc tools
-alias v=vim
+alias v=mvim
 alias rld="source ~/.bashrc"
 alias dotfiles="cd ~/.dotfiles/"
 alias cwd="pwd | tr -d '\n' | pbcopy"
