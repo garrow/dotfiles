@@ -5,3 +5,7 @@ alias rstage='export RAILS_ENV=staging && renv'
 alias renv='echo $RAILS_ENV'
 alias rdefault='unset RAILS_ENV'
 alias r=rails
+
+alias rs='rails server'
+alias rd='rails dbconsole'
+alias rc='rails console'
