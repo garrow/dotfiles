@@ -14,6 +14,7 @@ fi
 alias cd..='cd ..'
 alias xx='cd ..'
 alias q=l
+alias rm='rm -i'
 
 ### Grep
 alias pgrep='grep --color=never'  # Pipe grep
