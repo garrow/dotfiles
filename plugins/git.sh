@@ -29,6 +29,7 @@ alias __git_undo_whitespace_changes="git diff -b --numstat | egrep $'^0\t0\t' | 
 
 # Branch management
 alias gpushnew='git push --set-upstream origin $(__git_current_branch)'
+alias __git_prune_merged_branches='git branch --merged | grep -v master | xargs -n1 git branch -d'
 
 alias cob=__git_checkout_branch_menu
 alias cow=__git_checkout_working_branches_menu
