@@ -31,3 +31,5 @@
 	default = simple
 [credential]
 	helper = osxkeychain
+[diff]
+	mnemonicprefix = true
