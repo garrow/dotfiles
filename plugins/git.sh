@@ -63,3 +63,13 @@ __git_checkout_remote_branch_menu()
 PS3="Select a branch or Ctrl+C to cancel: "
 select opt in $(__git_only_remote_branch_list); do git checkout ${opt} ; break; done
 }
+
+__git_commit_splat()
+{
+  TEMP_FILE=$(mktemp '/tmp/git.simplecommit.msg.XXXX')
+  echo "# $@" >> $TEMP_FILE
+  git commit --edit --file $TEMP_FILE
+  rm -f $TEMP_FILE
+}
+
+alias gcm=__git_commit_splat
