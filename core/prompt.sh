@@ -22,7 +22,7 @@ GIT_PS1_SHOWSTASHSTATE=1     # $
 GIT_PS1_SHOWUNTRACKEDFILES=1 # %
 
 # Prettify command branch name.
-function __filtered_git_ps1 {
+function __filtered_git_ps1_emoji {
   git_ps1_string=$(__git_ps1 "⌥ %s")
   git_ps1_string="${git_ps1_string/master/Ⓜ️ }"
   git_ps1_string="${git_ps1_string/bugfix/🐛 }"
@@ -31,6 +31,7 @@ function __filtered_git_ps1 {
   git_ps1_string="${git_ps1_string/spike/📌  }"
   echo "${git_ps1_string}"
 }
-
-PS1="$IPurple\W$Color_Off\$(__filtered_git_ps1)$Red\$(rb_ver)$Blue\$(rails_e)$Color_Off #"
+PS1="
+$IPurple\w$Color_Off\$(__filtered_git_ps1_emoji)$Red\$(rb_ver)$Blue\$(rails_e)$Color_Off
+$Green>$Color_Off "
 PROMPT_COMMAND='echo -ne "\033]0; ${PWD/#$HOME/~}\007"'
