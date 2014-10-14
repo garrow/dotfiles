@@ -1,2 +1,4 @@
 /**/*.swp
 .idea
+.netrwhist
+.DS_Store
