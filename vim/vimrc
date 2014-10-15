@@ -106,6 +106,7 @@ command! MarkdownColumnCount s/\v\|//eng
 " Markdown Surround
 let g:surround_{char2nr('o')} = "**\r**"
 
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 
 " ctrlp plugin
