@@ -28,7 +28,6 @@ alias tod='date +%H:%M:%S'
 ### Misc tools
 alias v=mvim
 alias rld="source ~/.bashrc"
-alias dotfiles="cd ~/.dotfiles/"
 alias cwd="pwd | tr -d '\n' | pbcopy"
 alias dud="du -hcd 1"
 alias pyserve="python -m SimpleHTTPServer 8000"
@@ -40,4 +39,5 @@ alias p=python
 
 
 ## Shortcuts
+alias dotfiles="cd ~/.dotfiles/"
 alias deps="cd ~/.babushka/deps"
