@@ -1,7 +1,7 @@
 # chruby plugin, loads chruby and provides prompt helper function
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
-export DEFAULT_RUBY_VERSION="2.1.2"
+export DEFAULT_RUBY_VERSION="2.1.3"
 
 function rb_ver {
 	if [ "$RUBY_VERSION" == "" ]; then
