@@ -21,6 +21,7 @@ alias pgrep='grep --color=never'  # Pipe grep
 
 # Ack
 alias k='ack'
+alias af='ack -g'
 
 alias isod='date +%Y.%m.%d.%R'
 alias tod='date +%H:%M:%S'
