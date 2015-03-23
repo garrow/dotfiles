@@ -73,3 +73,44 @@ __git_commit_splat()
 }
 
 alias gcm=__git_commit_splat
+
+__git_commit_fame()
+{
+  fix_types=(
+    "feat  : feature"
+    "fix   : bug fix"
+    "main  : maintenance"
+    "tweak : not quite a feature, not quite maintenance"
+    "copy  : update to site copy"
+    "docs  : documentation"
+    "style : formatting"
+    "ref   : refactoring code"
+    "test  : adding missing tests"
+  )
+
+  scope_types=$(find app lib -type d -maxdepth 1 -mindepth 1 | xargs -n 1 | cut -f 2 -d/ |sort -u)
+
+  PS3="Select type: "
+  select opt in "${fix_types[@]}"; do
+    type=$( echo $opt | cut -f 1 -d' ');
+    break;
+  done
+  echo
+
+  PS3="Select scope: "
+  select opt in ${scope_types[@]}; do
+    if [ ! "$opt" = "" ]; then
+      scope=$opt
+    else
+      scope=$REPLY
+    fi
+    break;
+  done
+
+  echo $type
+  echo $scope
+
+  __git_commit_splat "[${type}][${scope}]" $@
+}
+
+alias gcf=__git_commit_fame
