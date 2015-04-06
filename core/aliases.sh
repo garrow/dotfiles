@@ -24,6 +24,7 @@ alias k='ack'
 alias af='ack -g'
 
 alias isod='date +%Y.%m.%d.%R'
+alias timetag='date +%Y%m%d%H%M'
 alias tod='date +%H:%M:%S'
 
 ### Misc tools
