@@ -9,6 +9,8 @@
 	tags = log -n1 --pretty=format:%h%d
         changed = diff --name-status
         up = pull --rebase
+        upmodules = "submodule foreach 'git fetch origin --tags; git checkout master; git pull' && git pull && git submodule update --init --recursive"
+
 [merge]
     tool = 4meld
 
