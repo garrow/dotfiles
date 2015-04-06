@@ -1,5 +1,6 @@
 install:
 	ln -vsf ${PWD}/bootstrap.rc.sh ${HOME}/.bash_profile
+	ln -vsf ${PWD}/extras.rc.sh ${HOME}/.extras.rc.sh
 	ln -vsf ${PWD}/vim/vimrc ${HOME}/.vimrc
 	ln -vsf ${PWD}/vim ${HOME}/.vim
 	ln -vsf ${PWD}/git/gitconfig ${HOME}/.gitconfig
