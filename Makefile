@@ -1,9 +1,9 @@
 install:
-	ln -vsf ${PWD}/bootstrap.rc.sh ${HOME}/.bash_profile
-	ln -vsf ${PWD}/extras.rc.sh ${HOME}/.extras.rc.sh
-	ln -vsf ${PWD}/vim/vimrc ${HOME}/.vimrc
-	ln -vsf ${PWD}/vim ${HOME}/.vim
-	ln -vsf ${PWD}/git/gitconfig ${HOME}/.gitconfig
+	ln -vshf ${PWD}/bootstrap.rc.sh ${HOME}/.bash_profile
+	ln -vshf ${PWD}/extras.rc.sh ${HOME}/.extras.rc.sh
+	ln -vshf ${PWD}/vim/vimrc ${HOME}/.vimrc
+	ln -vshf ${PWD}/vim/ ${HOME}/.vim
+	ln -vshf ${PWD}/git/gitconfig ${HOME}/.gitconfig
 
 dependencies:
 	sudo apt-get install git vim xclip ack-grep realpath curl colordiff
