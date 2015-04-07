@@ -146,3 +146,6 @@ function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
 endfunction
 
 call TextEnableCodeSnip('xml', '@begin=```xml', '@end=```', 'SpecialComment')
+
+
+au VimLeave * maca hide:
