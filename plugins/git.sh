@@ -45,7 +45,7 @@ alias __git_only_remote_branch_list="cat  <(__git_local_branch_list) <(__git_loc
 __git_checkout_branch_menu()
 {
 
-  PS3="Select a branch or Ctrl+C to cancel: "
+PS3="Select a branch or Ctrl+C to cancel: "
 if [ $# -eq 1 ]; then
   select opt in $(__git_local_branch_list |grep --color=never "$@"); do git checkout ${opt}; break; done
 else
@@ -56,12 +56,22 @@ fi
 __git_checkout_working_branches_menu()
 {
 PS3="Select a branch or Ctrl+C to cancel: "
-select opt in $(__git_working_branch_list); do git checkout ${opt}; break; done
+if [ $# -eq 1 ]; then
+  select opt in $(__git_working_branch_list |grep --color=never "$@"); do git checkout ${opt}; break; done
+else
+  select opt in $(__git_working_branch_list); do git checkout ${opt}; break; done
+fi
 }
+
 __git_checkout_remote_branch_menu()
 {
+
 PS3="Select a branch or Ctrl+C to cancel: "
-select opt in $(__git_only_remote_branch_list); do git checkout ${opt} ; break; done
+if [ $# -eq 1 ]; then
+  select opt in $(__git_only_remote_branch_list |grep --color=never "$@"); do git checkout ${opt}; break; done
+else
+  select opt in $(__git_only_remote_branch_list); do git checkout ${opt}; break; done
+fi
 }
 
 __git_commit_splat()
