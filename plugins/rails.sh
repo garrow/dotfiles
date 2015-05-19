@@ -4,6 +4,7 @@ alias rdev='export RAILS_ENV=development && renv'
 alias rstage='export RAILS_ENV=staging && renv'
 alias renv='echo $RAILS_ENV'
 alias rdefault='unset RAILS_ENV'
+alias rails='bundle exec rails'
 alias r=rails
 
 alias rs='rails server'

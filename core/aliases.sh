@@ -19,6 +19,8 @@ alias rm='rm -i'
 ### Grep
 alias pgrep='grep --color=never'  # Pipe grep
 
+alias recall='history | grep'
+
 # Ack
 alias k='ack'
 alias af='ack -g'
@@ -26,6 +28,8 @@ alias af='ack -g'
 alias isod='date +%Y.%m.%d.%R'
 alias timetag='date +%Y%m%d%H%M'
 alias tod='date +%H:%M:%S'
+
+alias newest='ls -t | head -n1'
 
 ### Misc tools
 alias v=mvim

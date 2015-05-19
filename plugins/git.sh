@@ -19,11 +19,13 @@ alias gsp='git stash save --patch'
 # Changed files
 alias __git_current_branch='git rev-parse --abbrev-ref HEAD'
 alias __git_current_branch_revisions='git rev-list $(__git_current_branch) ^master'
-alias __git_current_branch_changed_files='git show --pretty="format:" --name-only $(__git_current_branch_revisions)..master |sort -u'
+alias __git_current_branch_changed_files='git diff --name-only $(git merge-base HEAD master)..$(__git_current_branch)'
 alias gbc=__git_current_branch_changed_files
 
-alias __git_modified_files="git diff --name-status |grep -v '^D' | tr -s '\t' |cut -f2"
+alias __git_modified_files="git diff --name-only"
+alias __git_new_files="git ls-files -o --exclude-standard"
 alias gmod=__git_modified_files
+alias gnew=__git_new_files
 
 alias __git_undo_whitespace_changes="git diff -b --numstat | egrep $'^0\t0\t' | cut -d$'\t' -f3- | xargs git checkout HEAD --"
 
@@ -37,7 +39,7 @@ alias cor=__git_checkout_remote_branch_menu
 alias com='git checkout master'
 
 alias __git_branch_list="git branch --list --color=never"
-alias __git_local_branch_list="__git_branch_list |tr -d ' *' | grep -v '(no branch)'"
+alias __git_local_branch_list="git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)'"
 alias __git_working_branch_list="__git_branch_list --no-merged |tr -d ' *' | grep -v '(no branch)'"
 alias __git_remote_branch_list="__git_branch_list --remotes | grep -v 'origin/master' | cut -d/ -f 2-"
 alias __git_only_remote_branch_list="cat  <(__git_local_branch_list) <(__git_local_branch_list) <(__git_remote_branch_list) |sort |uniq -u"
