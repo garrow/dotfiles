@@ -6,3 +6,4 @@ export BUNDLE_JOBS=8
 
 alias spec="time rspec"
 alias be="bundle exec"
+alias rserve='ruby -run -e httpd -- --port 8000 .'
