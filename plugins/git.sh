@@ -22,7 +22,7 @@ alias __git_current_branch_revisions='git rev-list $(__git_current_branch) ^mast
 alias __git_current_branch_changed_files='git diff --name-only $(git merge-base HEAD master)..$(__git_current_branch)'
 alias gbc=__git_current_branch_changed_files
 
-alias __git_modified_files="git diff --name-only"
+alias __git_modified_files="git diff HEAD --name-only"
 alias __git_new_files="git ls-files -o --exclude-standard"
 alias gmod=__git_modified_files
 alias gnew=__git_new_files
