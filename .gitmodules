@@ -19,3 +19,6 @@
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
 	url = git@github.com:kien/ctrlp.vim.git
+[submodule "vim/bundle/elm-vim"]
+	path = vim/bundle/elm-vim
+	url = git@github.com:lambdatoast/elm.vim.git
