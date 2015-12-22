@@ -79,7 +79,7 @@ set listchars=tab:▸\ ,eol:¬
 " Ensure the gitgutter uses the same colours as LineColumn
 highlight clear SignColumn
 ",trail:\·,extends:$,nbsp:=
-" set listchars=tab:»\·,trail:\·,extends:$,nbsp:=
+set listchars=tab:»\·,trail:\·,extends:$,nbsp:=
 
 
 " Split window behaviour
