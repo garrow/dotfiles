@@ -47,3 +47,5 @@ alias p=python
 ## Shortcuts
 alias dotfiles="cd ~/.dotfiles/"
 alias deps="cd ~/.babushka/deps"
+
+alias newpr='hub pull-request'
