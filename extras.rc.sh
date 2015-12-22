@@ -4,12 +4,15 @@ alias extras="vim ~/.extras.rc.sh"
 alias mos="cd ~/work/code/mos/mos/"
 alias mof="cd ~/work/mid-office/mos-requirements"
 alias mdb='psql mos_development'
+alias piit='cd ~/Dropbox/learn/uni2013/2015/ICT80008'
+
 alias emulate_production='cp config/settings/production.yml config/settings/development.yml'
 
 alias tdl='tail -f log/development.log'
 
 alias deps="cd ~/.babushka/deps"
 alias todo="vim ~/todo.txt"
+alias mmod='gmod | spelunk'
 
 
 alias unload_pg='launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist'
