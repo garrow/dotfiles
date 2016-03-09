@@ -27,5 +27,7 @@ alias reset_fame_database="pg_restore -d fame_website_development --clean ~/fame
 
 alias findd='find . -type d |grep -i'
 
+alias cop='git checkout stable'
+alias cut_release='git merge master --ff-only && git tag `date +v%Y-%m-%d-T%H%M%S%z`'
 
 alias clip64='pbpaste | base64 | pbcopy'
