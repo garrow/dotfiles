@@ -5,6 +5,7 @@ alias mos="cd ~/work/code/mos/mos/"
 alias mof="cd ~/work/mid-office/mos-requirements"
 alias mdb='psql mos_development'
 alias piit='cd ~/Dropbox/learn/uni2013/2015/ICT80008'
+alias maven=mvn
 
 alias emulate_production='cp config/settings/production.yml config/settings/development.yml'
 
