@@ -65,5 +65,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 complete -o bashdefault -o default -o nospace -F _git g
+# Only show directories when autocompleting for `cd`
+complete -d cd
 
 
