@@ -3,7 +3,7 @@ alias extras="vim ~/.extras.rc.sh"
 
 alias mos="cd ~/work/code/mos/mos/"
 alias mof="cd ~/work/mid-office/mos-requirements"
-alias mdb='psql mos_development'
+alias mdb='psql mapping_lighting_development'
 alias piit='cd ~/Dropbox/learn/uni2013/2015/ICT80008'
 alias maven=mvn
 
@@ -31,3 +31,7 @@ alias cop='git checkout stable'
 alias cut_release='git merge master --ff-only && git tag `date +v%Y-%m-%d-T%H%M%S%z`'
 
 alias clip64='pbpaste | base64 | pbcopy'
+
+
+alias hstart="/usr/local/Cellar/hadoop/2.7.2/sbin/start-dfs.sh;/usr/local/Cellar/hadoop/2.7.2/sbin/start-yarn.sh"
+alias hstop="/usr/local/Cellar/hadoop/2.7.2/sbin/stop-yarn.sh;/usr/local/Cellar/hadoop/2.7.2/sbin/stop-dfs.sh"
