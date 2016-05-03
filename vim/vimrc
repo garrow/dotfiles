@@ -107,6 +107,11 @@ command! MarkdownColumnCount s/\v\|//eng
 " Markdown Surround
 let g:surround_{char2nr('o')} = "**\r**"
 
+command! MDHeading1 execute 'normal Yp' | s/[^|]/=/g
+command! MDHeading2 execute 'normal Yp' | s/[^|]/-/g
+nnoremap <leader>1 :MDHeading1 <cr>
+nnoremap <leader>2 :MDHeading2 <cr>
+
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 
