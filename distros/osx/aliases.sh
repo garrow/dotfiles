@@ -1,8 +1,7 @@
-alias ls_custom="ls -lh"
-alias l="ls_custom -ot"  # Suppress group ID
-alias ll="l -a"         # Almost everything.
-alias la="ls_custom -a" # Everything
+alias ls_custom="ls -ho" # h=Human readable, o=long format, sans group ID
+alias l="ls_custom"      # Sort by filename (default)
+alias lr="ls_custom -t"  # Sort by recent
+alias ll="ls_custom -a"  # Everything
 
 alias md5sum='md5 -r'
-
 alias o="open"
