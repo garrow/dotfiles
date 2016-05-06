@@ -2,6 +2,7 @@ alias extras="vim ~/.extras.rc.sh"
 
 
 alias mos="cd ~/work/code/mos/mos/"
+alias ml="cd /Users/garrow/uni/pp-ICT80003/code/mapping_lighting"
 alias mof="cd ~/work/mid-office/mos-requirements"
 alias mdb='psql mapping_lighting_development'
 alias piit='cd ~/Dropbox/learn/uni2013/2015/ICT80008'
