@@ -4,7 +4,8 @@ filetype plugin on
 set bg=light
 syntax on
 set encoding=utf-8
-set guifont=Inconsolata-g:h16
+set guifont=Menlo:h12
+" set guifont=Inconsolata-g:h16
 
 " Enable mouse in visual mode
 " set mouse=n
@@ -100,17 +101,19 @@ nnoremap ; :
 " Marked Preview
 :nnoremap <leader>m :silent !open -a 'Marked 2.app' '%:p'<cr>
 " Markdown Table Thing
-command! MDT MarkdownHeader | Tabularize/|
+command! MDT execute 'normal {j' | execute 'Tabularize/|' | execute 'MarkdownHeader'
 command! MarkdownHeader execute 'normal Yp' | MarkdownTableRow
 command! MarkdownTableRow s/[^|]/-/g
 command! MarkdownColumnCount s/\v\|//eng
-" Markdown Surround
+" Markdown Surround BOLD
 let g:surround_{char2nr('o')} = "**\r**"
 
 command! MDHeading1 execute 'normal Yp' | s/[^|]/=/g
 command! MDHeading2 execute 'normal Yp' | s/[^|]/-/g
 nnoremap <leader>1 :MDHeading1 <cr>
 nnoremap <leader>2 :MDHeading2 <cr>
+nnoremap <leader>t :MDT <cr>
+
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
@@ -158,3 +161,8 @@ au VimLeave * maca hide:
 
 set backupdir=~/tmp/vim
 nnoremap <leader>b :CtrlPBuffer<CR>
+
+
+" Disable Vim-Pandoc folding by default
+let g:pandoc#folding#fdc=0
+
