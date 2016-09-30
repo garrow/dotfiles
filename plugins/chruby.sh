@@ -13,7 +13,7 @@ function rb_ver {
 	elif [ "$RUBY_VERSION" == "1.9.3" ]; then
 		echo "ᴿ"
 	else
-		echo "ℛ  $RUBY_VERSION"
+		echo "ᴿ$RUBY_VERSION"
 	fi
     #echo "◇"
 }
