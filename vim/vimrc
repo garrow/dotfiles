@@ -156,7 +156,6 @@ endfunction
 call TextEnableCodeSnip('xml', '@begin=```xml', '@end=```', 'SpecialComment')
 
 
-au VimLeave * maca hide:
 
 
 set backupdir=~/tmp/vim
