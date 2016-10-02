@@ -28,10 +28,10 @@ set expandtab
 set backspace=indent,eol,start
 
 " Unlearning bad habits
-"inoremap <left> <nop>
-"inoremap <right> <nop>
-"inoremap <up> <nop>
-"inoremap <left> <nop>
+"noremap <left> <nop>
+"noremap <right> <nop>
+"noremap <up> <nop>
+"noremap <left> <nop>
 
 " Abbreviations
 iabbrev @@ garrow.bedrossian@gmail.com
@@ -155,8 +155,8 @@ endfunction
 
 call TextEnableCodeSnip('xml', '@begin=```xml', '@end=```', 'SpecialComment')
 
-
-
+" Hide Vim windows on close
+" au VimLeave * maca hide:
 
 set backupdir=~/tmp/vim
 nnoremap <leader>b :CtrlPBuffer<CR>
