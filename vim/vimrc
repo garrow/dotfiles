@@ -193,3 +193,6 @@ nnoremap <Leader>c :%y+<CR>
 
 " Disable Concealing Markup for Pandoc
 let g:pandoc#syntax#conceal#use=1
+
+" Bind Gundo
+nnoremap <F5> :GundoToggle<CR>
