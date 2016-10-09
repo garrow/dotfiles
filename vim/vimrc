@@ -4,8 +4,8 @@ filetype plugin on
 set bg=light
 syntax on
 set encoding=utf-8
-set guifont=Menlo:h12
-" set guifont=Inconsolata-g:h16
+"#set guifont=Menlo:h12
+set guifont=Inconsolata-g:h16
 
 " Enable mouse in visual mode
 " set mouse=n
