@@ -189,3 +189,7 @@ nnoremap <Leader>P "+P
 
 " copy whole file (keeping cursor position)
 nnoremap <Leader>c :%y+<CR>
+
+
+" Disable Concealing Markup for Pandoc
+let g:pandoc#syntax#conceal#use=1
