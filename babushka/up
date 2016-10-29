@@ -1,16 +1,22 @@
 #!/bin/sh
 
-# The ref is rendered per-request by the babushka webservice.
-ref=master
+# This is the babushka bootstrap script. To install babushka, you can
+# execute it in a terminal:
+#
+# sh -c "`curl https://babushka.me/up`"
+
+# The ref is rendered per-request by the babushka webservice. It defaults
+# to 'stable', but you can supply any git ref (branch, tag, commit):
+#
+# sh -c "`curl https://babushka.me/up/refspec`"
+#
+ref=stable
 
 # Can't use $HOME, because sometimes it's not set.
 # Can't use ~, because it depends on $HOME to expand.
 # Can't use ~$(whoami) directly, because it doesn't expand inline.
 # So: write a string in which ~$(whoami) is expanded, and run it in a subshell.
 home=$(sh -c "echo ~$(whoami)")
-
-# The name of the shell we're running on.
-shell=$(ps -c -o command -p $$ | tail -n1 | sed -e 's/^\-//')
 
 from="https://github.com/benhoskings/babushka/archive/$ref.tar.gz"
 to="$home/.babushka/bootstrap"
@@ -36,7 +42,7 @@ update_manager() {
     apt-get) apt-get update -qqy ;;
     aptitude) aptitude -y update ;;
     brew) brew update ;;
-    pacman) true ;;
+    pacman) pacman --sync --refresh ;;
     yum) true ;;
     pkg_add) true ;;
     *)
@@ -48,7 +54,7 @@ install_pkgs() {
     apt-get) apt-get install -qqy $1 ;;
     aptitude) aptitude -y install $1 ;;
     brew) brew install $1 ;;
-    pacman) pacman -Syq --noconfirm --noprogressbar $1 ;;
+    pacman) pacman --sync --noconfirm --noprogressbar $1 ;;
     yum) yum -y install $1 ;;
     pkg_add) pkg_add -r $1 ;;
     *)
@@ -56,11 +62,13 @@ install_pkgs() {
 }
 
 logo() {
-  echo ""
-  echo ".       .           .   .      "
-  echo "|-. ,-. |-. . . ,-. |-. | , ,-."
-  echo "| | ,-| | | | | \`-. | | |<  ,-|"
-  echo "^-' \`-^ ^-' \`-^ \`-' ' ' ' \` \`-^"
+cat <<"LOGO"
+
+.       .           .   .
+|-. ,-. |-. . . ,-. |-. | , ,-.
+| | ,-| | | | | `-. | | |<  ,-|
+^-' `-^ ^-' `-^ `-' ' ' ' ` `-^
+LOGO
 }
 
 check() {
@@ -92,8 +100,13 @@ welcome() {
   echo "Hi there :)"
   echo ""
   echo "Let's get down to business - first, pulling a tarball of babushka from"
-  echo "http://babushka.me. Then, using it to run \"babushka babushka\", which"
-  echo "installs or updates babushka and its dependencies as required."
+  echo "https://github.com. Then, using it to run \"babushka babushka\", which"
+  echo "installs or updates babushka and git as required."
+  if [ -n "$BABUSHKA_REPO" ]; then
+    echo ""
+    echo "I'll install from this repo:"
+    echo "  $BABUSHKA_REPO"
+  fi
   echo ""
 
   if has 'curl'; then
@@ -114,9 +127,9 @@ welcome() {
   else
     echo ""
     confirmed=""
-    if [ "$shell" = "zsh" ]; then
+    if [ -n "$ZSH_VERSION" ]; then
       vared -p "Sound good? [y/N] " confirmed
-    elif [ "$shell" = "bash" ]; then
+    elif [ -n "$BASH_VERSION" ]; then
       read -e -p "Sound good? [y/N] " confirmed
     else
       read -p "Sound good? [y/N] " confirmed
@@ -164,14 +177,17 @@ create_install_dir() {
 
 stream_tarball() {
   echo ""
-  echo "Right, downloading a tarball of babushka $ref."
+  echo "Right, downloading a tarball of babushka @ $ref."
   curl -L -\# "$from" | tar -zxf - --strip-components 1
 }
 
 handle_install() {
   echo "Invoking babushka $(cd "$to" && bin/babushka.rb --version) to handle the install."
   echo ""
-  ruby "$to/bin/babushka.rb" meet babushka version="$ref" $([ "$interactive" = 'true' ] || echo '--defaults')
+  ruby "$to/bin/babushka.rb" meet babushka \
+    version="$ref" \
+    $([ -n "$BABUSHKA_REPO" ] && echo "from=$BABUSHKA_REPO") \
+    $([ "$interactive" = 'true' ] || echo '--defaults')
   [ $? -eq 0 ]
 }
 
@@ -179,31 +195,26 @@ on_install_success() {
   clean_up_install_dir
 
   echo ""
-  echo "All installed! If you're new, the basic idea is 'babushka <dep name>'."
-  echo ""
-  echo "Some examples you might like to try:"
+  echo "All installed! If you're new, the basic idea is 'babushka <dep name>', e.g.:"
   echo "  babushka babushka   # install/update babushka itself (i.e. what just happened)"
   echo "  babushka homebrew   # set up homebrew on your Mac"
-  echo "  babushka rubygems   # up-to-date rubygems"
   echo ""
-  echo "You can instantly run others' public deps by adding a namespace. They're pulled"
-  echo "from http://github.com/<name>/babushka-deps. Some examples:"
+  echo "You can run your own deps like this from ~/.babushka/deps & ./babushka-deps."
+  echo ""
+  echo "A dep is a unit of work that also knows how to check if its job has already been"
+  echo "done (if it's already "met"). Here are the details: babushka.me/how-deps-work"
+  echo ""
+  echo "You can run public deps (if you trust the author) by prefixing with their"
+  echo "github username; they're cloned from http://github.com/<name>/babushka-deps."
   echo "  babushka benhoskings:Sinatra.tmbundle   # also installs TextMate if required"
   echo "  babushka conversation:coffeescript.src  # pulls in node.js if required, etc."
-  echo ""
-  echo "When you run deps from public sources like those, babushka anonymously posts"
-  echo "success or failure to http://babushka.me, building a database anyone can search:"
-  echo "  babushka search mongo   # shows mongo-related deps others have run"
-  echo ""
-  echo "The database is public and anonymous, and deps in local or private sources are"
-  echo "never submitted. Info: http://benhoskin.gs/2010/09/24/babushka-community-stats/"
   echo ""
   echo "Resources:"
   echo "  babushka --help"
   echo "  @babushka_app"
-  echo "  http://babushka.me"
-  echo "  http://babushka.me/rdoc"
-  echo "  http://babushka.me/mailing_list"
+  echo "  babushka.me"
+  echo "  babushka.me/rdoc"
+  echo "  babushka.me/mailing_list"
   true
 }
 
