@@ -19,7 +19,7 @@
 	cmd = $HOME/bin/gitmerge $BASE $LOCAL $REMOTE $MERGED
 
 [core]
-	editor = /usr/local/bin/vim
+	editor = vim
 	excludesfile = /Users/garrow/.gitignore_global
 
 [user]

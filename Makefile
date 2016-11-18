@@ -6,6 +6,7 @@ install:
 	ln -vshf ${PWD}/vim/ ${HOME}/.vim
 	ln -vshf ${PWD}/git/gitconfig ${HOME}/.gitconfig
 	ln -vshf ${PWD}/git/gitignore_global ${HOME}/.gitignore_global
+	mkdir -p ${HOME}/tmp/vim
 
 dependencies:
 	sudo apt-get install git vim xclip ack-grep realpath curl colordiff
