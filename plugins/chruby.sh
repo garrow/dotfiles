@@ -3,8 +3,8 @@ source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
 
 configured_ruby_version=$(cat ~/.ruby-version | cut -d- -f2)
-fallback_ruby_version="2.3.1"
-export DEFAULT_RUBY_VERSION=${configured_ruby_version:-fallback_ruby_version}
+fallback_ruby_version="2.3.2"
+export DEFAULT_RUBY_VERSION=${configured_ruby_version:-$fallback_ruby_version}
 
 function rb_ver {
 	if [ "$RUBY_VERSION" == "" ]; then
