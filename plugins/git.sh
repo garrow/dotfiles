@@ -80,7 +80,7 @@ __git_commit_splat()
 {
   TEMP_FILE=$(mktemp '/tmp/git.simplecommit.msg.XXXX')
   echo "# $@" >> $TEMP_FILE
-  git commit --edit --file $TEMP_FILE
+  git commit --edit --verbose --file $TEMP_FILE
   rm -f $TEMP_FILE
 }
 
