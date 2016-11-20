@@ -25,3 +25,5 @@ if [ -f $bashrc_location ]; then
 fi
 
 #PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+export PATH="$HOME/.yarn/bin:$PATH"
