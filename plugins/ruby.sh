@@ -7,3 +7,4 @@ export BUNDLE_JOBS=8
 alias spec="time rspec"
 alias be="bundle exec"
 alias rserve='ruby -run -e httpd -- --port 8000 .'
+alias rake='echo "Wrapped in bundle exec. Use $(which rake) to unwrap"; bundle exec rake'
