@@ -5,3 +5,5 @@ alias ll="ls_custom -a"  # Everything
 
 alias md5sum='md5 -r'
 alias o="open"
+
+alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'

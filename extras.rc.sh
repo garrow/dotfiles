@@ -20,8 +20,7 @@ alias deps="cd ~/.babushka/deps"
 alias todo="vim ~/todo.txt"
 alias mmod='gmod | spelunk'
 
-
-alias unload_pg='launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist'
+# Obsoleted by brew services
 alias stop_pg='pg_ctl stop -D /usr/local/var/postgres'
 
 
