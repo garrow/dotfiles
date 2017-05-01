@@ -39,3 +39,22 @@ alias clip64='pbpaste | base64 | pbcopy'
 
 alias hstart="/usr/local/Cellar/hadoop/2.7.2/sbin/start-dfs.sh;/usr/local/Cellar/hadoop/2.7.2/sbin/start-yarn.sh"
 alias hstop="/usr/local/Cellar/hadoop/2.7.2/sbin/stop-yarn.sh;/usr/local/Cellar/hadoop/2.7.2/sbin/stop-dfs.sh"
+
+
+function rt() {
+bundle exec rake test TEST="${1}"
+}
+
+
+
+function quick_pr(){
+  local pr_file=$(mktemp -t NEW_PR)
+  local current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+  git log --pretty="%s" -n 1 > ${pr_file}
+  echo "Creating new PR for branch [ ${current_branch} ]"
+  cat $pr_file
+
+  hub pull-request -F ${pr_file}
+
+}
