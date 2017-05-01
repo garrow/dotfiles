@@ -1,14 +1,6 @@
 alias extras="vim ~/.extras.rc.sh"
 
 
-alias mos="cd ~/work/code/mid_office_system"
-alias cbt="cd ~/work/code/cbt"
-alias sp="cd ~/work/code/smartpoint"
-alias tmp="cd ~/work/code/travel_management_platform"
-alias mof="cd ~/work/mid-office/mos-requirements"
-alias mdb='psql mapping_lighting_development'
-alias piit='cd ~/Dropbox/learn/uni2013/2015/ICT80008'
-alias insight='cd /Users/garrow/work/code/insight'
 alias maven=mvn
 alias bgop="cd /Users/garrow/Dropbox/work/code/bgop"
 
