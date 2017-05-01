@@ -11,10 +11,14 @@ alias piit='cd ~/Dropbox/learn/uni2013/2015/ICT80008'
 alias insight='cd /Users/garrow/work/code/insight'
 alias maven=mvn
 alias bgop="cd /Users/garrow/Dropbox/work/code/bgop"
+alias ksr="cd /Users/garrow/work/code/kickstarter"
+alias wiki="cd /Users/garrow/work/code/wiki "
+
 
 alias emulate_production='cp config/settings/production.yml config/settings/development.yml'
 
 alias tdl='tail -f log/development.log'
+alias ttl='tail -f log/test.log'
 
 alias deps="cd ~/.babushka/deps"
 alias todo="vim ~/todo.txt"
