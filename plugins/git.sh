@@ -1,7 +1,7 @@
 alias g=git
 alias gs='git status'
 alias gse='git status --ignored'
-alias gsl='git log --pretty="format:%Cblue%h%d%Creset %ar %Cgreen%an%Creset %s" --graph'
+alias gsl='git log --pretty="format:%Cblue%h%d%Creset %ar %Cgreen%an%Creset %s"'
 alias gr='gsl -n 10' # Git Recent
 alias gra='gr --all'
 
@@ -44,7 +44,7 @@ alias __git_working_branch_list="__git_branch_list --no-merged |tr -d ' *' | gre
 alias __git_remote_branch_list="__git_branch_list --remotes | grep -v 'origin/master' | cut -d/ -f 2-"
 alias __git_only_remote_branch_list="cat  <(__git_local_branch_list) <(__git_local_branch_list) <(__git_remote_branch_list) |sort |uniq -u"
 
-alias __git_delete_all_remote_merged_branches="git branch --list --color=never --remotes --merged origin/master | grep -v master | grep -v stable  |cut -d/ -f2- | xargs -n1  git push origin --delete"
+#alias __git_delete_all_remote_merged_branches="git branch --list --color=never --remotes --merged origin/master | grep -v master | grep -v stable  |cut -d/ -f2- | xargs -n1  git push origin --delete"
 
 __git_checkout_branch_menu()
 {
