@@ -17,7 +17,10 @@ function __rails_server_with_port
   local port=${RACK_PORT:-3000}
 
   echo "Booting Rails Server using PORT=${port}"
+  __set_iterm_tab_color 20 224 110
+
   set -x
   bundle exec rails server --port=$port
   set +x
+  __reset_iterm_tab
 }
