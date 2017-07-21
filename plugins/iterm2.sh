@@ -18,3 +18,30 @@ function __reset_iterm_tab
 {
   echo -e "\033]6;1;bg;*;default\a"
 }
+
+
+function  __set_iterm_jobname
+{
+  iterm2_set_user_var jobName "$@"
+}
+function __reset_iterm_jobname
+{
+  iterm2_set_user_var jobName ""
+}
+
+
+### Minimal iTerm2 customisation - Taken from iterm2_integration.in
+
+function iterm2_begin_osc {
+  printf "\033]"
+}
+
+function iterm2_end_osc {
+  printf "\007"
+}
+
+function iterm2_set_user_var() {
+  iterm2_begin_osc
+  printf "1337;SetUserVar=%s=%s" "$1" $(printf "%s" "$2" | base64 | tr -d '\n')
+  iterm2_end_osc
+}
