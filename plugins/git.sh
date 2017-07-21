@@ -6,7 +6,7 @@ alias gr='gsl -n 10' # Git Recent
 alias gra='gr --all'
 
 # Diff
-alias gd='git diff'
+alias gd='git diff --color'
 alias gds='git diff --color --staged '
 
 # Operate Patchwise (Interactively)
