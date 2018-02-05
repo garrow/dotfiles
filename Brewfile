@@ -1,5 +1,6 @@
 cask_args appdir: '/Applications'
 tap 'caskroom/cask'
+tap 'colinstein/imgcat'
 
 brew 'ack'
 brew 'autoenv'
@@ -12,6 +13,7 @@ brew 'hub'
 brew 'macvim'
 brew 'tree'
 brew 'wget'
+brew 'imgcat'
 
 cask '1password'
 cask 'docker'

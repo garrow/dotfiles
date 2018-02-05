@@ -3,6 +3,7 @@ install:
 	ln -vshf ${PWD}/extras.rc.sh ${HOME}/.extras.rc.sh
 	ln -vshf ${PWD}/input.rc ${HOME}/.inputrc
 	ln -vshf ${PWD}/vim/vimrc ${HOME}/.vimrc
+	ln -vshf ${PWD}/vim/gvimrc ${HOME}/.gvimrc
 	ln -vshf ${PWD}/vim/ ${HOME}/.vim
 	ln -vshf ${PWD}/git/gitconfig ${HOME}/.gitconfig
 	ln -vshf ${PWD}/git/gitignore_global ${HOME}/.gitignore_global

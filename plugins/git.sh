@@ -5,6 +5,8 @@ alias gsl='git log --pretty="format:%Cblue%h%d%Creset %ar %Cgreen%an%Creset %s"'
 alias gr='gsl -n 10' # Git Recent
 alias gra='gr --all'
 
+alias git-save="git commit --no-verify -m WIPWIPWIP"
+
 # Diff
 alias gd='git diff --color'
 alias gds='git diff --color --staged '
@@ -20,7 +22,9 @@ alias gsp='git stash save --patch'
 alias __git_current_branch='git rev-parse --abbrev-ref HEAD'
 alias __git_current_branch_revisions='git rev-list $(__git_current_branch) ^master'
 alias __git_current_branch_changed_files='git diff --name-only $(git merge-base HEAD master)..$(__git_current_branch)'
+alias __git_current_branch_changes='git diff $(git merge-base HEAD master)..$(__git_current_branch)'
 alias gbc=__git_current_branch_changed_files
+alias gbd=__git_current_branch_changes
 
 alias __git_modified_files="git diff HEAD --name-only"
 alias __git_new_files="git ls-files -o --exclude-standard"
@@ -128,3 +132,4 @@ __git_commit_fame()
 }
 
 alias gcf=__git_commit_fame
+alias gup='git up'
