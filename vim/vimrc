@@ -5,7 +5,11 @@ set bg=light
 syntax on
 set encoding=utf-8
 "#set guifont=Menlo:h12
-set guifont=Inconsolata-g:h16
+"set guifont=Inconsolata-g:h16
+set guifont=Hasklig:h14
+" >> Ligatures Test -> <- -> $$ >>= /= == ++ -< >- -<< 
+" <* <*> <+> <$> *** <| |> <|> !! || === ==> <<< >>> <> +++ <- -> => >> << >>= =<< .. ... :: -< >- -<< >>- ++ /= ==
+" set macligatures
 
 " Enable mouse in visual mode
 " set mouse=n
@@ -80,7 +84,7 @@ set listchars=tab:▸\ ,eol:¬
 " Ensure the gitgutter uses the same colours as LineColumn
 highlight clear SignColumn
 ",trail:\·,extends:$,nbsp:=
-set listchars=tab:»\·,trail:\·,extends:$,nbsp:=
+"set listchars=tab:»\·,trail:\·,extends:$,nbsp:=
 
 
 " Split window behaviour
@@ -196,3 +200,13 @@ let g:pandoc#syntax#conceal#use=1
 
 " Bind Gundo
 nnoremap <F5> :GundoToggle<CR>
+
+
+" Tabularize
+"
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
