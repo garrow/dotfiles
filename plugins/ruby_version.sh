@@ -7,17 +7,17 @@ fallback_ruby_version="2.2.5"
 export DEFAULT_RUBY_VERSION=${configured_ruby_version:-$fallback_ruby_version}
 
 function rb_ver {
-	if [ "$RUBY_VERSION" == "" ]; then
-		echo "ᴚ"
-	elif [ "$RUBY_ENGINE" == "jruby" ]; then
-		echo "♨ "
-	elif [ "$RUBY_VERSION" == $DEFAULT_RUBY_VERSION ]; then
-		echo ""
-	elif [ "$RUBY_VERSION" == "1.9.3" ]; then
-		echo "ᴿ"
-	else
-		echo "ᴿ$RUBY_VERSION"
-	fi
-    #echo "◇"
+  local $ruby_version=$(rbenv local)
+  if [ "$ruby_version" == "" ]; then
+    echo "ᴚ"
+  elif [ "$ruby_engine" == "jruby" ]; then
+    echo "♨ "
+  elif [ "$ruby_version" == $DEFAULT_RUBY_VERSION ]; then
+    echo ""
+  elif [ "$ruby_version" == "1.9.3" ]; then
+    echo "ᴿ"
+  else
+    echo "ᴿ$ruby_versioN"
+  fi
 }
 
