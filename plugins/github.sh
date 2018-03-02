@@ -1,3 +1,4 @@
+#!/bin/bash
 function newpr() {
   pr_template_file=".github/PULL_REQUEST_TEMPLATE.md"
 
