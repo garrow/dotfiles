@@ -1,3 +1,7 @@
+#!/bin/bash
+# shellcheck disable=SC1090
+# SC1090 - Ignore non-constant source/imports
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -22,7 +26,7 @@ export color_prompt="yes"
 
 export TERM=xterm-256color
 
-#check the window size after each command and, if necessary,
+# check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
@@ -30,19 +34,19 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 export LESS="-FRX"
-distro_env_path=${base_env_path}/distros/${distro}
-source ${distro_env_path}/bashrc.sh
+distro_env_path="${base_env_path:?}/distros/${distro}"
+source "${distro_env_path}/bashrc.sh"
 
 # Load all main sourceables
-sourceables=( aliases functions prompt git_bash_completion )
+sourceables=( aliases functions prompt )
 
 for element in "${sourceables[@]}"
 do
     core_element_path="${base_env_path}/core/${element}.sh"
-    source $core_element_path
+    source "$core_element_path"
     custom_element_path="${distro_env_path}/${element}.sh"
     if [[ -f $custom_element_path ]]; then
-        source $custom_element_path
+        source "$custom_element_path"
     else
 	debug_dotfiles "Error loading: ${custom_element_path}"
     fi
@@ -50,22 +54,27 @@ done
 
 for plugin_file in `find ${base_env_path}/plugins -name '*.sh' -type f`
 do
-    debug_dotfiles $plugin_file
-    source $plugin_file
+    debug_dotfiles "$plugin_file"
+    source "$plugin_file"
 done
 
-source ~/.extras.rc.sh
+for vendor_file in `find ${base_env_path}/vendor -name '*.sh' -type f`
+do
+    debug_dotfiles "$vendor_file"
+    source "$vendor_file"
+done
 
-PATH="~/bin:/usr/local/bin:$PATH"
+source "${HOME}/.extras.rc.sh"
+
+PATH="${HOME}/bin:/usr/local/bin:$PATH"
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+    # shellcheck disable=SC1091
+    source /etc/bash_completion
 fi
 
 complete -o bashdefault -o default -o nospace -F _git g
 # Only show directories when autocompleting for `cd`
 complete -d cd
-
-

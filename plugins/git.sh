@@ -35,6 +35,7 @@ alias __git_new_files="git ls-files -o --exclude-standard"
 alias gmod=__git_modified_files
 alias gnew=__git_new_files
 
+# shellcheck disable=SC1117
 alias __git_undo_whitespace_changes="git diff -b --numstat | egrep $'^0\t0\t' | cut -d$'\t' -f3- | xargs git checkout HEAD --"
 
 # Branch management
@@ -110,11 +111,11 @@ __git_commit_fame()
     "test  : adding missing tests"
   )
 
-  scope_types=$(find app lib -type d -maxdepth 1 -mindepth 1 | xargs -n 1 | cut -f 2 -d/ |sort -u)
+  scope_types=$(find app lib -type d -maxdepth 1 -mindepth 1 -print0 | xargs -0 -n 1 | cut -f 2 -d/ |sort -u)
 
   PS3="Select type: "
   select opt in "${fix_types[@]}"; do
-    type=$( echo $opt | cut -f 1 -d' ');
+    type=$( echo "$opt" | cut -f 1 -d' ');
     break;
   done
   echo
@@ -132,7 +133,7 @@ __git_commit_fame()
   echo "$type"
   echo "$scope"
 
-  __git_commit_splat "[${type}][${scope}]" $@
+  __git_commit_splat "[${type}][${scope}]" "$@"
 }
 
 alias gcf=__git_commit_fame

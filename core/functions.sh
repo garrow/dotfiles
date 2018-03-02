@@ -1,3 +1,4 @@
+#!/bin/bash
 # color diffs for SVN
 function svndiff ()
 {

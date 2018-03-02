@@ -1,3 +1,7 @@
+#!/bin/bash
+# shellcheck disable=SC2034
+# SC2034 - Ignore unused variables
+
 # Reset
 Color_Off='\[\033[00m\]'       # Text Reset
 

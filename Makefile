@@ -20,8 +20,5 @@ desktop:
 development:
 	sudo apt-get install postgresql postgresql-contrib pgadmin3 subversion libreadline6-dev
 
-
-
-
-
-
+test:
+	find . -name '*.sh' | grep -v vim | grep -v vendor | grep -v extras | xargs shellcheck -x
