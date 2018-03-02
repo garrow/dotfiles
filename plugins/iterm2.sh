@@ -1,3 +1,7 @@
+#!/bin/bash
+# shellcheck disable=SC1117
+# Ignore literal backslash escapes
+
 # Given 3 colors, red, green, blue in 0-255 range
 # __set_iterm_tab_color 255 0 0    # Sets to full red
 # __set_iterm_tab_color 40 40 40   # Dark Grey
@@ -42,6 +46,6 @@ function iterm2_end_osc {
 
 function iterm2_set_user_var() {
   iterm2_begin_osc
-  printf "1337;SetUserVar=%s=%s" "$1" $(printf "%s" "$2" | base64 | tr -d '\n')
+  printf "1337;SetUserVar=%s=%s" "$1" "$(printf "%s" "$2" | base64 | tr -d '\n')"
   iterm2_end_osc
 }

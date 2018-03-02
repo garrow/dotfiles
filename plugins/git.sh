@@ -1,10 +1,14 @@
+#!/bin/bash
 alias g=git
+# Status
 alias gs='git status'
 alias gse='git status --ignored'
+# Logs
 alias gsl='git log --pretty="format:%Cblue%h%d%Creset %ar %Cgreen%an%Creset %s"'
 alias gr='gsl -n 10' # Git Recent
 alias gra='gr --all'
 
+# Commit
 alias git-save="git commit --no-verify -m WIPWIPWIP"
 
 # Diff
@@ -55,9 +59,9 @@ __git_checkout_branch_menu()
 
 PS3="Select a branch or Ctrl+C to cancel: "
 if [ $# -eq 1 ]; then
-  select opt in $(__git_local_branch_list |grep --color=never "$@"); do git checkout ${opt}; break; done
+  select opt in $(__git_local_branch_list |grep --color=never "$@"); do git checkout "${opt}"; break; done
 else
-  select opt in $(__git_local_branch_list); do git checkout ${opt}; break; done
+  select opt in $(__git_local_branch_list); do git checkout "${opt}"; break; done
 fi
 }
 
@@ -65,9 +69,9 @@ __git_checkout_working_branches_menu()
 {
 PS3="Select a branch or Ctrl+C to cancel: "
 if [ $# -eq 1 ]; then
-  select opt in $(__git_working_branch_list |grep --color=never "$@"); do git checkout ${opt}; break; done
+  select opt in $(__git_working_branch_list |grep --color=never "$@"); do git checkout "${opt}"; break; done
 else
-  select opt in $(__git_working_branch_list); do git checkout ${opt}; break; done
+  select opt in $(__git_working_branch_list); do git checkout "${opt}"; break; done
 fi
 }
 
@@ -76,18 +80,18 @@ __git_checkout_remote_branch_menu()
 
 PS3="Select a branch or Ctrl+C to cancel: "
 if [ $# -eq 1 ]; then
-  select opt in $(__git_only_remote_branch_list |grep --color=never "$@"); do git checkout ${opt}; break; done
+  select opt in $(__git_only_remote_branch_list |grep --color=never "$@"); do git checkout "${opt}"; break; done
 else
-  select opt in $(__git_only_remote_branch_list); do git checkout ${opt}; break; done
+  select opt in $(__git_only_remote_branch_list); do git checkout "${opt}"; break; done
 fi
 }
 
 __git_commit_splat()
 {
   TEMP_FILE=$(mktemp '/tmp/git.simplecommit.msg.XXXX')
-  echo "# $@" >> $TEMP_FILE
-  git commit --edit --verbose --file $TEMP_FILE
-  rm -f $TEMP_FILE
+  echo "# $*" >> "$TEMP_FILE"
+  git commit --edit --verbose --file "$TEMP_FILE"
+  rm -f "$TEMP_FILE"
 }
 
 alias gcm=__git_commit_splat
@@ -116,7 +120,7 @@ __git_commit_fame()
   echo
 
   PS3="Select scope: "
-  select opt in ${scope_types[@]}; do
+  select opt in "${scope_types[@]}"; do
     if [ ! "$opt" = "" ]; then
       scope=$opt
     else
@@ -125,8 +129,8 @@ __git_commit_fame()
     break;
   done
 
-  echo $type
-  echo $scope
+  echo "$type"
+  echo "$scope"
 
   __git_commit_splat "[${type}][${scope}]" $@
 }
