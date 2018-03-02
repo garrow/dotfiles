@@ -22,7 +22,6 @@ export FIGNORE=.svn
 export CLICOLOR=1
 export LSCOLORS=dxfxcxdxbxegedabagacad
 export LS_COLORS=$LSCOLORS
-export color_prompt="yes"
 
 export TERM=xterm-256color
 
@@ -34,7 +33,7 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 export LESS="-FRX"
-distro_env_path="${base_env_path:?}/distros/${distro}"
+distro_env_path="${base_env_path:?}/distros/${distro:?}"
 source "${distro_env_path}/bashrc.sh"
 
 # Load all main sourceables
@@ -52,13 +51,13 @@ do
     fi
 done
 
-for plugin_file in `find ${base_env_path}/plugins -name '*.sh' -type f`
+for plugin_file in $(find "${base_env_path}/plugins" -name '*.sh' -type f)
 do
     debug_dotfiles "$plugin_file"
     source "$plugin_file"
 done
 
-for vendor_file in `find ${base_env_path}/vendor -name '*.sh' -type f`
+for vendor_file in $(find "${base_env_path}/vendor" -name '*.sh' -type f)
 do
     debug_dotfiles "$vendor_file"
     source "$vendor_file"
