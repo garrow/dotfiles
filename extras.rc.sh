@@ -1,3 +1,4 @@
+#!/bin/bash
 alias extras="mvim ~/.extras.rc.sh"
 
 alias bgop="cd /Users/garrow/Dropbox/work/code/bgop"
