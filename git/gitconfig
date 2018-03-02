@@ -7,9 +7,9 @@
 	co = checkout
 	graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	tags = log -n1 --pretty=format:%h%d
-        changed = diff --name-status
-        up = pull --rebase=preserve --ff-only --prune
-        upmodules = "submodule foreach 'git fetch origin --tags; git checkout master; git pull' && git pull && git submodule update --init --recursive"
+	changed = diff --name-status
+	up = pull --rebase=preserve --ff-only --prune
+	upmodules = "submodule foreach 'git fetch origin --tags; git checkout master; git pull' && git pull && git submodule update --init --recursive"
 	refresh = "!git remote update -p; git merge --ff-only @{u}"
 
 [merge]
