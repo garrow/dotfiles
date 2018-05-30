@@ -4,6 +4,7 @@
 alias spotify="osascript ${base_env_path:?}/plugins/SpotifyControl.scpt"
 alias m=__spotify_menu
 alias mp="spotify play/pause"
+alias mn='spotify next'
 
 __spotify_menu()
 {
