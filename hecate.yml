@@ -1,0 +1,19 @@
+# An admin contact for errors, billing issues, and the like
+admin_email: garrow.bedrossian@gmail.com
+
+# Config for shipping news (notify on merged PRs)
+shipping:
+  # Array of release notifications to send
+  -
+    # Whitelist repos for some teams
+    emails:
+      - garrow.bedrossian@gmail.com
+    matching:
+      # Manually whitelist repos
+      whitelist: ["dotfiles"]
+  -
+    # Send all releases to other teams
+    emails:
+      - garrow.bedrossian@gmail.com
+    matching:
+      all: true
