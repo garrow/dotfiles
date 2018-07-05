@@ -15,7 +15,7 @@ alias rc='rails console'
 alias rs=__rails_server_with_port
 function __rails_server_with_port
 {
-  local port=${RACK_PORT:-3000}
+  local port=${RACK_PORT:-6000}
 
   echo "Booting Rails Server using RACK_PORT=${port}"
   __set_iterm_tab_color 132 27 45

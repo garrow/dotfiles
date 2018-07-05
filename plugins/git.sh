@@ -83,6 +83,18 @@ function __git_only_remote_branch_list() {
   cat  <(__git_local_branch_list) <(__git_local_branch_list) <(__git_remote_branch_list) |sort |uniq -u
 }
 
+function __git_prune_automagic()
+{
+  echo "Auto-pruning Git merged branches"
+  echo "Ctrl+C to cancel"
+  sleep 2
+  echo "Merged Branches"
+  __git_prune_merged_branches
+  echo "Orphan Branches"
+  git-branch-delete-orphans
+}
+
+
 # LEGACY
 
 __git_commit_fame()

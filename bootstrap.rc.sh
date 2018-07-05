@@ -2,11 +2,13 @@
 # shellcheck disable=SC1091,SC1090
 source /etc/profile
 
-export DEBUG_DOTFILES=false
+export DEBUG_DOTFILES=${DEBUG_DOTFILES:=false}
 function debug_dotfiles(){
-        if [ $DEBUG_DOTFILES == 'true' ]; then
-                echo "$1"
-        fi
+  if [ $DEBUG_DOTFILES == 'true' ]; then
+    echo "$(gdate +%s.%N): $1"
+  else
+    printf '.'
+  fi
 }
 export base_env_path=${HOME}/.dotfiles
 
