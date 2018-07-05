@@ -47,7 +47,7 @@ do
     if [[ -f $custom_element_path ]]; then
         source "$custom_element_path"
     else
-	debug_dotfiles "Error loading: ${custom_element_path}"
+	      debug_dotfiles "No file to load: ${custom_element_path}"
     fi
 done
 
