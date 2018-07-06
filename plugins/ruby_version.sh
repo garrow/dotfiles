@@ -6,7 +6,7 @@ export DEFAULT_RUBY_VERSION=${configured_ruby_version:-$fallback_ruby_version}
 
 function rb_ver {
   local ruby_version
-  ruby_version=$(rbenv local)
+  ruby_version=$(rbenv local 2>/dev/null)
 
   if [ "$ruby_version" == "" ]; then
     echo "ᴚ"♦️
