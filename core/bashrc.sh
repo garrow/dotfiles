@@ -63,6 +63,11 @@ do
     source "$vendor_file"
 done
 
+dropbox_extras="${HOME}/Dropbox/.bash_extras.rc.sh"
+if [ -f ${dropbox_extras} ]; then
+  source "${dropbox_extras}"
+fi
+
 source "${HOME}/.extras.rc.sh"
 
 PATH="${HOME}/bin:/usr/local/bin:$PATH"
