@@ -12,7 +12,10 @@ set encoding=utf-8
 set guifont=Hasklig:h14
 " >> Ligatures Test -> <- -> $$ >>= /= == ++ -< >- -<< 
 " <* <*> <+> <$> *** <| |> <|> !! || === ==> <<< >>> <> +++ <- -> => >> << >>= =<< .. ... :: -< >- -<< >>- ++ /= ==
-" set macligatures
+
+if has("gui_macvim")
+  set macligatures
+endif
 
 " Enable mouse in visual mode
 " set mouse=n
@@ -213,3 +216,6 @@ if exists(":Tabularize")
   nmap <Leader>a: :Tabularize /:\zs<CR>
   vmap <Leader>a: :Tabularize /:\zs<CR>
 endif
+
+
+set dictionary+=/usr/share/dict/words
