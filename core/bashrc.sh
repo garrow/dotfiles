@@ -57,11 +57,11 @@ do
     source "$plugin_file"
 done
 
-for vendor_file in $(find "${base_env_path}/vendor" -name '*.sh' -type f)
-do
-    debug_dotfiles "$vendor_file"
-    source "$vendor_file"
-done
+# for vendor_file in $(find "${base_env_path}/vendor" -name '*.sh' -type f)
+# do
+#    debug_dotfiles "$vendor_file"
+#    source "$vendor_file"
+# done
 
 dropbox_extras="${HOME}/Dropbox/.bash_extras.rc.sh"
 if [ -f ${dropbox_extras} ]; then
