@@ -23,6 +23,12 @@ function __reset_iterm_tab
   echo -e "\033]6;1;bg;*;default\a"
 }
 
+function __reset_iterm_defaults
+{
+  __reset_iterm_jobname
+  __reset_iterm_tab
+}
+
 
 function  __set_iterm_jobname
 {

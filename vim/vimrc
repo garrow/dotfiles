@@ -219,3 +219,4 @@ endif
 
 
 set dictionary+=/usr/share/dict/words
+let macvim_skip_colorscheme=1

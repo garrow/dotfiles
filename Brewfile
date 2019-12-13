@@ -2,6 +2,7 @@ cask_args appdir: '/Applications'
 tap 'caskroom/cask'
 
 #brew 'autoenv'
+brew 'aspell'
 brew 'direnv'
 brew 'bash'
 brew 'bash-completion'

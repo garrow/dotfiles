@@ -3,8 +3,8 @@
 ### Butterfingers
 alias cd..='cd ..'
 alias xx='cd ..'
-alias q=l
-alias rm='rm -i'
+alias qq=l
+alias del='rm -i'
 
 ### Grep
 alias pgrep='grep --color=never'  # Pipe grep
@@ -16,7 +16,8 @@ alias k='ack'
 alias af='ack -g'
 
 alias isod='date +%Y.%m.%d.%R'
-alias timetag='date +%Y%m%d%H%M'
+alias isof='date +%Y%m%d%H%M'
+alias timetag='date +%Y%m%d%H%M%S'
 alias tod='date +%H:%M:%S'
 
 alias newest='ls -t | head -n1'
