@@ -99,6 +99,123 @@ function __kickstarter_dev_database
   __set_iterm_tab_color 242 145 17
   __set_iterm_jobname 'mysql'
   mysql ksr_dev
-  __reset_iterm_tab
-  __reset_iterm_jobname
+  __reset_iterm_defaults
 }
+
+alias ktb=__kickstarter_test_database
+
+function __kickstarter_test_database
+{
+  __set_iterm_tab_color 242 145 17
+  __set_iterm_jobname 'mysql'
+  mysql ksr_test
+  __reset_iterm_defaults
+}
+
+
+alias dockerstats='docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.MemPerc}}\t{{.NetIO}}\t{{.BlockIO}}"'
+alias git_commit_wip='git commit --no-verify -m "WIPWIPWIPWIPWIPWIPWIPWIPWIPWIPWIP"'
+alias gcwip=git_commit_wip
+
+
+function __tail_development_log
+{
+  __set_iterm_tab_color 242 145 17
+  __set_iterm_jobname 'devlog'
+  tail -f log/development.log
+  __reset_iterm_defaults
+}
+
+alias tdl=__tail_development_log
+
+function __rails_console
+{
+  __set_iterm_tab_color 204 52 45
+  __set_iterm_jobname 'rails console'
+  bundle exec rails console
+  __reset_iterm_defaults
+}
+alias rc=__rails_console
+
+
+function __rake_test_file()
+{
+  __set_iterm_tab_color 128 244 66
+  __set_iterm_jobname 'rake test'
+  bundle exec rake test TEST=$1 TESTOPTS="--name=\"/$2/\""
+  __reset_iterm_defaults
+}
+
+alias rt=__rake_test_file
+
+
+function __rake_test_changes()
+{
+  __set_iterm_tab_color 128 244 66
+  __set_iterm_jobname 'test changes'
+  ./bin/test-changes
+  __reset_iterm_defaults
+}
+
+alias rtc=__rake_test_changes
+
+function __ksr_ssh_prod()
+{
+  __set_iterm_tab_color 244 244 66
+  __set_iterm_jobname 'ksr PROD❗️'
+  ksr
+  bin/cap production console:sidekiq
+  __reset_iterm_defaults
+}
+
+function __rosie_ssh_prod()
+{
+  __set_iterm_tab_color 244 244 66
+  __set_iterm_jobname 'ROSIE PROD❗️'
+  rosie
+  cap production ssh:bg
+  __reset_iterm_defaults
+}
+
+
+function __ksr_ssh_staging()
+{
+  __set_iterm_tab_color 200 128 244
+  __set_iterm_jobname 'ksr staging❗️'
+  ksr
+  bin/cap staging ssh:sidekiq
+  __reset_iterm_defaults
+}
+
+
+function type_gen()
+{
+  __set_iterm_tab_color 0 138 110
+  __set_iterm_jobname 'yarn graphql-type-gen'
+  ksr
+  yarn graphql-type-gen
+  __reset_iterm_defaults
+}
+
+alias prod=__ksr_ssh_prod
+alias staging=__ksr_ssh_staging
+
+export PATH="$PATH:/Users/garrow/node_modules/.bin"
+
+
+function __find_process()
+{
+  local search_term=$1
+  ps aux | grep "${search_term}" | grep -v "grep"
+}
+alias psaux=__find_process
+export AWS_REGION=us-east-1
+
+function __AppleInterfaceStyle {
+  local ais=$(defaults read -g AppleInterfaceStyle 2>/dev/null| tr '[:upper:]' '[:lower:]')
+
+  ais=${ais:-light}
+  echo $ais
+}
+
+export AppleInterfaceStyle=$(__AppleInterfaceStyle)
