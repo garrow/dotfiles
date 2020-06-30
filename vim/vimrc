@@ -1,10 +1,22 @@
 " To disable a plugin, add it's bundle name to the following list
 let g:pathogen_disabled = ['vim-pandoc']
 
+
+if $AppleInterfaceStyle == 'dark'
+  set bg=dark
+endif
+
+if $AppleInterfaceStyle == 'light'
+  set bg=light
+endif
+
+
+
+
 execute pathogen#infect()
 set nocompatible
 filetype plugin on
-set bg=light
+" set bg=dark
 syntax on
 set encoding=utf-8
 "#set guifont=Menlo:h12
@@ -14,7 +26,7 @@ set guifont=Hasklig:h14
 " <* <*> <+> <$> *** <| |> <|> !! || === ==> <<< >>> <> +++ <- -> => >> << >>= =<< .. ... :: -< >- -<< >>- ++ /= ==
 
 if has("gui_macvim")
-  set macligatures
+" set macligatures
 endif
 
 " Enable mouse in visual mode
@@ -112,6 +124,7 @@ nnoremap ; :
 :nnoremap <leader>m :silent !open -a 'Marked 2.app' '%:p'<cr>
 " Markdown Table Thing
 command! MDT execute 'normal {j' | execute 'Tabularize/|' | execute 'MarkdownHeader'
+command! MDRightTable execute 'normal {j' | execute 'Tabularize/|/r1' | execute 'MarkdownHeader'
 command! MarkdownHeader execute 'normal Yp' | MarkdownTableRow
 command! MarkdownTableRow s/[^|]/-/g
 command! MarkdownColumnCount s/\v\|//eng
@@ -122,7 +135,8 @@ command! MDHeading1 execute 'normal Yp' | s/[^|]/=/g
 command! MDHeading2 execute 'normal Yp' | s/[^|]/-/g
 nnoremap <leader>1 :MDHeading1 <cr>
 nnoremap <leader>2 :MDHeading2 <cr>
-nnoremap <leader>t :MDT <cr>
+nnoremap <leader>tt :MDT <cr>
+nnoremap <leader>ty :MDRightTable <cr>
 
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -220,3 +234,6 @@ endif
 
 set dictionary+=/usr/share/dict/words
 let macvim_skip_colorscheme=1
+
+set rtp+=/usr/local/opt/fzf
+

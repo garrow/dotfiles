@@ -7,7 +7,7 @@
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
-HISTCONTROL=erasedups:ignorespace
+HISTCONTROL=erasedups
 
 # append to the history file, don't overwrite it
 shopt -s histappend

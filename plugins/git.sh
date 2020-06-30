@@ -36,7 +36,7 @@ alias gvp=gcp
 alias gsp='git stash save --patch'
 
 # Remote
-alias gup='git up'
+alias gup='git up; echo "PRUNE"; __git_prune_automagic'
 alias gpushnew='git push --set-upstream origin $(git-current-branch)'
 alias __git_prune_merged_branches='git checkout master && git branch --merged |grep -v "\*" | grep -v master |grep -v stable | xargs -n1 git branch -d'
 
@@ -74,6 +74,8 @@ __git_checkout_branch_menu()
   else
     select opt in $($branch_fetch_list_command); do git checkout "${opt}"; break; done
   fi
+
+  echo ""
 }
 
 function __git_local_branch_list()   { git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)' ; }
