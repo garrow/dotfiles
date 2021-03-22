@@ -1,15 +1,29 @@
-install:
-	ln -vshf ${PWD}/bootstrap.rc.sh ${HOME}/.bash_profile
-	ln -vshf ${PWD}/extras.rc.sh ${HOME}/.extras.rc.sh
-	ln -vshf ${PWD}/input.rc ${HOME}/.inputrc
+install_zsh: 	install_zsh_files	install_core
+
+install_bash: 	install_bash_files	install_core
+
+install_core: install_git install_vim install_brewfile
+
+install_vim:
 	ln -vshf ${PWD}/vim/vimrc ${HOME}/.vimrc
 	ln -vshf ${PWD}/vim/gvimrc ${HOME}/.gvimrc
 	ln -vshf ${PWD}/vim/ ${HOME}/.vim
-	ln -vshf ${PWD}/git/gitconfig ${HOME}/.gitconfig
-	ln -vshf ${PWD}/git/gitignore_global ${HOME}/.gitignore_global
-	ln -vshf ${PWD}/Brewfile ${HOME}/Brewfile
 	mkdir -p ${HOME}/tmp/vim
 
+install_git: 
+	ln -vshf ${PWD}/git/gitconfig ${HOME}/.gitconfig
+	ln -vshf ${PWD}/git/gitignore_global ${HOME}/.gitignore_global
+
+install_brewfile:
+	ln -vshf ${PWD}/Brewfile ${HOME}/Brewfile
+
+install_zsh_files:
+	ln -vshf ${PWD}/zsh/.zshenv ${HOME}/.zshenv
+
+install_bash_files:
+	ln -vshf ${PWD}/bash/bootstrap.rc.sh ${HOME}/.bash_profile
+	ln -vshf ${PWD}/extras.rc.sh ${HOME}/.extras.rc.sh
+	ln -vshf ${PWD}/input.rc ${HOME}/.inputrc
 
 dependencies:
 	sudo apt-get install git vim xclip ack-grep realpath curl colordiff

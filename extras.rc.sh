@@ -1,10 +1,9 @@
-#!/bin/bash
-
 alias rbcop=rubocop
 alias xgrm="xargs git rm"
 alias extras="mvim ~/.extras.rc.sh"
 alias cg=pcre2grep
 alias ksr="cd /Users/garrow/work/code/kickstarter"
+alias rosie="cd /Users/garrow/work/code/rosie"
 alias rfc="cd /Users/garrow/work/code/rfcs"
 alias smoke="cd /Users/garrow/work/code/drip-smoke"
 alias wiki="cd /Users/garrow/work/code/wiki"
@@ -12,7 +11,8 @@ alias api="cd /Users/garrow/work/code/api-starter"
 alias r2d="cd /Users/garrow/Dropbox/Projects/code/ruby2d"
 alias projects="cd /Users/garrow/projects"
 alias homepage="cd /Users/garrow/work/code/browser-home"
-alias aoc="cd /Users/garrow/projects/advent2019"
+alias aoc="cd /Users/garrow/Dropbox/learn/advent/2020"
+alias robot="cd /Users/garrow/work/code/toybot-pairing-challenge-2019"
 alias j=jira
 
 alias prview="gh pr view"
@@ -146,6 +146,11 @@ function __rake_test_file()
   __reset_iterm_defaults
 }
 
+function rake_test_file()
+{
+  bundle exec rake test TEST=$1 TESTOPTS="--name=\"/$2/\""
+}
+
 alias rt=__rake_test_file
 
 
@@ -219,3 +224,4 @@ function __AppleInterfaceStyle {
 }
 
 export AppleInterfaceStyle=$(__AppleInterfaceStyle)
+

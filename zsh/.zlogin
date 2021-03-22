@@ -1,0 +1,1 @@
+# Analogue to ksh login config
