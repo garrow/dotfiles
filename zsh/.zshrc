@@ -54,3 +54,4 @@ load_shell_dependencies_from_directory "zsh:core"       "${ZDOTDIR}/core"
 
 load_dependency_file ${base_dotfiles_path}/extras.rc.sh "core:extras"
 load_dependency_file "${HOME}/.ksr.rc" "kickstarter:plugin"
+load_dependency_file "${HOME}/.ksr.extras.sh" "kickstarter:extras"

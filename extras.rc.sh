@@ -57,61 +57,6 @@ function quick_pr(){
 alias cleardevlog="cat /dev/null > log/development.log"
 alias twl="tail -f log/webpack.log"
 
-function __yarn_start
-{
-  # Yarn's website color
-  __set_iterm_tab_color 33 136 182
-  __set_iterm_jobname "webpack📦"
-  ksr
-  cd browser
-  yarn start --maxWorkers 4
-  ksr
-  __reset_iterm_defaults
-}
-
-alias ys=__yarn_start
-alias yt=__yarn_test
-
-function __yarn_test
-{
-  #__set_iterm_tab_color 33 136 182
-  __set_iterm_tab_color 128 244 66
-  __set_iterm_jobname "yarn✅❌"
-  ksr
-  cd browser && yarn test  --maxWorkers 2 --no-coverage
-  ksr
-  __reset_iterm_defaults
-}
-
-function __sidekiq
-{
-  __set_iterm_tab_color 177 0 62
-  __set_iterm_jobname "sidekiq"
-  ksr
-  bin/sidekiq -L log/sidekiq.log
-  __reset_iterm_defaults
-}
-
-alias kdb=__kickstarter_dev_database
-
-function __kickstarter_dev_database
-{
-  __set_iterm_tab_color 242 145 17
-  __set_iterm_jobname 'mysql'
-  mysql ksr_dev
-  __reset_iterm_defaults
-}
-
-alias ktb=__kickstarter_test_database
-
-function __kickstarter_test_database
-{
-  __set_iterm_tab_color 242 145 17
-  __set_iterm_jobname 'mysql'
-  mysql ksr_test
-  __reset_iterm_defaults
-}
-
 
 alias dockerstats='docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.MemPerc}}\t{{.NetIO}}\t{{.BlockIO}}"'
 alias git_commit_wip='git commit --no-verify -m "WIPWIPWIPWIPWIPWIPWIPWIPWIPWIPWIP"'
@@ -164,46 +109,7 @@ function __rake_test_changes()
 
 alias rtc=__rake_test_changes
 
-function __ksr_ssh_prod()
-{
-  __set_iterm_tab_color 244 244 66
-  __set_iterm_jobname 'ksr PROD❗️'
-  ksr
-  bin/cap production console:sidekiq
-  __reset_iterm_defaults
-}
 
-function __rosie_ssh_prod()
-{
-  __set_iterm_tab_color 244 244 66
-  __set_iterm_jobname 'ROSIE PROD❗️'
-  rosie
-  cap production ssh:bg
-  __reset_iterm_defaults
-}
-
-
-function __ksr_ssh_staging()
-{
-  __set_iterm_tab_color 200 128 244
-  __set_iterm_jobname 'ksr staging❗️'
-  ksr
-  bin/cap staging ssh:sidekiq
-  __reset_iterm_defaults
-}
-
-
-function type_gen()
-{
-  __set_iterm_tab_color 0 138 110
-  __set_iterm_jobname 'yarn graphql-type-gen'
-  ksr
-  yarn graphql-type-gen
-  __reset_iterm_defaults
-}
-
-alias prod=__ksr_ssh_prod
-alias staging=__ksr_ssh_staging
 
 export PATH="$PATH:/Users/garrow/node_modules/.bin"
 
