@@ -1,7 +1,8 @@
 alias g=git
 function git-current-branch() { git rev-parse --abbrev-ref HEAD; }
 
-
+## Support repos with different main/master branches.
+## used to support the `com` quick change to main branch.
 function __git_main_branch() {
   local current_main_branch=`git branch --remote --points-at origin/HEAD --format "%(symref:lstrip=3)"|head -n1`
 
@@ -50,12 +51,12 @@ alias gsp='git stash save --patch'
 # Remote
 alias gup='git up; echo "PRUNE"; __git_prune_automagic'
 alias gpushnew='git push --set-upstream origin $(git-current-branch)'
-alias __git_prune_merged_branches='git checkout master && git branch --merged |grep -v "\*" | grep -v master |grep -v stable | xargs -n1 git branch -d'
+alias __git_prune_merged_branches='git checkout $(__git_main_branch) && git branch --merged |grep -v "\*" | grep -v $(__git_main_branch) |grep -v stable | xargs -n1 git branch -d'
 
 # Changed files
-alias __git_current_branch_revisions='git rev-list $(git-current-branch) ^master'
-alias __git_current_branch_changed_files='git diff --name-only $(git merge-base HEAD master)..$(git-current-branch)'
-alias __git_current_branch_changes='git diff $(git merge-base HEAD master)..$(git-current-branch)'
+alias __git_current_branch_revisions='git rev-list $(git-current-branch) ^$(__git_main_branch)'
+alias __git_current_branch_changed_files='git diff --name-only $(git merge-base HEAD $(__git_main_branch))..$(git-current-branch)'
+alias __git_current_branch_changes='git diff $(git merge-base HEAD $(__git_main_branch))..$(git-current-branch)'
 alias gbc=__git_current_branch_changed_files
 alias gbd=__git_current_branch_changes
 
@@ -68,7 +69,7 @@ alias gnew=__git_new_files
 alias __git_undo_whitespace_changes="git diff -b --numstat | egrep $'^0\t0\t' | cut -d$'\t' -f3- | xargs git checkout HEAD --"
 
 # Branch management
-alias com="git checkout $(__git_main_branch)"
+alias com='git checkout $(__git_main_branch)'
 alias cob="__git_checkout_branch_menu '__git_local_branch_list'"
 alias cow="__git_checkout_branch_menu '__git_working_branch_list'"
 alias cor="__git_checkout_branch_menu '__git_only_remote_branch_list'"
@@ -92,7 +93,7 @@ __git_checkout_branch_menu()
 
 function __git_local_branch_list()   { git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)' ; }
 function __git_working_branch_list() { git branch --list --color=never --no-merged |tr -d ' *' | grep -v '(no branch)'; }
-function __git_remote_branch_list()  { git branch --list --color=never --remotes | grep -v 'origin/master' | cut -d/ -f 2-; }
+function __git_remote_branch_list()  { git branch --list --color=never --remotes | grep -v 'origin/$(__git_main_branch)' | cut -d/ -f 2-; }
 function __git_only_remote_branch_list() {
   cat  <(__git_local_branch_list) <(__git_local_branch_list) <(__git_remote_branch_list) |sort |uniq -u
 }
