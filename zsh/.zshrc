@@ -49,8 +49,8 @@ compinit
 
 load_shell_dependencies_from_directory "shared:core"    "${base_dotfiles_path}/shared/core"
 load_shell_dependencies_from_directory "shared:plugins" "${base_dotfiles_path}/shared/plugins"
-load_shell_dependencies_from_directory "zsh:plugins"    "${ZDOTDIR}/plugins"
 load_shell_dependencies_from_directory "zsh:core"       "${ZDOTDIR}/core"
+load_shell_dependencies_from_directory "zsh:plugins"    "${ZDOTDIR}/plugins"
 
 load_dependency_file ${base_dotfiles_path}/extras.rc.sh "core:extras"
 load_dependency_file "${HOME}/.ksr.rc" "kickstarter:plugin"
