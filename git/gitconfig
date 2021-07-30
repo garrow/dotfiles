@@ -41,3 +41,5 @@
 [pull]
 	ff = only
 	rebase = preserve
+[init]
+	defaultBranch = main

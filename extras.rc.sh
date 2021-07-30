@@ -16,7 +16,7 @@ alias robot="cd /Users/garrow/work/code/toybot-pairing-challenge-2019"
 alias j=jira
 
 alias prview="gh pr view"
-
+alias pick='git cherry-pick'
 alias restart="touch tmp/restart.txt"
 
 alias tdl='tail -f log/development.log'
