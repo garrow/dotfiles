@@ -17,7 +17,7 @@ brew 'tldr'
 brew 'tree'
 brew 'wget'
 
-# cask '1password' # Installed manually
+cask '1password' # Installed manually
 cask 'bettertouchtool'
 cask 'opera'
 cask 'contexts'
@@ -30,7 +30,7 @@ cask 'spotify'
 #cask 'gitup'
 cask 'iterm2'
 cask 'istat-menus'
-cask 'google-drive-file-stream'
+#cask 'google-drive-file-stream'
 cask 'karabiner-elements'
 #cask 'macpass'
 cask 'phoenix'
