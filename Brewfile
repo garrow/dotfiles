@@ -1,5 +1,6 @@
 cask_args appdir: '/Applications'
 tap 'homebrew/cask'
+tap 'go-task/tap'
 
 #brew 'autoenv'
 brew 'aspell'
@@ -15,6 +16,7 @@ brew 'shellcheck'
 brew 'starship'
 brew 'tldr'
 brew 'tree'
+brew 'go-task'
 brew 'wget'
 
 cask '1password' # Installed manually
