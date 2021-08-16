@@ -18,8 +18,8 @@ alias del='rm -i'
 
 ### Grep
 alias pgrep='grep --color=never'  # Pipe grep
-
 alias recall='history | grep'
+alias cg=pcre2grep
 
 # Ack
 alias k='ack'

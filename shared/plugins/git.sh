@@ -26,8 +26,10 @@ alias gr='gsl -n 10' # Git Recent
 alias gra='gr --all'
 
 # Committing
-alias git-save="git commit --no-verify -m WIPWIPWIP"
+alias git-save="git commit --no-verify -m WIPWIPWIP" ##### WIP Commits Instead of Stashes
+alias gcwip=git-save
 alias gcm=__git_commit_splat
+alias pick='git cherry-pick'
 
 __git_commit_splat()
 {
@@ -98,6 +100,12 @@ function __git_only_remote_branch_list() {
   cat  <(__git_local_branch_list) <(__git_local_branch_list) <(__git_remote_branch_list) |sort |uniq -u
 }
 
+alias gbl=git_branches_cool_list
+function git_branches_cool_list()
+{
+  git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+}
+
 function __git_prune_automagic()
 {
   echo "Auto-pruning Git merged branches"
@@ -154,8 +162,3 @@ __git_commit_fame()
 alias gcf=__git_commit_fame
 
 
-function git_branches_cool_list()
-{
-  git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
-}
-alias gbl=git_branches_cool_list

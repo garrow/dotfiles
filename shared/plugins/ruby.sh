@@ -7,3 +7,6 @@
 alias spec="time rspec"
 alias be="bundle exec"
 alias rserve='ruby -run -e httpd -- --port 8000 .'
+
+alias rbcop=rubocop
+alias rubocop_change='gbc | grep rb | only_files | xargs rubocop'
