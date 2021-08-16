@@ -36,3 +36,8 @@ development:
 
 test:
 	find . -name '*.sh' | grep -v vim | grep -v vendor | grep -v extras | xargs shellcheck -x
+
+
+
+bootstrap:
+	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
