@@ -1,7 +1,6 @@
 function editor {
   echo $EDITOR
 
-
   if [ "$EDITOR" == "" ]; then
     echo "No EDITOR Environment variable set, checking .env files"
     echo $PWD
