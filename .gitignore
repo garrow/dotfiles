@@ -2,3 +2,4 @@
 .idea
 .netrwhist
 .DS_Store
+Brewfile.lock.json
