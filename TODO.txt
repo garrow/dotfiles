@@ -1,0 +1,1 @@
+Figure out git user config options for spotify/ghe vs github.com
