@@ -1,3 +1,5 @@
+# ~~~~ REPLACED BY STARSHIP ~~~~
+
 # shellcheck disable=SC1117
 
 # shellcheck disable=SC2154,SC1090
