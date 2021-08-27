@@ -10,8 +10,8 @@ alias pgrep='grep --color=never'  # Pipe grep
 alias recall='history | grep'
 
 # Ack
-alias k='ack'
-alias af='ack -g'
+alias k='ag'
+alias af='ag -g'
 
 alias isod='date +%Y.%m.%d.%R'
 alias isof='date +%Y%m%d%H%M'

@@ -1,3 +1,5 @@
+# Open piped files in IDEA, adjunct to `spelunk`
+alias ideas='only_files | xargs idea'
 
 alias xgrm="xargs git rm"
 alias extras="mvim ~/.extras.rc.sh"

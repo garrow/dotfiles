@@ -2,6 +2,8 @@
 let g:pathogen_disabled = ['vim-pandoc']
 
 
+set bg=dark
+
 if $AppleInterfaceStyle == 'dark'
   set bg=dark
 endif
