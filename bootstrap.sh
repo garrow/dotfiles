@@ -1,6 +1,11 @@
 # Core functions to load other dependencies
 
-#export DEBUG_DOTFILES=true
+function enable_debug_dotfiles() {
+  echo "Enabling debug mode."
+  echo "Use \`rld\` to reload now"
+  export DEBUG_DOTFILES=true
+}
+
 export DEBUG_DOTFILES=${DEBUG_DOTFILES:=false}
 if [ "${DEBUG_DOTFILES}" = 'true' ]; then
   function debug_dotfiles(){
