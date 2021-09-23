@@ -117,6 +117,34 @@ function __git_prune_automagic()
   git-branch-delete-orphans
 }
 
+function git_sync_upstream() {
+  source "${base_dotfiles_path}/shared/core/task_functions.sh"
+
+  local upstream='upstream'
+  local origin='origin'
+  local main_branch=$(__git_main_branch)
+
+  print_info "Using Upstream"
+  git remote get-url "${upstream}"
+  r=$?
+  if [ $r -ne 0 ]; then
+    print_warning "Failed"
+    return $r
+  fi
+
+
+  start_task "Fetching ${upstream}/${main_branch}"
+  git fetch "${upstream}"
+  end_task
+
+  start_task "Merge ${upstream}/${main_branch} ${main_branch}"
+  git merge "${upstream}/${main_branch}" "${main_branch}"
+  end_task
+
+  start_task "Push ${origin}"
+  git push "${origin}" "${main_branch}"
+  end_task
+}
 
 # LEGACY
 
