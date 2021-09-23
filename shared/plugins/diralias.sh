@@ -3,12 +3,10 @@ favdir() {
   local directory=$2
 
   alias "${as}"="cd ${directory}"
-
-  alias "${as}"
 }
 
 favdirs() {
-  alias | grep "='cd" | sort
+  alias | grep "='cd" | grep -v '\.\.' | sort
 }
 
 dir() {
