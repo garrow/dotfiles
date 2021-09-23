@@ -2,9 +2,9 @@
 # shellcheck disable=SC2139
 alias spotify="osascript ${base_dotfiles_path}/shared/plugins/SpotifyControl.scpt"
 alias m=__spotify_menu
-alias mp="spotify play/pause"
-alias mn='spotify next'
-alias mprev='spotify previous'
+alias mp="spotify play/pause; spotify --"
+alias mn='spotify next; spotify --;'
+alias mprev='spotify previous; spotify --;'
 
 __spotify_menu()
 {
