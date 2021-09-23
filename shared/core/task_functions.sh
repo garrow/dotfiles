@@ -15,6 +15,10 @@ skip_task() {
   printf "☑️ \n"
 }
 
+abort_task() {
+  printf "❌️ (abort) \n"
+}
+
 print_warning() {
   echo "⚠️  $(tput bold)$(tput setaf 3)$@$(tput sgr0) ⚠️ "
 }
