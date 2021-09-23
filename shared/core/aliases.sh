@@ -42,6 +42,7 @@ alias cask='brew cask'
 
 ########## Python ##########
 alias p=python
+alias typora='open -a Typora.app'
 
 
 ## Shortcuts
