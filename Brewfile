@@ -19,6 +19,7 @@ brew 'tldr'
 brew 'tree'
 brew 'go-task'
 brew 'wget'
+brew 'terminal-notifier'
 
 #cask '1password'
 #cask 'bettertouchtool' # To split mousewheel scroll direction vs trackpad direction.

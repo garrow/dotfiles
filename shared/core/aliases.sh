@@ -1,3 +1,8 @@
+
+# ls config
+export CLICOLOR=1
+export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+
 alias ls_custom="ls -ho" # h=Human readable, o=long format, sans group ID
 alias l="ls_custom"      # Sort by filename (default)
 alias lr="ls_custom -t"  # Sort by recent
