@@ -26,7 +26,7 @@ alias pgrep='grep --color=never'  # Pipe grep
 alias recall='history | grep'
 alias cg=pcre2grep
 
-# Ack
+# Ack/Ag
 alias k='ag'
 alias af='ag -g'
 
@@ -47,8 +47,8 @@ alias cask='brew cask'
 
 ########## Python ##########
 alias p=python
-alias typora='open -a Typora.app'
 
 
 ## Shortcuts
+alias typora='open -a Typora.app'
 alias dotfiles="cd ~/.dotfiles/"
