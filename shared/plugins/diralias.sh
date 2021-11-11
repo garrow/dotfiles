@@ -12,6 +12,6 @@ favdirs() {
 dir() {
   echo "NOT QUITE WORKING YET"
   #  shopt -s expand_aliases  # Bash
-  setop aliases # zsh
-  select opt in $(favdirs |cut -d= -f1); do "${opt}"; break; done
+  setopt expand_aliases # zsh
+  select opt in $(favdirs |cut -d= -f1); do $opt; break; done
 }

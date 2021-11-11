@@ -27,8 +27,9 @@ print_info() {
   echo "$(tput bold)$(tput setaf 4)$@$(tput sgr0)"
 }
 
+
 print_success() {
-  printf "\n$(tput bold)$(tput setaf 2)%s$(tput sgr0)" "$@"
+  printf "$(tput bold)$(tput setaf 2)%s$(tput sgr0)\n" "$@"
 }
 
 _demonstrate_task_functions() {
