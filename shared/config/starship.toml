@@ -1,5 +1,23 @@
+# A minimal left prompt
+# format = """$character"""
+
+# move the rest of the prompt to the right
+# right_format = """$all"""
+
+command_timeout = 100
+
 [nodejs]
-disabled = true
+symbol = "❖"
+format = "[$symbol($version )]($style)"
+# disabled = false
 
 [aws]
 disabled = true
+
+[gcloud]
+disabled = true
+
+[git_branch]
+# symbol = "🌱 "
+# symbol = "⎇ "
+symbol = "⑂ "
