@@ -31,7 +31,6 @@ if [ "${DEBUG_DOTFILES}" = 'true' ]; then
   function track_dependency(){
     local dependency="${1/$HOME/${C_CYAN}~$C_RESET}"
     local descriptor="${2}"
-    local icon="${3}"
 
     printf "%3d $C_GREEN%-20s $C_WHITE%s$C_RESET\n" "${loaded_dependencies}" "${descriptor}" "${dependency}"
   }

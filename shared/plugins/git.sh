@@ -109,12 +109,17 @@ function git_branches_cool_list()
 function __git_prune_automagic()
 {
   echo "Auto-pruning Git merged branches"
-  echo "Ctrl+C to cancel"
-  sleep 2
-  echo "Merged Branches"
+  # echo "Ctrl+C to cancel"
+  countdown "Ctrl+C to cancel"
+  print_info "Merged Branches"
   __git_prune_merged_branches
-  echo "Orphan Branches"
-  git-branch-delete-orphans
+  print_info "Orphan Branches"
+  if [ command -v git-branch-delete-orphans &> /dev/null ]; then
+    git-branch-delete-orphans 
+  else
+    print_warning 'Missing command `git-branch-delete-orphans`'
+  fi
+  
 }
 
 function git_sync_upstream() {

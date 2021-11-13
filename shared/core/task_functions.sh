@@ -2,7 +2,24 @@
 #
 # source "${base_dotfiles_path}/shared/core/task_functions.sh"
 
+
+
 ### Helpers
+countdown(){
+  local message="${1}"
+  local down='🕒🕑🕐🕛'
+  local timeout=3
+  local t=0
+  while [[ $t < $timeout ]] do
+    declare -i r=timeout-t
+    printf "\e[160D\e[K${message} ${down:$t:1} $(tput setaf 8)00:%02d$(tput sgr 0)" "$r"
+    (( t++ ))
+    sleep 1
+  done
+  printf "\e[160D\e[K"
+  # printf "\e[160D\e[K${message} ${down:$t:1} 👍\n"
+}
+
 start_task() {
   printf "🚧 $(tput setaf 8)[%s]$(tput sgr0) %s ... " "$(date +%H:%M:%S)" "$@"
 }
