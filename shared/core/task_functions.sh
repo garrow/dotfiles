@@ -8,7 +8,7 @@
 countdown(){
   local message="${1}"
   local down='🕒🕑🕐🕛'
-  local timeout=3
+  local timeout=2
   local t=0
   while [[ $t < $timeout ]] do
     declare -i r=timeout-t

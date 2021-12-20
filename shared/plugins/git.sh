@@ -114,15 +114,18 @@ function __git_prune_automagic()
   print_info "Merged Branches"
   __git_prune_merged_branches
   print_info "Orphan Branches"
-  if [ command -v git-branch-delete-orphans &> /dev/null ]; then
-    git-branch-delete-orphans 
-  else
-    print_warning 'Missing command `git-branch-delete-orphans`'
-  fi
+  # if [ command -v git-branch-delete-orphans &> /dev/null ]; then
+  git-branch-delete-orphans 
+  # else
+    # print_warning 'Missing command `git-branch-delete-orphans`'
+  # fi
   
 }
 
-function git_sync_upstream() {
+# Requires 
+# a git `origin` you have write access to
+# a git remote `upstream` you want to keep in sync
+function git-sync-upstream() {
   source "${base_dotfiles_path}/shared/core/task_functions.sh"
 
   local upstream='upstream'
@@ -137,17 +140,16 @@ function git_sync_upstream() {
     return $r
   fi
 
-
   start_task "Fetching ${upstream}/${main_branch}"
   git fetch "${upstream}"
-  end_task
+  print "✅"
 
-  start_task "Merge ${upstream}/${main_branch} ${main_branch}"
-  git merge "${upstream}/${main_branch}" "${main_branch}"
+  start_task "Merge (fast-forward only) ${upstream}/${main_branch} ${main_branch}"
+  git merge --ff-only "${upstream}/${main_branch}" "${main_branch}"
   end_task
 
   start_task "Push ${origin}"
-  git push "${origin}" "${main_branch}"
+  git push  --verbose "${origin}" "${main_branch}" 
   end_task
 }
 

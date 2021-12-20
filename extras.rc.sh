@@ -4,9 +4,8 @@ alias ideas='only_files | xargs idea'
 alias xgrm="xargs git rm"
 alias extras="mvim ~/.extras.rc.sh"
 
-alias r2d="cd /Users/garrow/Dropbox/Projects/code/ruby2d"
-alias projects="cd /Users/garrow/projects"
-alias j=jira
+# favdir r2d ${HOME}/Dropbox/Projects/code/ruby2d
+favdir projects ${HOME}/projects
 
 
 alias todo="vim ~/todo.txt"
