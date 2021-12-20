@@ -52,3 +52,5 @@ alias p=python
 ## Shortcuts
 alias typora='open -a Typora.app'
 alias dotfiles="cd ~/.dotfiles/"
+
+alias chmox='chmod +x'
