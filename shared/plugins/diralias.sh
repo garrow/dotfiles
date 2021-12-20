@@ -2,7 +2,11 @@ favdir() {
   local as=$1
   local directory=$2
 
-  alias "${as}"="cd ${directory}"
+  if [ -d "${directory}" ]; then 
+    alias "${as}"="cd ${directory}"
+  else
+    echo "\n❌ Bad favdir: '$C_CYAN${as}$C_RESET' => ${C_YELLOW}${directory}${C_RESET} does not exist.\n"
+  fi
 }
 
 favdirs() {
@@ -10,8 +14,5 @@ favdirs() {
 }
 
 dir() {
-  echo "NOT QUITE WORKING YET"
-  #  shopt -s expand_aliases  # Bash
-  setopt expand_aliases # zsh
-  select opt in $(favdirs |cut -d= -f1); do $opt; break; done
+  select opt in $(favdirs |cut -d= -f1); do eval $opt; break; done
 }
