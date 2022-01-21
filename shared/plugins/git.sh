@@ -21,7 +21,7 @@ alias gs='git status'
 alias gse='git status --ignored'
 
 # Logs
-alias gsl='git log --pretty="format:%Cblue%h%d%Creset %ar %Cgreen%an%Creset %s"'
+alias gsl='git log --simplify-merges --pretty="format:%Cblue%h%d%Creset %ar %Cgreen%an%Creset %s"'
 alias gr='gsl -n 10' # Git Recent
 alias gra='gr --all'
 
