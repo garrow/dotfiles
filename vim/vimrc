@@ -29,6 +29,7 @@ set guifont=Hasklig:h14
 
 if has("gui_macvim")
 " set macligatures
+
 endif
 
 " Enable mouse in visual mode

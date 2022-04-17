@@ -54,3 +54,5 @@ alias typora='open -a Typora.app'
 alias dotfiles="cd ~/.dotfiles/"
 
 alias chmox='chmod +x'
+
+alias autoprune=__git_prune_automagic
