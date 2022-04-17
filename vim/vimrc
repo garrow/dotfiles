@@ -240,3 +240,7 @@ let macvim_skip_colorscheme=1
 
 set rtp+=/usr/local/opt/fzf
 
+
+nnoremap <Leader>d :set bg=dark<CR>
+nnoremap <Leader>D :set bg=light<CR>
+
