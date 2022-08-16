@@ -21,3 +21,6 @@ disabled = true
 # symbol = "🌱 "
 # symbol = "⎇ "
 symbol = "⑂ "
+
+[git_status]
+disabled = true
