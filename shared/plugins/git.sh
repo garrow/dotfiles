@@ -114,11 +114,11 @@ function __git_prune_automagic()
   print_info "Merged Branches"
   __git_prune_merged_branches
   print_info "Orphan Branches"
-  # if [ command -v git-branch-delete-orphans &> /dev/null ]; then
+  if [ command -v git-branch-delete-orphans &> /dev/null ]; then
   git-branch-delete-orphans 
-  # else
-    # print_warning 'Missing command `git-branch-delete-orphans`'
-  # fi
+  else
+    print_warning 'Missing command `git-branch-delete-orphans`'
+  fi
   
 }
 

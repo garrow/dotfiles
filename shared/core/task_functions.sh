@@ -10,7 +10,7 @@ countdown(){
   local down='🕒🕑🕐🕛'
   local timeout=2
   local t=0
-  while [[ $t < $timeout ]] do
+  while [[ $t < $timeout ]];  do
     declare -i r=timeout-t
     printf "\e[160D\e[K${message} ${down:$t:1} $(tput setaf 8)00:%02d$(tput sgr 0)" "$r"
     (( t++ ))
