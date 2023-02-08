@@ -7,7 +7,13 @@ _rake () {
   fi
 }
 
-compdef _rake rake
+if ! command -v compdef &> /dev/null
+then
+    echo "compdef could not be found"
+else
+  compdef _rake rake
+fi
+
 
 alias rt=__rake_test_file
 function __rake_test_file()
