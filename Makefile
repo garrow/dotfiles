@@ -14,8 +14,8 @@ install_git:
 	ln -vsnf ${PWD}/git/gitconfig ${HOME}/.gitconfig
 	ln -vsnf ${PWD}/git/gitignore_global ${HOME}/.gitignore_global
 
-install_brewfile:
-	ln -vsnf ${PWD}/Brewfile ${HOME}/Brewfile
+# install_brewfile:
+# 	ln -vsnf ${PWD}/Brewfile ${HOME}/Brewfile
 
 install_zsh_files:
 	ln -vsnf ${PWD}/zsh/.zshenv ${HOME}/.zshenv
