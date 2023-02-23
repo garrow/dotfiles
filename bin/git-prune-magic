@@ -1,0 +1,49 @@
+#!/bin/zsh
+
+git_main_branch() {
+  local current_main_branch=`git branch --remote --points-at origin/HEAD --format "%(symref:lstrip=3)"|head -n1`
+
+  if [ "$current_main_branch" ]; then
+    echo $current_main_branch
+  else
+    # Test me by running `git remote set-head origin --delete`
+    echo "!!! Failed to find remote origin/HEAD main branch, attempting to auto-detect from remote."
+    git remote set-head origin --auto
+  fi
+}
+
+print_info() {
+  echo "$(tput bold)$(tput setaf 4)$@$(tput sgr0)"
+}
+
+countdown(){
+  local message="${1}"
+  local down='🕒🕑🕐🕛'
+  local timeout=2
+  local t=0
+  while [[ $t < $timeout ]] do
+    declare -i r=timeout-t
+    printf "\e[160D\e[K${message} ${down:$t:1} $(tput setaf 8)00:%02d$(tput sgr 0)" "$r"
+    (( t++ ))
+    sleep 1
+  done
+  printf "\e[160D\e[K"
+}
+
+git_prune_magic() {
+  local main_branch=$(git_main_branch)
+  print_info "Auto-pruning Git merged branches"
+  # echo "Ctrl+C to cancel"
+  # countdown "Ctrl+C to cancel"
+  print_info "Merged Branches"
+  git checkout "${main_branch}" && git branch --merged | grep -v "\*" | grep -v "${main_branch}" |grep -v stable | xargs -n1 git branch -d
+  print_info "Orphan Branches"
+  # if [ command -v git-branch-delete-orphans &> /dev/null ]; then
+  git-branch-delete-orphans 
+  # else
+    # print_warning 'Missing command `git-branch-delete-orphans`'
+  # fi
+  
+}
+
+git_prune_magic
