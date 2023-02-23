@@ -18,6 +18,7 @@ function __git_main_branch() {
 
 # Status
 alias gs='git status'
+alias gsf='git status --untracked-files=no'
 alias gse='git status --ignored'
 
 # Logs
@@ -109,9 +110,6 @@ function git_branches_cool_list()
 function __git_prune_automagic()
 {
   echo "Auto-pruning Git merged branches"
-  # echo "Ctrl+C to cancel"
-  countdown "Ctrl+C to cancel"
-  print_info "Merged Branches"
   __git_prune_merged_branches
   print_info "Orphan Branches"
   if [ command -v git-branch-delete-orphans &> /dev/null ]; then
@@ -119,6 +117,7 @@ function __git_prune_automagic()
   else
     print_warning 'Missing command `git-branch-delete-orphans`'
   fi
+
   
 }
 

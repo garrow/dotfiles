@@ -28,7 +28,7 @@ function __reset_iterm_defaults
   __reset_iterm_tab
 }
 
-
+# Set Preferences->Profiles-> [profile name] -> General -> Badge: "\(user.jobName)" 
 function  __set_iterm_jobname
 {
   iterm2_set_user_var jobName "$@"

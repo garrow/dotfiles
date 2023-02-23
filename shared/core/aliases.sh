@@ -33,6 +33,7 @@ alias af='ag -g'
 alias isod='date +%Y.%m.%d.%R'
 alias isof='date +%Y%m%d%H%M'
 alias timetag='date +%Y%m%d%H%M%S'
+alias datestamp='date +%Y-%m-%d_%H%M'
 alias tod='date +%H:%M:%S'
 
 alias newest='ls -t | head -n1'
