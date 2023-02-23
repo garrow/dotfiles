@@ -1,28 +1,33 @@
 cask_args appdir: '/Applications'
 tap 'homebrew/cask'
 tap 'go-task/tap'
+brew 'mas'
 
+## Mac App Store
+mas 'maccy', id: 1527619437 # Clipboard Manager
+mas 'Things', id: 904280696 # todo list
+
+## Casks
 cask '1password'
-#cask 'bettertouchtool' # To split mousewheel scroll direction vs trackpad direction.
-#cask 'opera'
 cask 'contexts'
-#cask 'rubymine'
-cask 'spotify'
 cask 'iterm2'
-#cask 'istat-menus'
-#cask 'karabiner-elements'
 cask 'phoenix'
-cask 'typora'
 cask 'soulver'
+cask 'spotify'
+cask 'typora'
+cask 'visual-studio-code'
 
 # Sometimes!
-#cask 'deckset'
-#cask 'docker'
-#cask 'firefox'
-#cask 'gitup'
-# cask 'bettertouchtool'
+# cask 'bettertouchtool' # To split mousewheel scroll direction vs trackpad direction.
+# cask 'deckset'
+# cask 'docker'
+# cask 'firefox'
+# cask 'gitup'
 # cask 'google-drive-file-stream'
-#cask 'transmission'
-#cask 'twine'
-#cask 'visual-studio-code'
-#cask 'vlc'
+# cask 'istat-menus'
+# cask 'karabiner-elements'
+# cask 'opera'
+# cask 'rubymine'
+# cask 'transmission'
+# cask 'twine'
+# cask 'vlc'

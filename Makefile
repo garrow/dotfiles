@@ -2,7 +2,7 @@ install_zsh: 	install_zsh_files	install_core
 
 install_bash: 	install_bash_files	install_core
 
-install_core: install_git install_vim install_brewfile
+install_core: install_git install_vim
 
 install_vim:
 	ln -vsnf ${PWD}/vim/vimrc ${HOME}/.vimrc
@@ -16,6 +16,15 @@ install_git:
 
 # install_brewfile:
 # 	ln -vsnf ${PWD}/Brewfile ${HOME}/Brewfile
+
+install_command_line_tools:
+	cd ${PWD}/homebrew/command-line && brew bundle
+
+install_applications:
+	cd ${PWD}/homebrew/gui-apps && brew bundle
+ 
+install_apps: install_applications install_command_line_tools
+
 
 install_zsh_files:
 	ln -vsnf ${PWD}/zsh/.zshenv ${HOME}/.zshenv
