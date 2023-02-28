@@ -44,7 +44,7 @@ test:
 
 
 bootstrap:
-	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+	./first_install.sh
 
 check:
 	shellcheck ./*.sh
