@@ -12,3 +12,9 @@ sudo curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.
 echo
 echo "➡️  which brew"
 which brew
+
+
+echo
+echo "➡️  expected places"
+mkdir -p "${HOME}/projects"
+touch "${HOME}/.extras.rc.sh"
