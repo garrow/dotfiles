@@ -20,6 +20,9 @@ function main() {
   fi
 
   cd $repo_dir
+
+  print_info "Git Update"
+  git pull --ff-only
   print_info "Git Log"
   git log -n 3 --pretty="format:%Cblue%h%d%Creset %ar %Cgreen%an%Creset %s"
   print_info "Git Status"

@@ -38,7 +38,7 @@
 	mnemonicprefix = true
 [pull]
 	ff = only
-	rebase = preserve
+	# rebase = preserve # Prefer FF only
 [init]
 	defaultBranch = main
 [filter "lfs"]
