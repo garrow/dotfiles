@@ -96,7 +96,7 @@ __git_checkout_branch_menu()
 
 function __git_local_branch_list()   { git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)' ; }
 function __git_working_branch_list() { git branch --list --color=never --no-merged |tr -d ' *' | grep -v '(no branch)'; }
-function __git_remote_branch_list()  { git branch --list --color=never --remotes | grep -v 'origin/$(__git_main_branch)' | cut -d/ -f 2-; }
+function __git_remote_branch_list()  { git branch --list --color=never --remotes | grep -v "origin/$(__git_main_branch)" | cut -d/ -f 2-; }
 function __git_only_remote_branch_list() {
   cat  <(__git_local_branch_list) <(__git_local_branch_list) <(__git_remote_branch_list) |sort |uniq -u
 }
