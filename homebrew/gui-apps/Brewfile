@@ -6,6 +6,7 @@ brew 'mas'
 ## Mac App Store
 mas 'maccy', id: 1527619437 # Clipboard Manager
 mas 'Things', id: 904280696 # todo list
+mas 'DaisyDisk', id: 411643860 # Disk Space analyzer
 
 ## Casks
 cask '1password'
@@ -17,6 +18,7 @@ cask 'soulver'
 cask 'spotify'
 cask 'typora'
 cask 'visual-studio-code'
+
 
 # Sometimes!
 # cask 'bettertouchtool' # To split mousewheel scroll direction vs trackpad direction.
