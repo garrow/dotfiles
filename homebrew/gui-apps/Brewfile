@@ -1,6 +1,7 @@
 cask_args appdir: '/Applications'
 tap 'homebrew/cask'
 tap 'go-task/tap'
+tap 'homebrew/cask-fonts'
 brew 'mas'
 
 ## Mac App Store
@@ -20,6 +21,7 @@ cask 'spotify'
 cask 'typora'
 cask 'visual-studio-code'
 
+cask 'font-hasklug-nerd-font'
 
 # Sometimes!
 # cask 'bettertouchtool' # To split mousewheel scroll direction vs trackpad direction.

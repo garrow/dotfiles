@@ -4,6 +4,9 @@
 # move the rest of the prompt to the right
 # right_format = """$all"""
 
+
+
+
 command_timeout = 100
 
 [nodejs]
@@ -24,3 +27,12 @@ symbol = "⑂ "
 
 [git_status]
 ignore_submodules = true
+
+[custom.git_author]
+disabled = true
+command = 'git config --get user.email' # shows output of command
+style = 'dimmed white'
+symbol = '✍️ '
+detect_folders = ['.git'] # can specify filters but wildcards are not supported
+#when = ''' test "$HOME" = "$PWD" '''
+#format = '  [$output]($style)'
