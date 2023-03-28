@@ -11,8 +11,9 @@ mas 'DaisyDisk', id: 411643860 # Disk Space analyzer
 ## Casks
 cask '1password'
 cask 'contexts'
-cask 'iterm2'
 cask 'firefox'
+cask 'iterm2'
+cask 'kindle'
 cask 'phoenix'
 cask 'soulver'
 cask 'spotify'

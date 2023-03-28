@@ -21,6 +21,9 @@ brew 'tree'
 brew 'wget'
 brew 'terminal-notifier'
 brew 'coreutils'
+brew 'neovim'
+brew 'tmux'
+
 
 tap 'jakehilborn/jakehilborn'
 brew 'displayplacer'
