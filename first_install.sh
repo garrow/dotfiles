@@ -14,6 +14,7 @@ function install() {
   install_homebrew
   install_cli
   install_apps
+  setup_apps
 }
 
 function ensure_directories() {
@@ -61,6 +62,13 @@ function install_apps()
   print_info "🖥️  Apps"
   cd "${WORKING_DIR}"/homebrew/gui-apps && brew bundle
   cd "${WORKING_DIR}" || return
+}
+
+function setup_apps()
+{
+  print_info "App setup"
+  print_info "Phoenix window manager"
+  bin/bootstrap_phoenix.sh
 }
 
 # ------------- Only available by menu choice -------
