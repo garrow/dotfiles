@@ -74,7 +74,7 @@ function setup_apps()
 # ------------- Only available by menu choice -------
 
 #  Unused, but available via menu
-function install_bash() {
+function install_bash_config() {
   print_info "BASH"
   ln -vsnf "${WORKING_DIR}"/bash/bootstrap.rc.sh "${HOME}"/.bash_profile
 	ln -vsnf "${WORKING_DIR}"/extras.rc.sh "${HOME}"/.extras.rc.sh
@@ -106,7 +106,7 @@ function menu() {
 }
 
 # First echo is a no-op to allow 1 index
-sub_commands=(echo install_zsh install_bash install_apps install_cli check_repo_config)
+sub_commands=(echo install_zsh_config install_bash_config install_apps install_cli check_repo_config)
 
 function entry() {
   if [[ "$1" == "menu" ]]; then
