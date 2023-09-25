@@ -34,6 +34,7 @@ function install_zsh_config() {
   print_info "ZSH"
 	ln -vsnf "${WORKING_DIR}"/zsh/.zshenv "${HOME}"/.zshenv
   ln -vsnf "${WORKING_DIR}"/zsh/.zshrc "${HOME}"/.zshrc
+  ln -vsnf "${WORKING_DIR}"/config/input.rc "${HOME}"/.inputrc
 }
 
 function install_vim_config()
@@ -58,7 +59,7 @@ function install_bash_config() {
   print_info "BASH"
   ln -vsnf "${WORKING_DIR}"/bash/bootstrap.rc.sh "${HOME}"/.bash_profile
 	ln -vsnf "${WORKING_DIR}"/extras.rc.sh "${HOME}"/.extras.rc.sh
-	ln -vsnf "${WORKING_DIR}"/bash/input.rc "${HOME}"/.inputrc
+	ln -vsnf "${WORKING_DIR}"/config/input.rc "${HOME}"/.inputrc
 }
 
 function check_repo_config()

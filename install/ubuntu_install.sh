@@ -18,4 +18,7 @@ function ubuntu_install() {
   curl -sS https://starship.rs/install.sh | sh
 
   print_info "Apps"
+
+  echo "MANUUALLY INSTALL"
+  echo "sudo snap install webstorm --classic"
 }

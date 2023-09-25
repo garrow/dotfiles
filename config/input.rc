@@ -2,3 +2,4 @@
 # https://gist.github.com/imightbeamy/5d843cfa49fdd6539450
 
 set completion-ignore-case on
+"\C-v": ""
