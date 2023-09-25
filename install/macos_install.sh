@@ -15,16 +15,16 @@ function install_homebrew() {
   fi
 }
 
-function install_homebrew_cli() { 
+function install_homebrew_cli() {
   print_info "🖥️  CLI tools"
-  cd "${WORKING_DIR}"/homebrew/command-line && brew bundle
+  cd "${WORKING_DIR}"/install/homebrew/command-line && brew bundle
   cd "${WORKING_DIR}" || return
 }
 
 function install_homebrew_apps()
 {
   print_info "🖥️  Apps"
-  cd "${WORKING_DIR}"/homebrew/gui-apps && brew bundle
+  cd "${WORKING_DIR}"/install/homebrew/gui-apps && brew bundle
   cd "${WORKING_DIR}" || return
 }
 
