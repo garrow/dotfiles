@@ -12,7 +12,7 @@ setopt APPEND_HISTORY
 # adds commands as they are typed, not at shell exit
 setopt INC_APPEND_HISTORY
 # expire duplicates first
-setopt HIST_EXPIRE_DUPS_FIRST 
+setopt HIST_EXPIRE_DUPS_FIRST
 # do not store duplications
 # setopt HIST_IGNORE_DUPS
 #ignore duplicates when searching
@@ -27,6 +27,8 @@ setopt noCORRECT_ALL
 ## Setup shell completion
 autoload -Uz compinit
 compinit
+
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 ## REVERT TO DEFAULT OPTIONS
 # emulate -LR zsh

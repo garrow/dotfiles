@@ -19,8 +19,6 @@ alias clip64='pbpaste | base64 | pbcopy'
 
 alias dockerstats='docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.MemPerc}}\t{{.NetIO}}\t{{.BlockIO}}"'
 
-
-
 path+=("${HOME}/node_modules/.bin")
 #export PATH="$PATH:/Users/garrow/node_modules/.bin"
 
@@ -33,6 +31,3 @@ function __find_process()
 alias psaux=__find_process
 
 export AWS_REGION=us-east-1
-
-
-

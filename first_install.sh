@@ -6,6 +6,7 @@ source "./install/macos_install.sh"
 source "./install/ubuntu_install.sh"
 
 WORKING_DIR=${PWD}
+CONFIG_BASES_DIR="${WORKING_DIR}/config/"
 
 function install() {
   install_zsh_config
@@ -14,11 +15,11 @@ function install() {
 
   ensure_directories
 
-  if is_macos; then 
+  if is_macos; then
     macos_install
   fi
 
-  if is_ubuntu; then 
+  if is_ubuntu; then
     ubuntu_install
   fi
 }
@@ -38,16 +39,16 @@ function install_zsh_config() {
 function install_vim_config()
 {
   print_info "VIM Conf"
-	ln -vsnf "${WORKING_DIR}"/vim/vimrc "${HOME}"/.vimrc
-	ln -vsnf "${WORKING_DIR}"/vim/gvimrc "${HOME}"/.gvimrc
-	ln -vsnf "${WORKING_DIR}"/vim/ "${HOME}"/.vim
+	ln -vsnf "${CONFIG_BASE_DIR}"/vim/vimrc "${HOME}"/.vimrc
+	ln -vsnf "${CONFIG_BASE_DIR}"/vim/gvimrc "${HOME}"/.gvimrc
+	ln -vsnf "${CONFIG_BASE_DIR}"/vim/ "${HOME}"/.vim
 	mkdir -p "${HOME}"/tmp/vim
 }
 
-function install_git_config(){ 
+function install_git_config(){
   print_info "git config"
-	ln -vsnf "${WORKING_DIR}"/git/gitconfig "${HOME}"/.gitconfig
-	ln -vsnf "${WORKING_DIR}"/git/gitignore_global "${HOME}"/.gitignore_global
+	ln -vsnf "${CONFIG_BASE_DIR}"/git/gitconfig "${HOME}"/.gitconfig
+	ln -vsnf "${CONFIG_BASE_DIR}"/git/gitignore_global "${HOME}"/.gitignore_global
 }
 
 # ------------- Only available by menu choice -------
@@ -57,7 +58,7 @@ function install_bash_config() {
   print_info "BASH"
   ln -vsnf "${WORKING_DIR}"/bash/bootstrap.rc.sh "${HOME}"/.bash_profile
 	ln -vsnf "${WORKING_DIR}"/extras.rc.sh "${HOME}"/.extras.rc.sh
-	ln -vsnf "${WORKING_DIR}"/input.rc "${HOME}"/.inputrc
+	ln -vsnf "${WORKING_DIR}"/bash/input.rc "${HOME}"/.inputrc
 }
 
 function check_repo_config()

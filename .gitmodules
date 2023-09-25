@@ -1,39 +1,39 @@
 [submodule "vim/bundle/surround"]
-	path = vim/bundle/surround
+	path = config/vim/bundle/surround
 	url = https://github.com/tpope/vim-surround.git
 [submodule "vim/bundle/vinegar"]
-	path = vim/bundle/vinegar
+	path = config/vim/bundle/vinegar
 	url = https://github.com/tpope/vim-vinegar.git
 [submodule "vim/bundle/tabular"]
-	path = vim/bundle/tabular
+	path = config/vim/bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
 [submodule "vim/bundle/lightline"]
-	path = vim/bundle/lightline
+	path = config/vim/bundle/lightline
 	url = https://github.com/itchyny/lightline.vim
 [submodule "vim/bundle/vim-rails"]
-	path = vim/bundle/vim-rails
+	path = config/vim/bundle/vim-rails
 	url = https://github.com/tpope/vim-rails.git
 [submodule "vim/bundle/elixir"]
-	path = vim/bundle/elixir
+	path = config/vim/bundle/elixir
 	url = https://github.com/elixir-lang/vim-elixir.git
 [submodule "vim/bundle/ctrlp"]
-	path = vim/bundle/ctrlp
+	path = config/vim/bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
 [submodule "vim/bundle/elm-vim"]
-	path = vim/bundle/elm-vim
+	path = config/vim/bundle/elm-vim
 	url = https://github.com/lambdatoast/elm.vim.git
 [submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
+	path = config/vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
 [submodule "vim/bundle/vim-latex"]
-	path = vim/bundle/vim-latex
+	path = config/vim/bundle/vim-latex
 	url = https://github.com/vim-latex/vim-latex.git
 [submodule "vim/bundle/gundo"]
-	path = vim/bundle/gundo
+	path = config/vim/bundle/gundo
 	url = http://github.com/sjl/gundo.vim.git
 [submodule "vim/bundle/vim-pandoc"]
-	path = vim/bundle/vim-pandoc
+	path = config/vim/bundle/vim-pandoc
 	url = https://github.com/vim-pandoc/vim-pandoc
 [submodule "vim/bundle/vim-pandoc-syntax"]
-	path = vim/bundle/vim-pandoc-syntax
+	path = config/vim/bundle/vim-pandoc-syntax
 	url = https://github.com/vim-pandoc/vim-pandoc-syntax

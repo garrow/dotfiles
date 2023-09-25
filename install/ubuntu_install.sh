@@ -5,7 +5,7 @@ function ubuntu_install() {
   sudo apt-get -qq update
 
 
-  local required_packages=(git ripgrep direnv build-essential procps curl file xclip)
+  local required_packages=(git ripgrep direnv build-essential procps curl file xclip tree)
 
   print_info "Installing Packages ${required_packages}"
 
