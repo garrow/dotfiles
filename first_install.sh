@@ -6,7 +6,7 @@ source "./install/macos_install.sh"
 source "./install/ubuntu_install.sh"
 
 WORKING_DIR=${PWD}
-CONFIG_BASES_DIR="${WORKING_DIR}/config/"
+CONFIG_BASE_DIR="${WORKING_DIR}/config/"
 
 function install() {
   install_zsh_config
