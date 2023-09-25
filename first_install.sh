@@ -1,6 +1,9 @@
+#!/usr/bin/zsh
 # shellcheck shell=bash
 source "./bootstrap.sh"
 source "./shared/core/task_functions.sh"
+source "./install/macos_install.sh"
+source "./install/ubuntu_install.sh"
 
 WORKING_DIR=${PWD}
 
@@ -11,10 +14,13 @@ function install() {
 
   ensure_directories
 
-  install_homebrew
-  install_cli
-  install_apps
-  setup_apps
+  if is_macos; then 
+    macos_install
+  fi
+
+  if is_ubuntu; then 
+    ubuntu_install
+  fi
 }
 
 function ensure_directories() {
@@ -26,6 +32,7 @@ function ensure_directories() {
 function install_zsh_config() {
   print_info "ZSH"
 	ln -vsnf "${WORKING_DIR}"/zsh/.zshenv "${HOME}"/.zshenv
+  ln -vsnf "${WORKING_DIR}"/zsh/.zshrc "${HOME}"/.zshrc
 }
 
 function install_vim_config()
@@ -41,34 +48,6 @@ function install_git_config(){
   print_info "git config"
 	ln -vsnf "${WORKING_DIR}"/git/gitconfig "${HOME}"/.gitconfig
 	ln -vsnf "${WORKING_DIR}"/git/gitignore_global "${HOME}"/.gitignore_global
-}
-
-function install_homebrew() {
-  print_info "🍺 Homebrew"
-  if ! command -v brew >/dev/null; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-  fi
-}
-
-function install_cli() { 
-  print_info "🖥️  CLI tools"
-  cd "${WORKING_DIR}"/homebrew/command-line && brew bundle
-  cd "${WORKING_DIR}" || return
-}
-
-
-function install_apps()
-{
-  print_info "🖥️  Apps"
-  cd "${WORKING_DIR}"/homebrew/gui-apps && brew bundle
-  cd "${WORKING_DIR}" || return
-}
-
-function setup_apps()
-{
-  print_info "App setup"
-  print_info "Phoenix window manager"
-  bin/bootstrap_phoenix.sh
 }
 
 # ------------- Only available by menu choice -------
@@ -106,7 +85,7 @@ function menu() {
 }
 
 # First echo is a no-op to allow 1 index
-sub_commands=(echo install_zsh_config install_bash_config install_apps install_cli check_repo_config)
+sub_commands=(echo install install_zsh_config install_bash_config install_homebrew_apps install_homebrew_cli check_repo_config)
 
 function entry() {
   if [[ "$1" == "menu" ]]; then

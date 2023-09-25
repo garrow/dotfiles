@@ -8,6 +8,22 @@ export C_CYAN="$(tput setaf 6)"
 export C_WHITE="$(tput setaf 7)"
 export C_RESET="$(tput sgr0)"
 
+export DOTFILES_DISTRO='unknown'
+
+if [[ "$(uname)" == 'Darwin' ]]; then
+  DOTFILES_DISTRO=macos
+elif [[ -x "$(command -v apt-get)"  ]]; then
+  DOTFILES_DISTRO=ubuntu
+fi
+
+function is_macos() {
+  [[ "${DOTFILES_DISTRO}" == "macos"  ]]
+}
+
+function is_ubuntu() {
+  [[ "${DOTFILES_DISTRO}" == "ubuntu"  ]]
+}
+
 function enable_debug_dotfiles() {
   echo "Enabling debug mode."
   echo "Use \`rld\` to reload now"
