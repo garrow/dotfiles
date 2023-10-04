@@ -23,6 +23,7 @@ brew 'terminal-notifier'
 brew 'coreutils'
 brew 'neovim'
 brew 'tmux'
+brew 'entr'
 
 
 tap 'jakehilborn/jakehilborn'

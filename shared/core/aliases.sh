@@ -39,7 +39,7 @@ alias tod='date +%H:%M:%S'
 alias newest='ls -t | head -n1'
 
 ### Misc tools
-alias v=mvim
+alias v=vim
 alias rld="source ${ZDOTDIR}/.zshrc"
 alias cwd="pwd | tr -d '\\n' | pbcopy"
 alias dud="du -hcd 1"

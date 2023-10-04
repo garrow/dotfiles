@@ -1,6 +1,9 @@
 # Use the $EDITOR env var to edit with whatever editor I want in a certain directory
-# export EDITOR=/usr/local/bin/mvim
-export EDITOR=/usr/local/bin/mvim
+# export EDITOR=/usr/local/bin/vim
+
+
+# export EDITOR="${HOMEBREW_PREFIX}/bin/vim"
+export EDITOR="${HOMEBREW_PREFIX}/bin/vim"
 
 function edit() {
   if [ -z "$EDITOR" ] ; then
