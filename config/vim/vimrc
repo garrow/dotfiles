@@ -4,15 +4,15 @@ let g:pathogen_disabled = ['vim-pandoc']
 
 set bg=dark
 
-if $AppleInterfaceStyle == 'dark'
-  set bg=dark
-endif
 
-if $AppleInterfaceStyle == 'light'
-  set bg=light
-endif
+" if $AppleInterfaceStyle == 'light'
+"  set bg=light
+"endif
 
 
+"if $AppleInterfaceStyle == 'dark'
+"  set bg=dark
+"endif
 
 
 execute pathogen#infect()
@@ -27,10 +27,10 @@ set guifont=Hasklig:h14
 " >> Ligatures Test -> <- -> $$ >>= /= == ++ -< >- -<< 
 " <* <*> <+> <$> *** <| |> <|> !! || === ==> <<< >>> <> +++ <- -> => >> << >>= =<< .. ... :: -< >- -<< >>- ++ /= ==
 
-if has("gui_macvim")
+"if has("gui_macvim")
 " set macligatures
 
-endif
+"endif
 
 " Enable mouse in visual mode
 " set mouse=n

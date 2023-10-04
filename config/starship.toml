@@ -29,10 +29,11 @@ symbol = "⑂ "
 ignore_submodules = true
 
 [custom.git_author]
-disabled = true
+# disabled = true
 command = 'git config --get user.email' # shows output of command
 style = 'dimmed white'
-symbol = '✍️ '
+symbol = ' @ '
+# symbol = '✍️ '
 detect_folders = ['.git'] # can specify filters but wildcards are not supported
 #when = ''' test "$HOME" = "$PWD" '''
 #format = '  [$output]($style)'

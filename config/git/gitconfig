@@ -25,11 +25,10 @@
 [user]
 	name = Garrow Bedrossian
 	email = garrow.bedrossian@gmail.com
-	# Email is stored in .local config file.
 
-#### Include a .local config file, I use this to store per machine settings, e.g work vs home email addresses
-[include]
-	path = ~/.gitconfig.local
+[includeIf "gitdir:~/work/"]
+    path = ~/work/code/.gitconfig.local
+
 [push]
 	default = current
 [credential]
