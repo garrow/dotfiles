@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/bin/zsh
 # shellcheck shell=bash
 source "./bootstrap.sh"
 source "./shared/core/task_functions.sh"
