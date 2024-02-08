@@ -57,3 +57,5 @@ alias dotfiles="cd ~/.dotfiles/"
 alias chmox='chmod +x'
 
 alias autoprune=__git_prune_automagic
+
+alias macos_reset_dns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
