@@ -22,7 +22,7 @@ format = "[$symbol($version )]($style)"
 disabled = true
 
 [gcloud]
-disabled = true
+disabled = false
 
 [git_branch]
 # symbol = "🌱 "
