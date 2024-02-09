@@ -15,7 +15,7 @@ __nvm_first_run() {
       # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
     fi
 
-    type nvm
+    # type nvm
     # echo "Loaded NVM! You can now call \`nvm\`"
 }
 
