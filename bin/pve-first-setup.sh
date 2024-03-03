@@ -30,6 +30,11 @@ start_task "adding no-subscription sources"
     cat <<EOF >/etc/apt/sources.list.d/pve-install-repo.list
 deb http://download.proxmox.com/debian/pve ${VERSION} pve-no-subscription
 EOF
+end_task
+
+start_task "disable ceph"
+    sed -i  "s/^\([^#]\)/#\1/g" /etc/apt/sources.list.d/ceph.list
+end_task
 
 end_task
 start_task "apt update"
@@ -58,7 +63,7 @@ disable_ha() {
 }
 
 install_helpers() {
-    nala install -y zsh tree rip-grep
+    nala install -y zsh tree ripgrep
 }
 
 
