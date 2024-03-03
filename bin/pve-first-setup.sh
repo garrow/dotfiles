@@ -6,6 +6,9 @@ main() {
     replace_sources
     no_subscription_nag
     disable_ha
+
+    change_to_zsh
+
     install_helpers
 }
 
@@ -62,8 +65,22 @@ disable_ha() {
 
 }
 
+
+change_to_zsh() {
+    start_task "install zsh"
+    nala install -y zsh
+    end_task
+
+    start_task "choose as default zsh"
+    chsh -s /bin/zsh
+    end_task
+
+}
+
+
+
 install_helpers() {
-    nala install -y zsh tree ripgrep
+    nala install -y tree ripgrep
 }
 
 
