@@ -1,5 +1,5 @@
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
+#alias pbcopy='xclip -selection clipboard'
+#alias pbpaste='xclip -selection clipboard -o'
 
 ### Misc tools
 alias go='gnome-open'

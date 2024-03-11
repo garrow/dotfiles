@@ -12,6 +12,8 @@ function install() {
   install_zsh_config
   install_vim_config
   install_git_config
+  install_awesome_config
+
 
   ensure_directories
 
@@ -35,6 +37,12 @@ function install_zsh_config() {
 	ln -vsnf "${WORKING_DIR}"/zsh/.zshenv "${HOME}"/.zshenv
   ln -vsnf "${WORKING_DIR}"/zsh/.zshrc "${HOME}"/.zshrc
   ln -vsnf "${WORKING_DIR}"/config/input.rc "${HOME}"/.inputrc
+}
+
+function install_awesome_config() {
+  print_info "awesome"
+  #mkdir -p "${HOME}/.config/awesome"
+  ln -vsnf "${WORKING_DIR}"/config/awesome/ "${HOME}"/.config/
 }
 
 function install_vim_config()
