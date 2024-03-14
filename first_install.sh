@@ -9,13 +9,7 @@ WORKING_DIR=${PWD}
 CONFIG_BASE_DIR="${WORKING_DIR}/config/"
 
 function install() {
-  install_zsh_config
-  install_vim_config
-  install_git_config
-  install_awesome_config
-
-
-  ensure_directories
+  install_configs
 
   if is_macos; then
     macos_install
@@ -24,6 +18,18 @@ function install() {
   if is_ubuntu; then
     ubuntu_install
   fi
+}
+
+function install_configs() {
+  install_zsh_config
+  install_vim_config
+  install_git_config
+  install_awesome_config
+  install_autostart_config
+
+
+
+  ensure_directories
 }
 
 function ensure_directories() {
@@ -43,6 +49,13 @@ function install_awesome_config() {
   print_info "awesome"
   #mkdir -p "${HOME}/.config/awesome"
   ln -vsnf "${WORKING_DIR}"/config/awesome/ "${HOME}"/.config/
+}
+
+function install_autostart_config() {
+
+  print_info "autostart"
+  ln -vsnf "${WORKING_DIR}"/config/autostart/ "${HOME}"/.config/
+
 }
 
 function install_vim_config()
@@ -110,7 +123,11 @@ function entry() {
       echo "Invalid option. Please try again."
     fi
   else
-    install
+    install_configs
+    echo
+    print_info "Installed configs"
+    echo "Use \`./first_install.sh install\` to install apps"
+
   fi
 }
 
