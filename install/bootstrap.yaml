@@ -1,0 +1,30 @@
+- name: Dotfiles environment
+  hosts: localhost
+  vars:
+    dotfiles_path: "{{ lookup('ansible.builtin.env', 'base_dotfiles_path') }}"
+  tasks:
+    - name: zsh_configs
+      become: no
+      ansible.builtin.file:
+        #src: "{{ dotfiles_path  }}/zsh/.zshenv"
+        src: "{{dotfiles_path}}/{{item.src}}"
+        dest: "${HOME}/{{ item.src | basename }}"
+        state: link
+      loop:
+        - { src: 'zsh/.zshenv' }
+        - { src: 'zsh/.zshrc' }
+
+    - name: Core APT packages
+      become: no
+      ansible.builtin.apt:
+        name:
+          - git
+          - tree
+          - ripgrep
+          - direnv
+          - build-essential
+          - procps
+          - curl
+          - file
+          - xclip
+        state: present

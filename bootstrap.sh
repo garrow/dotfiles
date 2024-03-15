@@ -13,7 +13,7 @@ export DOTFILES_DISTRO='unknown'
 if [[ "$(uname)" == 'Darwin' ]]; then
   DOTFILES_DISTRO=macos
 elif [[ -x "$(command -v apt-get)"  ]]; then
-  DOTFILES_DISTRO=ubuntu
+  DOTFILES_DISTRO=debian
 fi
 
 function is_macos() {
@@ -21,7 +21,12 @@ function is_macos() {
 }
 
 function is_ubuntu() {
-  [[ "${DOTFILES_DISTRO}" == "ubuntu"  ]]
+  print_warning "deprecated: is_ubuntu"
+  [[ "${DOTFILES_DISTRO}" == "debian"  ]]
+}
+
+function is_debian() {
+  [[ "${DOTFILES_DISTRO}" == "debian"  ]]
 }
 
 function enable_debug_dotfiles() {
