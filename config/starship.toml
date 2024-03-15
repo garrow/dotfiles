@@ -8,6 +8,7 @@
 
 
 command_timeout = 100
+#command_timeout = 100
 
 [ruby]
 symbol = "🔺 "
@@ -16,7 +17,7 @@ symbol = "🔺 "
 [nodejs]
 symbol = "❖"
 format = "[$symbol($version )]($style)"
-# disabled = false
+disabled = true
 
 [aws]
 disabled = true
