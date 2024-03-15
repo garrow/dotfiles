@@ -16,7 +16,27 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
-require("awful.hotkeys_popup.keys")
+-- require("awful.hotkeys_popup.keys")
+-- ^^^ Hide the tmux config info
+
+-- Safe restart
+local function check_syntax_and_restart()
+    awful.spawn.easy_async_with_shell(
+        --"luac -p ~/.config/awesome/rc.lua",
+        "awesome -k",
+        function(stdout, stderr, reason, exit_code)
+            if exit_code ~= 0 then
+                naughty.notify({ preset = naughty.config.presets.critical,
+                                 title = "rc.lua syntax error",
+                                 text = tostring(stderr),
+                                 timeout = 5,
+                                 screen = mouse.screen })
+            else
+                awesome.restart()
+            end
+        end
+    )
+end
 
 -- Load Debian menu entries
 local debian = require("debian.menu")
@@ -91,7 +111,8 @@ myawesomemenu = {
    { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
+   { "restart", check_syntax_and_restart },
+   { "hard restart (no syntax check)", awesome.restart },
    { "quit", function() awesome.quit() end },
 }
 
@@ -297,7 +318,7 @@ globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey,           }, "b", function () awful.spawn("x-www-browser") end,
               {description = "open a browser", group = "launcher"}),
-    awful.key({ modkey, "Control" }, "r", awesome.restart,
+    awful.key({ modkey, "Control" }, "r", check_syntax_and_restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
