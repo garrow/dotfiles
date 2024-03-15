@@ -110,7 +110,7 @@ function menu() {
 }
 
 # Echo a no-op to allow selecting any item
-sub_commands=(install install_zsh_config install_bash_config install_homebrew_apps install_homebrew_cli check_repo_config echo)
+sub_commands=(install install_configs install_zsh_config install_bash_config install_homebrew_apps install_homebrew_cli check_repo_config echo)
 
 function entry() {
   if [[ "$1" == "menu" ]]; then
@@ -124,10 +124,12 @@ function entry() {
     else
       echo "Invalid option. Please try again."
     fi
+  elif [[ " ${sub_commands[*]} " =~ " $1 " ]]; then
+    exec "$1"
   else
     install_configs
     echo
-    print_info "Installed configs"
+    print_info "Installed configs only"
     echo "Use \`./first_install.sh install\` to install apps"
 
   fi
