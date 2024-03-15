@@ -1,6 +1,6 @@
 cask_args appdir: '/Applications'
-tap 'homebrew/cask'
-tap 'go-task/tap'
+# tap 'homebrew/cask'
+# tap 'go-task/tap'
 tap 'homebrew/cask-fonts'
 brew 'mas'
 
@@ -22,6 +22,10 @@ cask 'typora'
 cask 'visual-studio-code'
 
 cask 'font-hasklug-nerd-font'
+
+tap 'jakehilborn/jakehilborn'
+brew 'displayplacer'
+brew 'macvim'
 
 # Sometimes!
 # cask 'bettertouchtool' # To split mousewheel scroll direction vs trackpad direction.

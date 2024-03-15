@@ -6,7 +6,7 @@ source "./install/macos_install.sh"
 source "./install/ubuntu_install.sh"
 
 WORKING_DIR=${PWD}
-CONFIG_BASE_DIR="${WORKING_DIR}/config/"
+CONFIG_BASE_DIR="${WORKING_DIR}/config"
 
 function install() {
   install_configs
@@ -21,13 +21,13 @@ function install() {
 }
 
 function install_configs() {
+
   install_zsh_config
   install_vim_config
   install_git_config
+
   install_awesome_config
   install_autostart_config
-
-
 
   ensure_directories
 }
@@ -42,35 +42,32 @@ function install_zsh_config() {
   print_info "ZSH"
   ln -vsnf "${WORKING_DIR}"/zsh/.zshenv "${HOME}"/.zshenv
   ln -vsnf "${WORKING_DIR}"/zsh/.zshrc "${HOME}"/.zshrc
-  ln -vsnf "${WORKING_DIR}"/config/input.rc "${HOME}"/.inputrc
+  ln -vsnf "${CONFIG_BASE_DIR}"/input.rc "${HOME}"/.inputrc
 }
 
 function install_awesome_config() {
   print_info "awesome"
-  #mkdir -p "${HOME}/.config/awesome"
-  ln -vsnf "${WORKING_DIR}"/config/awesome/ "${HOME}"/.config/
+  ln -vsnf "${CONFIG_BASE_DIR}"/awesome/ "${HOME}"/.config
 }
 
 function install_autostart_config() {
-
   print_info "autostart"
-  ln -vsnf "${WORKING_DIR}"/config/autostart/ "${HOME}"/.config/
-
+  ln -vsnf "${CONFIG_BASE_DIR}"/autostart/ "${HOME}"/.config
 }
 
 function install_vim_config()
 {
   print_info "VIM Conf"
-	ln -vsnf "${CONFIG_BASE_DIR}"/vim/vimrc "${HOME}"/.vimrc
-	ln -vsnf "${CONFIG_BASE_DIR}"/vim/gvimrc "${HOME}"/.gvimrc
-	ln -vsnf "${CONFIG_BASE_DIR}"/vim/ "${HOME}"/.vim
-	mkdir -p "${HOME}"/tmp/vim
+  ln -vsnf "${CONFIG_BASE_DIR}/vim/vimrc" "${HOME}/.vimrc"
+  ln -vsnf "${CONFIG_BASE_DIR}/vim/gvimrc" "${HOME}/.gvimrc"
+  ln -vsnf "${CONFIG_BASE_DIR}/vim/" "${HOME}/.vim"
+  mkdir -p "${HOME}/tmp/vim"
 }
 
 function install_git_config(){
   print_info "git config"
-	ln -vsnf "${CONFIG_BASE_DIR}"/git/gitconfig "${HOME}"/.gitconfig
-	ln -vsnf "${CONFIG_BASE_DIR}"/git/gitignore_global "${HOME}"/.gitignore_global
+  ln -vsnf "${CONFIG_BASE_DIR}/git/gitconfig" "${HOME}"/.gitconfig
+  ln -vsnf "${CONFIG_BASE_DIR}/git/gitignore_global" "${HOME}"/.gitignore_global
 }
 
 # ------------- Only available by menu choice -------
@@ -85,16 +82,21 @@ function install_bash_config() {
 
 function check_repo_config()
 {
+  echo "CHECK REPO CONFIG"
   print_warning "Checking Repo"
   print_info "➡️  test for remotes"
   git remote -v
 
+  local DOTFILES_GIT_CONFIG="${CONFIG_BASE_DIR}/git/gitconfig"
 
-  print_info "Lock in git username"
-  git config --local --replace-all user.name "$(git config --file "${WORKING_DIR}/git/gitconfig" --get user.name)"
-  git config --local --replace-all user.email "$(git config --file "${WORKING_DIR}/git/gitconfig" --get user.email)"
-  git config --local --get user.name
-  git config --local --get user.email
+  if [[ -e "${DOTFILES_GIT_CONFIG}" ]]; then
+    print_info "Username:"
+    git config --local --replace-all user.name "$(git config --file "${DOTFILES_GIT_CONFIG}" --get user.name)"
+    git config --local --get user.name
+    print_info "Email:"
+    git config --local --replace-all user.email "$(git config --file "${DOTFILES_GIT_CONFIG}" --get user.email)"
+    git config --local --get user.email
+  fi
 }
 
 # ---------- Menu -------
@@ -107,8 +109,8 @@ function menu() {
   echo "${#sub_commands[@]}. Quit"
 }
 
-# First echo is a no-op to allow 1 index
-sub_commands=(echo install install_zsh_config install_bash_config install_homebrew_apps install_homebrew_cli check_repo_config)
+# Echo a no-op to allow selecting any item
+sub_commands=(install install_zsh_config install_bash_config install_homebrew_apps install_homebrew_cli check_repo_config echo)
 
 function entry() {
   if [[ "$1" == "menu" ]]; then
