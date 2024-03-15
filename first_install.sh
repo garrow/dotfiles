@@ -40,7 +40,7 @@ function ensure_directories() {
 
 function install_zsh_config() {
   print_info "ZSH"
-	ln -vsnf "${WORKING_DIR}"/zsh/.zshenv "${HOME}"/.zshenv
+  ln -vsnf "${WORKING_DIR}"/zsh/.zshenv "${HOME}"/.zshenv
   ln -vsnf "${WORKING_DIR}"/zsh/.zshrc "${HOME}"/.zshrc
   ln -vsnf "${WORKING_DIR}"/config/input.rc "${HOME}"/.inputrc
 }

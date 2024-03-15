@@ -35,7 +35,7 @@
 ## PS1="
 ## $IPurple\w$Color_Off\$(__filtered_git_ps1_emoji)$Red\$(rb_ver)$Blue\$(rails_e)$Color_Off
 ## $Green>$Color_Off "
-##PROMPT_COMMAND='echo -ne "\033]0; ${PWD/#$HOME/~}\007"'
+PROMPT_COMMAND='echo -ne "\033]0; ${PWD/#$HOME/~}\007"'
 #function __git_branch_name_prompt {
 #    git symbolic-ref --short HEAD 2> /dev/null
 #}
