@@ -3,7 +3,7 @@
 source "./bootstrap.sh"
 source "./shared/core/task_functions.sh"
 source "./install/macos_install.sh"
-source "./install/ubuntu_install.sh"
+source "./install/debian_install.sh"
 
 WORKING_DIR=${PWD}
 CONFIG_BASE_DIR="${WORKING_DIR}/config"
@@ -15,8 +15,8 @@ function install() {
     macos_install
   fi
 
-  if is_ubuntu; then
-    ubuntu_install
+  if is_debian; then
+    debian_install
   fi
 }
 

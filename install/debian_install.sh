@@ -1,5 +1,5 @@
-function ubuntu_install() {
-  print_info "Ubuntu install"
+function debian_install() {
+  print_info "Debian install"
 
   print_info "apt update"
   sudo apt -qq update

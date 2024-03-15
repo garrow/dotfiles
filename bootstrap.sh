@@ -12,16 +12,16 @@ export DOTFILES_DISTRO='unknown'
 
 if [[ "$(uname)" == 'Darwin' ]]; then
   DOTFILES_DISTRO=macos
-elif [[ -x "$(command -v apt-get)"  ]]; then
-  DOTFILES_DISTRO=ubuntu
+elif [[ -x "$(command -v apt)"  ]]; then
+  DOTFILES_DISTRO=debian
 fi
 
 function is_macos() {
   [[ "${DOTFILES_DISTRO}" == "macos"  ]]
 }
 
-function is_ubuntu() {
-  [[ "${DOTFILES_DISTRO}" == "ubuntu"  ]]
+function is_debian() {
+  [[ "${DOTFILES_DISTRO}" == "debian"  ]]
 }
 
 function enable_debug_dotfiles() {

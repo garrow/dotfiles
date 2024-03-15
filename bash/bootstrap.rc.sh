@@ -11,7 +11,7 @@ if [ "$(uname)" == 'Darwin' ]
 then
 	export distro=osx
 else
-	export distro=ubuntu
+	export distro=debian
 fi
 
 export bashrc_location=${bash_bash_env_path}/${distro}/bashrc.sh
