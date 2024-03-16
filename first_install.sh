@@ -27,6 +27,7 @@ function install_configs() {
   install_git_config
 
   install_awesome_config
+  install_zellij_config
   install_autostart_config
 
   ensure_directories
@@ -48,6 +49,11 @@ function install_zsh_config() {
 function install_awesome_config() {
   print_info "awesome"
   ln -vsnf "${CONFIG_BASE_DIR}"/awesome/ "${HOME}"/.config
+}
+
+function install_zsh_config() {
+  print_info "zellij"
+  ln -vsnf "${CONFIG_BASE_DIR}"/zellij/ "${HOME}"/.config
 }
 
 function install_autostart_config() {
