@@ -51,7 +51,7 @@ function install_awesome_config() {
   ln -vsnf "${CONFIG_BASE_DIR}"/awesome/ "${HOME}"/.config
 }
 
-function install_zsh_config() {
+function install_zellij_config() {
   print_info "zellij"
   ln -vsnf "${CONFIG_BASE_DIR}"/zellij/ "${HOME}"/.config
 }
