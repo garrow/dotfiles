@@ -21,6 +21,12 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt CORRECT
 
+# Retain emacs ^A ^E style movement in terminal
+bindkey -e
+bindkey "\e[1;3C" forward-word
+bindkey "\e[1;3D" backward-word
+
+
 setopt noCORRECT_ALL
 
 
