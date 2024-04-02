@@ -4,6 +4,7 @@ function macos_install() {
   install_homebrew
   install_homebrew_cli
   install_homebrew_apps
+  install_appstore_apps
   setup_apps
 }
 
@@ -23,8 +24,15 @@ function install_homebrew_cli() {
 
 function install_homebrew_apps()
 {
-  print_info "🖥️  Apps"
+  print_info "🖥️  GUI Apps"
   cd "${WORKING_DIR}"/install/homebrew/gui-apps && brew bundle
+  cd "${WORKING_DIR}" || return
+}
+
+function install_appstore_apps()
+{
+  print_info "🖥️  App Store Apps"
+  cd "${WORKING_DIR}"/install/homebrew/mac-app-store && brew bundle
   cd "${WORKING_DIR}" || return
 }
 
