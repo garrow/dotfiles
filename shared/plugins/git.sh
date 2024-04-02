@@ -76,6 +76,10 @@ alias cob="__git_checkout_branch_menu '__git_local_branch_list'"
 alias cow="__git_checkout_branch_menu '__git_working_branch_list'"
 alias cor="__git_checkout_branch_menu '__git_only_remote_branch_list'"
 
+
+# Submodules are pain
+alias git-reinit-submodules='git submodule update --init --recursive --checkout'
+
 # Given the name of a function which returns a list of branch names and an optional string to filter that list,
 # present the user a menu, allowing fast branch selection.
 __git_checkout_branch_menu()
