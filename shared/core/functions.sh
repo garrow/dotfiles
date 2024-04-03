@@ -8,3 +8,10 @@ while read -r fname; do
   fi
 done
 }
+
+
+function cask () {
+  local cmd="$1"
+  shift 1
+  brew "${cmd}" --cask "$@"
+}

@@ -26,7 +26,6 @@ alias rld="source ~/.bash_profile"
 alias cwd="pwd | tr -d '\\n' | pbcopy"
 alias dud="du -hcd 1"
 alias pyserve="python -m SimpleHTTPServer 8000"
-alias cask='brew cask'
 
 
 ########## Python ##########

@@ -44,7 +44,6 @@ alias rld="source ${ZDOTDIR}/.zshrc"
 alias cwd="pwd | tr -d '\\n' | pbcopy"
 alias dud="du -hcd 1"
 alias pyserve="python3 -m http.server -d "
-alias cask='brew cask'
 
 ########## Python ##########
 alias p=python
