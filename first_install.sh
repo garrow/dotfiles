@@ -16,28 +16,43 @@ function install() {
   fi
 
   if is_debian; then
+    install_awesome_config
+    install_zellij_config
+
     debian_install
   fi
 }
 
 function install_configs() {
+  ensure_directories
 
   install_zsh_config
   install_vim_config
   install_git_config
-
-  install_awesome_config
-  install_zellij_config
-  install_autostart_config
-
-  ensure_directories
 }
 
 function ensure_directories() {
   print_info 'ensure_directories'
-  mkdir -p "${HOME}/projects"
+  mkdir -p "${HOME}/projects/code"
+  mkdir -p "${HOME}/.config"
+
   touch "${HOME}/.extras.rc.sh"
 }
+
+function link_dir_config(){
+  local src_dir="${1:-NOT_EXIST}"
+  local dest_dir="${2:-NOT_EXIST}"
+
+  echo $src_dir
+
+
+  if [ -d "${src_dir}" ] ; then
+    echo "OK ${src_dir}"
+
+  fi
+
+}
+
 
 function install_zsh_config() {
   print_info "ZSH"
@@ -56,10 +71,6 @@ function install_zellij_config() {
   ln -vsnf "${CONFIG_BASE_DIR}"/zellij/ "${HOME}"/.config
 }
 
-function install_autostart_config() {
-  print_info "autostart"
-  ln -vsnf "${CONFIG_BASE_DIR}"/autostart/ "${HOME}"/.config
-}
 
 function install_vim_config()
 {
