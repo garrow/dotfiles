@@ -31,8 +31,6 @@
 
 [push]
 	default = current
-[credential]
-	helper = osxkeychain
 [diff]
 	mnemonicprefix = true
 [pull]

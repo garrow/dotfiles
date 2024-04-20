@@ -53,7 +53,7 @@ alias gsp='git stash save --patch'
 # Remote
 alias gup='git up; echo "PRUNE"; __git_prune_automagic'
 alias gpushnew='git push --set-upstream origin $(git-current-branch)'
-alias __git_prune_merged_branches='git checkout $(__git_main_branch) && git branch --merged |grep -v "\*" | grep -v $(__git_main_branch) |grep -v stable | xargs -n1 git branch -d'
+alias __git_prune_merged_branches='git checkout $(__git_main_branch) && git branch --merged |grep -v "\*" | grep -v $(__git_main_branch) |grep -v stable | xargs -I {} git branch -d "{}"'
 
 # Changed files
 alias __git_current_branch_revisions='git rev-list $(git-current-branch) ^$(__git_main_branch)'
