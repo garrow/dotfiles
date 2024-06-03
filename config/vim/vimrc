@@ -245,4 +245,4 @@ nnoremap <Leader>d :set bg=dark<CR>
 nnoremap <Leader>D :set bg=light<CR>
 
 
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
