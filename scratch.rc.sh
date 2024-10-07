@@ -40,3 +40,9 @@ function __current_git_profile() {
     echo "(git-author: ${author})"
   fi
 }
+
+
+export ANDROID_HOME=/opt/homebrew/share/android-commandlinetools/
+export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
+export PATH=$ANDROID_HOME/emulator:$PATH
+export PATH=$ANDROID_HOME/platform-tools:$PATH

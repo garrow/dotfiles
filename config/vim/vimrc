@@ -244,9 +244,9 @@ set rtp+=/usr/local/opt/fzf
 nnoremap <Leader>d :set bg=dark<CR>
 nnoremap <Leader>D :set bg=light<CR>
 
-
+" This works OK on linux, but is crap on macos
 " set clipboard=unnamedplus
-"
+
 " START pablopunk/native-sidebar.vim
 if !exists('g:native_sidebar_shortcut') | let g:native_sidebar_shortcut = '<c-b>' | en
 
