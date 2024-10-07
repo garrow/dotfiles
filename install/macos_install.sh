@@ -45,9 +45,17 @@ function install_appstore_apps()
   cd "${WORKING_DIR}" || return
 }
 
+function setup_app_defaults()
+{
+  echo "Move Tab to New Window"
+  defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Move Tab to New Window" "@~^n"
+}
+
 function setup_apps()
 {
   print_info "App setup"
+  print_info "Default configs"
+  setup_app_defaults
   print_info "Phoenix window manager"
   bin/bootstrap_phoenix.sh
 }
