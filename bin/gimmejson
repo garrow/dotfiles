@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+
+require 'net/http'
+require 'json'
+require 'uri'
+
+def fetch_json(url)
+  uri = URI(url)
+  response = Net::HTTP.get(uri)
+  json = JSON.generate(JSON.parse(response))
+  puts JSON.generate(json)
+rescue => e
+  puts "Error fetching data: #{e.message}"
+end
+
+
+def double_json(json_string)
+  JSON.generate(json_string)
+end
+
+
+if $stdin.stat.pipe?
+  puts double_json($stdin.gets.chomp)
+
+elsif ARGV.length != 1
+  puts "Usage: #{$0} <URL>"
+  exit 1
+end
+
+
+exit 1
+url = ARGV[0]
+fetch_json(url)
