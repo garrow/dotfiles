@@ -3,3 +3,4 @@
 .netrwhist
 .DS_Store
 Brewfile.lock.json
+*.Brewfile.lock.json

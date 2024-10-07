@@ -29,6 +29,15 @@ function install_homebrew_apps()
   cd "${WORKING_DIR}" || return
 }
 
+
+function install_dev_apps()
+{
+  print_info "🖥️  Dev GUI Apps"
+  brew bundle --file "${WORKING_DIR}"/install/homebrew/dev-tools.Brewfile
+  #cd "${WORKING_DIR}"/install/homebrew/gui-apps && brew bundle
+  #cd "${WORKING_DIR}" || return
+}
+
 function install_appstore_apps()
 {
   print_info "🖥️  App Store Apps"

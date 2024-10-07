@@ -127,7 +127,7 @@ function menu() {
 }
 
 # Echo a no-op to allow selecting any item
-sub_commands=(install install_configs install_zsh_config install_bash_config install_homebrew_apps install_homebrew_cli check_repo_config echo)
+sub_commands=(install install_configs install_zsh_config install_bash_config install_homebrew_apps install_homebrew_cli install_dev_apps check_repo_config echo)
 
 function entry() {
   if [[ "$1" == "menu" ]]; then
