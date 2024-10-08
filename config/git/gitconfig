@@ -26,8 +26,10 @@
 	name = Garrow Bedrossian
 	email = garrow.bedrossian@gmail.com
 
-[includeIf "gitdir:~/work/"]
-    path = ~/work/code/.gitconfig.local
+# Relies on work specific dotfiles repo existing.
+# Always included, so must use conditional logic in entrypoint file
+[include]
+	path = ~/work/dotfiles/config/git/gitconfig
 
 [push]
 	default = current
