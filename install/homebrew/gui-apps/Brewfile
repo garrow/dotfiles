@@ -15,6 +15,7 @@ cask 'spotify'
 cask 'typora'
 cask 'visual-studio-code'
 cask 'browserosaurus'
+cask 'logseq'
 
 #cask 'font-hasklug-nerd-font'
 
