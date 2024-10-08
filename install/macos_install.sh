@@ -18,31 +18,25 @@ function install_homebrew() {
 
 function install_homebrew_cli() {
   print_info "🖥️  CLI tools"
-  cd "${WORKING_DIR}"/install/homebrew/command-line && brew bundle
-  cd "${WORKING_DIR}" || return
+  brew bundle --file "${WORKING_DIR}"/install/homebrew/command-line.Brewfile
 }
 
 function install_homebrew_apps()
 {
   print_info "🖥️  GUI Apps"
-  cd "${WORKING_DIR}"/install/homebrew/gui-apps && brew bundle
-  cd "${WORKING_DIR}" || return
+  brew bundle --file "${WORKING_DIR}"/install/homebrew/gui-apps.Brewfile
 }
-
 
 function install_dev_apps()
 {
   print_info "🖥️  Dev GUI Apps"
   brew bundle --file "${WORKING_DIR}"/install/homebrew/dev-tools.Brewfile
-  #cd "${WORKING_DIR}"/install/homebrew/gui-apps && brew bundle
-  #cd "${WORKING_DIR}" || return
 }
 
 function install_appstore_apps()
 {
   print_info "🖥️  App Store Apps"
-  cd "${WORKING_DIR}"/install/homebrew/mac-app-store && brew bundle
-  cd "${WORKING_DIR}" || return
+  brew bundle --file "${WORKING_DIR}"/install/homebrew/mac-app-store.Brewfile
 }
 
 function setup_app_defaults()
