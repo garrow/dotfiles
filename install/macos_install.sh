@@ -49,6 +49,19 @@ function setup_app_defaults()
 {
   echo "Move Tab to New Window"
   defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Move Tab to New Window" "@~^n"
+
+  echo "Show path icon in Finder toolbar"
+  echo BEFORE
+  defaults read com.apple.finder "NSToolbar Configuration Browser" | grep com.apple.finder.PATH
+
+  defaults write com.apple.finder "$(defaults export com.apple.finder - | plutil -replace "NSToolbar Configuration Browser"."TB Item Identifiers" -json '["com.apple.finder.BACK", "com.apple.finder.PATH", "com.apple.finder.SWCH", "NSToolbarSpaceItem", "com.apple.finder.ARNG", "com.apple.finder.SHAR", "com.apple.finder.LABL", "com.apple.finder.ACTN", "NSToolbarSpaceItem", "com.apple.finder.SRCH"]' -o - -)"
+  echo AFTER
+  defaults read com.apple.finder "NSToolbar Configuration Browser" | grep com.apple.finder.PATH
+
+  echo Sensible units - Metric
+  defaults write 'Apple Global Domain' AppleTemperatureUnit Celsius
+  defaults write 'Apple Global Domain' AppleMetricUnits 1
+  defaults write 'Apple Global Domain' AppleICUDateFormatStrings -dict-add 1 "y-MM-dd"
 }
 
 function setup_apps()
