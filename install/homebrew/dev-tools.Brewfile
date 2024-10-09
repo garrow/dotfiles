@@ -5,6 +5,7 @@ cask_args appdir: '/Applications'
 ## Casks
 cask 'visual-studio-code'
 cask 'jetbrains-toolbox'
+brew 'nvm'
 #cask 'browserosaurus'
 
 #cask 'font-hasklug-nerd-font'
