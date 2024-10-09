@@ -3,6 +3,7 @@
 source /etc/profile
 
 export base_dotfiles_path="${HOME}/.dotfiles"
+export work_dotfiles_path="${HOME}/work/dotfiles"
 source "${base_dotfiles_path}/bootstrap.sh"
 
 export bash_bash_env_path=${base_dotfiles_path}/bash/

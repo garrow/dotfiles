@@ -30,6 +30,11 @@ function enable_debug_dotfiles() {
   export DEBUG_DOTFILES=true
 }
 
+if [[ -e "${HOME}/DEBUG_DOTFILES" ]]; then
+  echo "Found: ${HOME}/DEBUG_DOTFILES"
+  enable_debug_dotfiles
+fi
+
 export DEBUG_DOTFILES=${DEBUG_DOTFILES:=false}
 if [ "${DEBUG_DOTFILES}" = 'true' ]; then
   echo "🐛🐛🐛🐛$C_YELLOW ~~~~ In DEBUG_DOTFILES mode! ~~~~ $C_RESET🐛🐛🐛🐛"

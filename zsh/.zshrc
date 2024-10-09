@@ -61,7 +61,10 @@ load_shell_dependencies_from_directory "zsh:core"       "${ZDOTDIR}/core"
 load_shell_dependencies_from_directory "shared:plugins" "${base_dotfiles_path}/shared/plugins"
 load_shell_dependencies_from_directory "zsh:plugins"    "${ZDOTDIR}/plugins"
 
+# in-repo scratch file for new stuff
 load_dependency_file ${base_dotfiles_path}/scratch.rc.sh "core:scratch"
+# device local extras file for device specific commands
 load_dependency_file "${HOME}/.extras.rc.sh" "device-local:${HOME}/.extras.rc.sh"
 
-load_dependency_file "${HOME}/work/dotfiles/work.rc.sh" "work/dotfiles"
+# External dotfiles must provide an init.rc.sh entrypoint.
+load_dependency_file "${work_dotfiles_path}/init.rc.sh" "work/dotfiles"
