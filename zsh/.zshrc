@@ -63,3 +63,5 @@ load_shell_dependencies_from_directory "zsh:plugins"    "${ZDOTDIR}/plugins"
 
 load_dependency_file ${base_dotfiles_path}/scratch.rc.sh "core:scratch"
 load_dependency_file "${HOME}/.extras.rc.sh" "device-local:${HOME}/.extras.rc.sh"
+
+load_dependency_file "${HOME}/work/dotfiles/work.rc.sh" "work/dotfiles"
