@@ -17,7 +17,7 @@ function install_homebrew() {
 }
 
 function install_homebrew_cli() {
-  print_info "🖥️  CLI tools"
+  print_info "🖥️  command line tools"
   brew bundle --file "${WORKING_DIR}"/install/homebrew/command-line.Brewfile
 }
 
@@ -25,12 +25,6 @@ function install_homebrew_apps()
 {
   print_info "🖥️  GUI Apps"
   brew bundle --file "${WORKING_DIR}"/install/homebrew/gui-apps.Brewfile
-}
-
-function install_dev_apps()
-{
-  print_info "🖥️  Dev GUI Apps"
-  brew bundle --file "${WORKING_DIR}"/install/homebrew/dev-tools.Brewfile
 }
 
 function install_appstore_apps()

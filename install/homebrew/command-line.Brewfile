@@ -1,22 +1,31 @@
 cask_args appdir: '/Applications'
 
-brew 'chruby'
+# Terminal configs
+brew 'starship'
+brew 'shellcheck'
+brew 'tmux'
+
+# Utils
 brew 'ag'
-brew 'ruby-install'
 brew 'aspell'
-brew 'direnv'
+brew 'coreutils'
 brew 'dos2unix'
-#brew 'git'
+brew 'entr'
+brew 'git'
 brew 'miller'
 brew 'rg'
-brew 'shellcheck'
-brew 'starship'
-brew 'tldr'
+brew 'terminal-notifier'
 brew 'tree'
 brew 'wget'
-brew 'terminal-notifier'
-brew 'coreutils'
-brew 'neovim'
-brew 'tmux'
-brew 'entr'
+
+# Env Management
+brew 'chruby'
+brew 'ruby-install'
+brew 'direnv'
 brew 'pipx'
+brew 'nvm'
+
+
+# Trying out
+brew 'tldr'
+# brew 'neovim'

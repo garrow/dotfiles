@@ -1,29 +1,36 @@
 cask_args appdir: '/Applications'
 # tap 'homebrew/cask'
 # tap 'go-task/tap'
-#tap 'homebrew/cask-fonts'
 
-## Casks
-#cask '1password'
+# Custom fonts - no longer works?
+#tap 'homebrew/cask-fonts'
+#cask 'font-hasklug-nerd-font'
+
+##  Core Desktop environment
 cask 'contexts'
-cask 'firefox'
-cask 'iterm2'
-cask 'kindle'
 cask 'phoenix'
+cask 'iterm2'
+
+## Standard Apps
+# cask '1password'  # Only needed if not on standard desktop env
+cask 'firefox'
+cask 'kindle'
 cask 'soulver'
 cask 'spotify'
 cask 'typora'
-cask 'visual-studio-code'
-cask 'browserosaurus'
 cask 'logseq'
 
-#cask 'font-hasklug-nerd-font'
+## Dev tools
+cask 'visual-studio-code'
+cask 'jetbrains-toolbox'
 
-tap 'jakehilborn/jakehilborn'
-brew 'displayplacer'
-brew 'macvim'
+# # Displayplacer - command line display configs
+# tap 'jakehilborn/jakehilborn'
+# brew 'displayplacer'
 
 # Sometimes!
+# brew 'macvim'
+# cask 'browserosaurus' # Browser selector
 # cask 'bettertouchtool' # To split mousewheel scroll direction vs trackpad direction.
 # cask 'deckset'
 # cask 'docker'
