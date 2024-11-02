@@ -1,12 +1,12 @@
 PNPM_HOME_CANDIDATE="${HOME}/.local/share/pnpm"
+PNPM_HOME_CANDIDATE2="${HOME}/Library/pnpm"
+
 if [ -e "${PNPM_HOME_CANDIDATE}" ] ; then
-# pnpm
   export PNPM_HOME="${PNPM_HOME_CANDIDATE}"
-  case ":$PATH:" in
-    *":$PNPM_HOME:"*) ;;
-    *) export PATH="$PNPM_HOME:$PATH" ;;
-  esac
-# pnpm end
+  path+=("${PNPM_HOME}")
+elif [ -e "${PNPM_HOME_CANDIDATE2}" ] ; then
+  export PNPM_HOME="${PNPM_HOME_CANDIDATE2}"
+  path+=("${PNPM_HOME}")
 fi
 
 

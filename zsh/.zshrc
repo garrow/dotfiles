@@ -29,6 +29,8 @@ bindkey "\e[1;3D" backward-word
 
 setopt noCORRECT_ALL
 
+## Ensure path entries are unique
+typeset -U path PATH
 
 ## Setup shell completion
 autoload -Uz compinit
