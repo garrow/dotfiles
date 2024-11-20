@@ -29,3 +29,4 @@ brew 'nvm'
 # Trying out
 brew 'tldr'
 # brew 'neovim'
+brew 'mkcert'
