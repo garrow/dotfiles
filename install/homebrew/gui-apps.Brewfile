@@ -14,11 +14,12 @@ cask 'iterm2'
 ## Standard Apps
 # cask '1password'  # Only needed if not on standard desktop env
 cask 'firefox'
+cask 'homerow'
 cask 'kindle'
+cask 'logseq'
 cask 'soulver'
 cask 'spotify'
 cask 'typora'
-cask 'logseq'
 
 ## Dev tools
 cask 'visual-studio-code'
