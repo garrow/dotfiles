@@ -10,6 +10,10 @@
 command_timeout = 100
 #command_timeout = 100
 
+[cmake]
+disabled = true
+
+
 [ruby]
 symbol = "🔺 "
 

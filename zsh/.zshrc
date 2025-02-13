@@ -27,6 +27,10 @@ bindkey "\e[1;3C" forward-word
 bindkey "\e[1;3D" backward-word
 
 
+# Disable 'bracketed-paste' mode by default
+unset zle_bracketed_paste
+
+
 setopt noCORRECT_ALL
 
 ## Ensure path entries are unique

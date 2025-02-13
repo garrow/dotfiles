@@ -29,6 +29,7 @@ function install_configs() {
   install_zsh_config
   install_vim_config
   install_git_config
+  update_vim_plugins
 }
 
 function ensure_directories() {
@@ -80,6 +81,16 @@ function install_vim_config()
   ln -vsnf "${CONFIG_BASE_DIR}/vim/" "${HOME}/.vim"
   mkdir -p "${HOME}/tmp/vim"
 }
+
+function update_vim_plugins()
+{
+  print_info "VIM Plugins"
+  git submodule foreach git pull origin master
+
+
+
+}
+
 
 function install_git_config(){
   print_info "git config"
