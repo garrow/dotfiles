@@ -40,6 +40,7 @@ function ensure_directories() {
   touch "${HOME}/.extras.rc.sh"
 }
 
+# UNUSED:: Goal - use to symlink all files in a directory
 function link_dir_config(){
   local src_dir="${1:-NOT_EXIST}"
   local dest_dir="${2:-NOT_EXIST}"
