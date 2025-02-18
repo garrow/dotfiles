@@ -27,7 +27,18 @@ function is_debian() {
 function enable_debug_dotfiles() {
   echo "Enabling debug mode."
   echo "Use \`rld\` to reload now"
+
+  touch "${HOME}/DEBUG_DOTFILES"
   export DEBUG_DOTFILES=true
+}
+
+function disable_debug_dotfiles()
+{
+  echo "Disabling debug mode."
+  echo "Use \`rld\` to reload now"
+
+  export DEBUG_DOTFILES=false
+  rm "${HOME}/DEBUG_DOTFILES"
 }
 
 if [[ -e "${HOME}/DEBUG_DOTFILES" ]]; then
@@ -53,7 +64,12 @@ if [ "${DEBUG_DOTFILES}" = 'true' ]; then
     local dependency="${1/$HOME/${C_CYAN}~$C_RESET}"
     local descriptor="${2}"
 
-    printf "%3d $C_GREEN%-20s $C_WHITE%s$C_RESET\n" "${loaded_dependencies}" "${descriptor}" "${dependency}"
+    local timestamp="$__dotfiles_bench_last_start"
+    local now="$EPOCHREALTIME"
+    let distance=$((now - timestamp))
+    typeset -g __dotfiles_bench_last_start="$now"
+
+    printf "+%4fs %3d $C_GREEN%-20s $C_WHITE%s$C_RESET\n" "${distance}" "${loaded_dependencies}" "${descriptor}" "${dependency}"
   }
 else
   function track_dependency(){
@@ -66,7 +82,9 @@ else
   }
 fi
 
+
 declare -i loaded_dependencies=0
+typeset -g __dotfiles_bench_last_start="$EPOCHREALTIME"
 
 function load_dependency_file() {
   local dependency_file="${1}"
