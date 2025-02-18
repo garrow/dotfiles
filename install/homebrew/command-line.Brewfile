@@ -19,6 +19,7 @@ brew 'terminal-notifier'
 brew 'tree'
 brew 'wget'
 brew 'btop'
+brew 'gum'
 
 # Env Management
 brew 'chruby'
