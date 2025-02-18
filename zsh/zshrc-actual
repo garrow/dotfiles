@@ -1,6 +1,7 @@
 # Main config file
-# echo "zshrc"
-source "${base_dotfiles_path}/bootstrap.sh"
+
+# DEPENDS ON bootstrap
+# source "${base_dotfiles_path}/bootstrap.sh"
 
 setopt NO_CASE_GLOB
 setopt AUTO_CD
