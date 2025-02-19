@@ -1,0 +1,21 @@
+layout_conda() {
+    echo "ATTEMPTING TO AUTOLAYOUT CONDA 🔥🔥🔥🔥🔥🔥🔥 WHAT A PILE OF CRAP"
+
+    echo "JUST RUN $ conda activate ${1}"
+    # eval "$(conda shell.zsh activate)"
+
+#     source activate base
+
+#   if [ -n "$1" ]; then
+#     echo "Given ENV ${1}"
+#     # Explicit environment name from layout command.
+#     local env_name="$1"
+#     source activate ${env_name}
+#   elif (grep -q name: environment.yml); then
+#     # Detect environment name from `environment.yml` file in `.envrc` directory
+#     source activate `grep name: environment.yml | sed -e 's/name: //'`
+#   else
+#     (>&2 echo No environment specified);
+#     exit 1;
+#   fi;
+}

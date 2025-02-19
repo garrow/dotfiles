@@ -27,6 +27,7 @@ function install_configs() {
   ensure_directories
 
   install_zsh_config
+  install_direnv_config
   install_vim_config
   install_git_config
   update_vim_plugins
@@ -66,6 +67,12 @@ function install_zsh_config() {
 function install_awesome_config() {
   print_info "awesome"
   ln -vsnf "${CONFIG_BASE_DIR}"/awesome/ "${HOME}"/.config
+}
+
+
+function install_direnv_config() {
+  print_info "direnv"
+  ln -vsnf "${CONFIG_BASE_DIR}"/direnvrc "${HOME}"/.direnvrc
 }
 
 function install_zellij_config() {
