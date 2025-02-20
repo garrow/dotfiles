@@ -58,3 +58,6 @@ alias chmox='chmod +x'
 alias autoprune=__git_prune_automagic
 
 alias macos_reset_dns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+
+# List all paths, one to a line
+alias paths='echo $PATH | tr ":" "\n"'
