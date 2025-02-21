@@ -1,10 +1,3 @@
-
-# Define shim function to be replaced by `/usr/local/opt/nvm/nvm.sh`
-# An alias won't work, as nvm.sh bails: "nvm.sh:2963: defining function based on alias `nvm'""
-function nvm(){
-  __nvm_first_run
-}
-
 # Actually load nvm
 __load_nvm() 
 {
@@ -23,13 +16,25 @@ __load_nvm()
   fi
 }
 
-__nvm_first_run() {
-    # echo "🟢 Lazy loading nvm"
-    __load_nvm
 
-    echo "🟢 Done lazy loading nvm"
-    type nvm
-    if [ $# -gt  0 ]; then
-      nvm "$@"
-    fi
-}
+# Eager load or lazy load nvm
+if true; then
+  __load_nvm
+else
+  # Define shim function to be replaced by `/usr/local/opt/nvm/nvm.sh`
+  # An alias won't work, as nvm.sh bails: "nvm.sh:2963: defining function based on alias `nvm'""
+  function nvm() {
+    __nvm_first_run
+  }
+
+  function __nvm_first_run() {
+      # echo "🟢 Lazy loading nvm"
+      __load_nvm
+
+      echo "🟢 Done lazy loading nvm"
+      type nvm
+      if [ $# -gt  0 ]; then
+        nvm "$@"
+      fi
+  }
+fi
