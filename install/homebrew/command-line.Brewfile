@@ -20,6 +20,7 @@ brew 'tree'
 brew 'wget'
 brew 'btop'
 brew 'gum'
+brew 'fzf'
 
 # Env Management
 brew 'chruby'

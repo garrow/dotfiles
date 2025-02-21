@@ -7,7 +7,7 @@
 
 
 
-command_timeout = 100
+command_timeout = 50
 #command_timeout = 100
 
 [cmake]

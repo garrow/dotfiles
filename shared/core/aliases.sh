@@ -61,3 +61,15 @@ alias macos_reset_dns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSRespo
 
 # List all paths, one to a line
 alias paths='echo $PATH | tr ":" "\n"'
+
+# fzf to vim
+# https://github.com/junegunn/fzf#age
+#functio
+#alias fv='fzf --print0 | xargs -0 -o vim'
+
+function fv()
+{
+  local query="$@"
+
+  fzf --print0 --query="${query}" | xargs -0 -o vim
+}
