@@ -13,8 +13,8 @@ fi
 alias pld=__pnpm_launch_desktop
 function __pnpm_launch_desktop
 {
-  __set_iterm_tab_color 204 52 45
-  __set_iterm_jobname 'desktop-launcher'
+  tab spotify
+  __set_iterm_jobname 'pnppm launch:desktop'
   pnpm launch:desktop
   __reset_iterm_defaults
 }
@@ -22,8 +22,8 @@ function __pnpm_launch_desktop
 alias pdev=__pnpm_desktop_dev
 function __pnpm_desktop_dev
 {
-  __set_iterm_tab_color 204 52 45
-  __set_iterm_jobname 'desktop-launcher'
+  tab spotify
+  __set_iterm_jobname 'pnpm start:desktop'
   pnpm start:desktop
   __reset_iterm_defaults
 }
