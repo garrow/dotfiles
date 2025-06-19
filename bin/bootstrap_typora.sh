@@ -17,16 +17,47 @@ defaults read abnerworks.Typora NSUserKeyEquivalents
 # defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Heading 5" -string '@~5'
 # defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Heading 6" -string '@~6'
 
-defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Ordered List" -string '@$7'
-defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Unordered List" -string '@$8'
-defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Task List" -string '@$9'
+# defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Ordered List" -string '@$7'
+# defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Unordered List" -string '@$8'
+# defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Task List" -string '@$9'
 
 
 # defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Paragraph" -string '@~0'
 
+# @ represents the Command key (⌘).
+# ~ represents the Option key (⌥).
+# ^ represents the Control key (^).
+# $ represents the Shift key (⇧).
 
+defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Strong" -string '@b'
+defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Emphasis" -string '@i'
+defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Underline" -string '@u'
+# defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Code" -string '@`' # No good
+# defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Inline Math" -string '^m'
+defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Strike" -string '@$x'
+# defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Comment" -string '^/'  # Not needed
+# defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Hyperlink" -string '@k' # Same
+# defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Clear Format" -string '@\\' # Same
+defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Heading 1" -string '@~1'
+defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Heading 2" -string '@~2'
+defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Heading 3" -string '@~3'
+defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Heading 4" -string '@~4'
+defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Heading 5" -string '@~5'
+defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Heading 6" -string '@~6'
+defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Paragraph" -string '@~0'
+defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Increase Heading Level" -string '@+' # Same
+# defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Decrease Heading Level" -string '@-' # Same
+# defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Math Block" -string '@b'
+# defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Code Fences" -string '^+c'
+# defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Quote" -string '@>'
+defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Ordered List" -string '@$7'
+defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Unordered List" -string '@$8'
+defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Task List" -string '@$9'
+# defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Horizontal Line" -string '^~-'
 
-
+# Numbered list	⌘ + Shift + 7
+# Bulleted list	⌘ + Shift + 8
+# Checklist	⌘ + Shift + 9
 
 
 # defaults write abnerworks.Typora NSUserKeyEquivalents -dict-add "Ordered List" -string '@$7'
@@ -131,7 +162,7 @@ defaults read abnerworks.Typora NSUserKeyEquivalents
 # Exit current comment	U
 # Menus
 
-# Context (right-click) menu	
+# Context (right-click) menu
 # ⌘ + Shift + \
 # Shift + F10
 
