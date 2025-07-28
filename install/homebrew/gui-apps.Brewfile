@@ -10,6 +10,7 @@ cask_args appdir: '/Applications'
 cask 'contexts'
 cask 'phoenix'
 cask 'iterm2'
+cask 'macvim'
 
 ## Standard Apps
 # cask '1password'  # Only needed if not on standard desktop env
