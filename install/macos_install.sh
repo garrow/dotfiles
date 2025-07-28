@@ -35,8 +35,11 @@ function install_appstore_apps()
 
 function setup_app_defaults()
 {
-  echo "Move Tab to New Window"
+  echo "Chrome: Move Tab to New Window"
   defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Move Tab to New Window" "@~^n"
+
+  echo "Chrome: Group Tab"
+  defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Group Tab" "@~^b"
 
   echo "Show path icon in Finder toolbar"
   echo BEFORE
