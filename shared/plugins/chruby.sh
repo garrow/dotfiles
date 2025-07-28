@@ -1,11 +1,9 @@
-if [ -e /usr/local/share/chruby/chruby.sh ] ; then
-  load_dependency_file /usr/local/share/chruby/chruby.sh "plugin:chruby:core"
-  # debug_dotfiles "chruby"
-  # source /usr/local/share/chruby/chruby.sh
+if [ -e "${HOMEBREW_PREFIX}/share/chruby/chruby.sh" ] ; then
+  load_dependency_file "${HOMEBREW_PREFIX}/share/chruby/chruby.sh" "plugin:chruby:core"
+else
+  report_failed_depenency "chruby"
 fi
 
-if [ -e /usr/local/share/chruby/auto.sh ] ; then
-  load_dependency_file /usr/local/share/chruby/auto.sh "plugin:chruby:auto"
-  # debug_dotfiles "(auto)"
-  # source /usr/local/share/chruby/auto.sh
+if [ -e "${HOMEBREW_PREFIX}/share/chruby/auto.sh" ] ; then
+  load_dependency_file "${HOMEBREW_PREFIX}/share/chruby/auto.sh" "plugin:chruby:auto"
 fi
