@@ -28,7 +28,8 @@ alias cg=pcre2grep
 
 # Ack/Ag
 alias k='ag'
-alias af='ag -g'
+#alias af='ag -g'
+alias af='rg -l'
 
 alias isod='date +%Y.%m.%d.%R'
 alias isof='date +%Y%m%d%H%M'
