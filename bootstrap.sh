@@ -85,6 +85,15 @@ fi
 
 declare -i loaded_dependencies=0
 typeset -g __dotfiles_bench_last_start="$EPOCHREALTIME"
+declare failed_dependencies=()
+
+function report_failed_depenency() {
+  local failed_dependency="${1}"
+
+  failed_dependencies+=("${failed_dependency}")
+
+  echo "$C_RED🛑 ERROR! Failed during dependency: $C_YELLOW${failed_dependency}$C_RESET"
+}
 
 function load_dependency_file() {
   local dependency_file="${1}"
