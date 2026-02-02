@@ -5,6 +5,7 @@ function macos_install() {
   install_homebrew_cli
   install_homebrew_apps
   install_appstore_apps
+  install_work_specific_apps
   setup_apps
 }
 
@@ -31,6 +32,16 @@ function install_appstore_apps()
 {
   print_info "🖥️  App Store Apps"
   brew bundle --file "${WORKING_DIR}"/install/homebrew/mac-app-store.Brewfile
+}
+
+function install_work_specific_apps()
+{
+  print_info "Work specific apps"
+  if [ -e "${work_dotfiles_path}/install/dev-tools.Brewfile" ]; then
+    brew bundle --file "${work_dotfiles_path}/install/dev-tools.Brewfile"
+  else
+    print_error "No work dev-tools file found"
+  fi
 }
 
 function setup_app_defaults()
