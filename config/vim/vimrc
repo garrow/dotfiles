@@ -1,5 +1,5 @@
 " To disable a plugin, add it's bundle name to the following list
-let g:pathogen_disabled = ['vim-pandoc']
+let g:pathogen_disabled = ['vim-pandoc', 'gitgutter']
 
 
 set bg=dark
@@ -23,7 +23,7 @@ syntax on
 set encoding=utf-8
 "#set guifont=Menlo:h12
 "set guifont=Inconsolata-g:h16
-set guifont=Hasklig:h14
+"set guifont=Hasklig:h14
 " >> Ligatures Test -> <- -> $$ >>= /= == ++ -< >- -<< 
 " <* <*> <+> <$> *** <| |> <|> !! || === ==> <<< >>> <> +++ <- -> => >> << >>= =<< .. ... :: -< >- -<< >>- ++ /= ==
 
@@ -66,8 +66,12 @@ iabbrev gkb Garrow Bedrossian
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 
+
+
 " Comments
 autocmd FileType vim nnoremap <buffer> <localleader>c I" <esc>
+
+
 
 " StatusLine
 set laststatus=2
@@ -77,6 +81,7 @@ endif
 let g:lightline = {
       \ 'colorscheme': 'powerline',
       \ }
+
 
 " Enable automagic indentation
 " set smartindent
@@ -113,6 +118,9 @@ set splitbelow
 set splitright
 
 
+" Line numbers
+set number
+
 " Toggle relativenumber
 nnoremap <leader>r :set relativenumber!<cr>
 nnoremap <leader>n :set number!<cr>
@@ -123,8 +131,8 @@ set linebreak " Don't wrap in the middle of words
 " Enable semicolon ex commands
 nnoremap ; :
 
-" Marked Preview
-:nnoremap <leader>m :silent !open -a 'Marked 2.app' '%:p'<cr>
+" Markdown Preview
+:nnoremap <leader>m :silent !open -a 'Typora.app' '%:p'<cr>
 " Markdown Table Thing
 command! MDT execute 'normal {j' | execute 'Tabularize/|' | execute 'MarkdownHeader'
 command! MDRightTable execute 'normal {j' | execute 'Tabularize/|/r1' | execute 'MarkdownHeader'
@@ -180,7 +188,10 @@ function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
   \ contains=@'.group
 endfunction
 
+
 call TextEnableCodeSnip('xml', '@begin=```xml', '@end=```', 'SpecialComment')
+
+
 
 " Hide Vim windows on close
 " au VimLeave * maca hide:
@@ -225,6 +236,7 @@ let g:pandoc#syntax#conceal#use=1
 nnoremap <F5> :GundoToggle<CR>
 
 
+
 " Tabularize
 "
 if exists(":Tabularize")
@@ -241,33 +253,41 @@ let macvim_skip_colorscheme=1
 set rtp+=/usr/local/opt/fzf
 
 
+
 nnoremap <Leader>d :set bg=dark<CR>
 nnoremap <Leader>D :set bg=light<CR>
 
 " This works OK on linux, but is crap on macos
 " set clipboard=unnamedplus
+"
 
 " START pablopunk/native-sidebar.vim
 if !exists('g:native_sidebar_shortcut') | let g:native_sidebar_shortcut = '<c-b>' | en
 
+
 exe 'nnoremap <silent> ' g:native_sidebar_shortcut ' :Lexplore %:p:h<cr>'
 exe 'vnoremap <silent> ' g:native_sidebar_shortcut ' :Lexplore %:p:h<cr>'
 exe 'inoremap <silent> ' g:native_sidebar_shortcut ' <esc>:Lexplore %:p:h<cr>'
+
 
 augroup netrw_mapping
   autocmd!
   autocmd filetype netrw call NetrwMapping()
 augroup END
 
+
 function! NetrwMapping()
   nmap <buffer> <c-l> <c-w>l
 endfunction
+
 
 let g:netrw_altv=1
 let g:netrw_banner=0
 let g:netrw_winsize=20
 let g:netrw_liststyle=0
 let g:netrw_browse_split=0
-let g:netrw_list_hide='.*\.git/$,'.netrw_gitignore#Hide()
-" END pablopunk/native-sidebar.vim
 
+" 2025-05-20 three seconds on a large git repo???? " let g:netrw_list_hide='.*\.git/$,'.netrw_gitignore#Hide()
+let g:netrw_list_hide='.*\.git/$,'
+
+" END pablopunk/native-sidebar.vim
