@@ -21,6 +21,9 @@ brew 'wget'
 brew 'btop'
 brew 'gum'
 brew 'fzf'
+brew 'csvkit'
+brew 'visidata'
+brew 'plantuml'
 
 # Env Management
 brew 'chruby'
