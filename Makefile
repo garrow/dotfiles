@@ -1,8 +1,8 @@
-install: 
-	./first_install.sh
+install:
+	./setup.sh
 
 menu:
-	./first_install.sh menu
+	./setup.sh menu
 # install: install_zsh install_command_line_tools install_applications
 
 # install_zsh: 	install_zsh_files	install_core
@@ -49,7 +49,7 @@ test:
 
 
 # bootstrap:
-# 	./first_install.sh
+# 	./setup.sh
 
 check:
 	shellcheck ./*.sh

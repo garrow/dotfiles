@@ -8,10 +8,10 @@ My personal bash environment, slowly accreting functionality.
     cd ~/.dotfiles
 
     # For just shell scripts & config
-    ./first_install.sh
+    ./setup.sh
 
     # For apps
-    ./first_install.sh install
+    ./setup.sh install
 ## Features
 
 Git completion, lots of short aliases, dynamic rvm loading, pretty colours.

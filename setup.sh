@@ -166,7 +166,7 @@ function entry() {
     install_configs
     echo
     print_info "Installed configs only"
-    echo "Use \`./first_install.sh install\` to install apps"
+    echo "Use \`./setup.sh install\` to install apps"
 
   fi
 }
