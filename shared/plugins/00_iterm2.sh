@@ -60,6 +60,7 @@ function iterm2_set_user_var() {
 
 
 alias jobname="__set_iterm_jobname"
+alias iterm_clear="__reset_iterm_defaults"
 
 function tab() {
   case $1 in

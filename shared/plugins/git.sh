@@ -114,16 +114,19 @@ function git_branches_cool_list()
 
 function __git_prune_automagic()
 {
-  echo "Auto-pruning Git merged branches"
+  if [[ "$(git-current-branch)"  == "$(__git_main_branch)" ]]; then
+    echo "🪄 Auto-pruning Git merged branches"
+  else
+    echo "⏭️ Not pruning, not on the main branch"
+    return
+  fi
   __git_prune_merged_branches
   print_info "Orphan Branches"
   if [ command -v git-branch-delete-orphans &> /dev/null ]; then
-  git-branch-delete-orphans 
+  git-branch-delete-orphans
   else
     print_warning 'Missing command `git-branch-delete-orphans`'
   fi
-
-  
 }
 
 # Requires 
