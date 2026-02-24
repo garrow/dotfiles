@@ -10,7 +10,8 @@ cask_args appdir: '/Applications'
 cask 'contexts'
 cask 'phoenix'
 cask 'iterm2'
-cask 'macvim'
+# cask 'macvim' # Apparently no longer exists? 2026-02-24
+brew 'macvim'
 
 ## Standard Apps
 # cask '1password'  # Only needed if not on standard desktop env
