@@ -38,7 +38,8 @@ symbol = "⑂ "
 ignore_submodules = true
 
 [custom.git_author]
-# disabled = true
+#  disabled = true
+ignore_timeout = true
 command = 'git config --get user.email' # shows output of command
 style = 'dimmed white'
 symbol = ' @ '
