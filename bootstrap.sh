@@ -113,7 +113,7 @@ function load_shell_dependencies_from_directory() {
   local descriptor="${1}"
   local directory="${2}"
 
-  for dependency_file in $(find "${directory}" -name '*.sh' -type f)
+  for dependency_file in $(find "${directory}" -name '*.sh' -type f | sort)
   do
     load_dependency_file "$dependency_file" "${descriptor}"
   done
