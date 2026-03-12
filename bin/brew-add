@@ -1,0 +1,224 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+BREWFILE_DIR="${HOME}/.dotfiles/install/homebrew"
+
+# Colors
+bold=$(tput bold)
+reset=$(tput sgr0)
+green=$(tput setaf 2)
+red=$(tput setaf 1)
+cyan=$(tput setaf 6)
+dim=$(tput setaf 8)
+
+usage() {
+  echo "Usage: brew-add <formula|cask|owner/tap/formula>"
+  echo ""
+  echo "Add a Homebrew package to a Brewfile in your dotfiles."
+  echo ""
+  echo "Examples:"
+  echo "  brew-add mermaid-cli"
+  echo "  brew-add firefox"
+  echo "  brew-add gurgeous/tap/tennis"
+  exit 1
+}
+
+die() { echo "${red}Error:${reset} $1" >&2; exit 1; }
+
+# --- Parse input ---
+[[ $# -eq 1 ]] || usage
+input="$1"
+
+tap_name=""
+formula_name=""
+
+# Detect owner/tap/formula format
+if [[ "$input" == */* ]]; then
+  IFS='/' read -ra parts <<< "$input"
+  if [[ ${#parts[@]} -eq 3 ]]; then
+    tap_name="${parts[0]}/${parts[1]}"
+    formula_name="${parts[2]}"
+  elif [[ ${#parts[@]} -eq 2 ]]; then
+    # Could be a tap like "owner/repo" — pass through to brew info
+    formula_name="$input"
+  else
+    die "Unrecognized format: $input"
+  fi
+else
+  formula_name="$input"
+fi
+
+# --- Check if already in a Brewfile ---
+existing=$(grep -rl "'${formula_name}'" "${BREWFILE_DIR}"/*.Brewfile 2>/dev/null || true)
+if [[ -n "$existing" ]]; then
+  echo "${red}Already in Brewfile:${reset}"
+  for f in $existing; do
+    echo "  $(basename "$f"): $(grep "'${formula_name}'" "$f")"
+  done
+  exit 1
+fi
+
+# --- Handle tap if needed ---
+newly_tapped=false
+cleanup_tap() {
+  if [[ "$newly_tapped" == true && -n "$tap_name" ]]; then
+    echo "${dim}Cleaning up: untapping ${tap_name}...${reset}"
+    brew untap "$tap_name" 2>/dev/null || true
+  fi
+}
+
+if [[ -n "$tap_name" ]]; then
+  # Check if tap is already added
+  if brew tap | grep -qx "$tap_name" 2>/dev/null; then
+    newly_tapped=false
+  else
+    echo "${dim}Tapping ${tap_name}...${reset}"
+    brew tap "$tap_name" || die "Failed to tap ${tap_name}"
+    newly_tapped=true
+    trap cleanup_tap EXIT INT TERM
+  fi
+fi
+
+# --- Look up package info ---
+echo "${dim}Looking up ${input}...${reset}"
+
+json=$(brew info --json=v2 "$input" 2>/dev/null) || {
+  cleanup_tap
+  trap - EXIT INT TERM
+  die "Package not found: $input"
+}
+
+num_formulae=$(echo "$json" | python3 -c "import json,sys; print(len(json.load(sys.stdin).get('formulae',[])))")
+num_casks=$(echo "$json" | python3 -c "import json,sys; print(len(json.load(sys.stdin).get('casks',[])))")
+
+pkg_type=""
+pkg_name=""
+pkg_desc=""
+pkg_homepage=""
+pkg_version=""
+pkg_deps=""
+brewfile_line=""
+default_brewfile=""
+
+if [[ "$num_formulae" -gt 0 ]]; then
+  pkg_type="formula"
+  read -r pkg_name pkg_version <<< "$(echo "$json" | python3 -c "
+import json,sys
+f=json.load(sys.stdin)['formulae'][0]
+print(f['name'], f['versions']['stable'])
+")"
+  pkg_desc=$(echo "$json" | python3 -c "import json,sys; print(json.load(sys.stdin)['formulae'][0]['desc'])")
+  pkg_homepage=$(echo "$json" | python3 -c "import json,sys; print(json.load(sys.stdin)['formulae'][0]['homepage'])")
+  pkg_deps=$(echo "$json" | python3 -c "import json,sys; d=json.load(sys.stdin)['formulae'][0].get('dependencies',[]); print(', '.join(d) if d else 'none')")
+  brewfile_line="brew '${pkg_name}'"
+  default_brewfile="command-line.Brewfile"
+elif [[ "$num_casks" -gt 0 ]]; then
+  pkg_type="cask"
+  read -r pkg_name pkg_version <<< "$(echo "$json" | python3 -c "
+import json,sys
+c=json.load(sys.stdin)['casks'][0]
+print(c['token'], c['version'])
+")"
+  pkg_desc=$(echo "$json" | python3 -c "import json,sys; print(json.load(sys.stdin)['casks'][0]['desc'] or 'No description')")
+  pkg_homepage=$(echo "$json" | python3 -c "import json,sys; print(json.load(sys.stdin)['casks'][0]['homepage'])")
+  pkg_deps="n/a"
+  brewfile_line="cask '${pkg_name}'"
+  default_brewfile="gui-apps.Brewfile"
+else
+  die "No formula or cask found for: $input"
+fi
+
+# --- Show tap info if applicable ---
+if [[ -n "$tap_name" ]]; then
+  echo ""
+  echo "${bold}Tap: ${tap_name}${reset}"
+  brew tap-info "$tap_name" 2>/dev/null || echo "${dim}(tap not yet added — will be added to Brewfile)${reset}"
+  echo ""
+fi
+
+# --- Display info ---
+echo ""
+echo "${bold}${cyan}Adding ${pkg_type}: ${pkg_name}${reset} ${dim}(${pkg_version})${reset}"
+echo "${pkg_desc}"
+echo "${dim}${pkg_homepage}${reset}"
+if [[ "$pkg_type" == "formula" ]]; then
+  echo "${dim}Dependencies: ${pkg_deps}${reset}"
+fi
+
+# --- Select Brewfile ---
+echo ""
+brewfiles=()
+while IFS= read -r f; do
+  brewfiles+=("$(basename "$f")")
+done < <(find "$BREWFILE_DIR" -name '*.Brewfile' -not -name '*.lock.*' | sort)
+
+if command -v gum &>/dev/null; then
+  selected=$(printf '%s\n' "${brewfiles[@]}" | gum choose --header "Add to which Brewfile?" --selected "$default_brewfile")
+else
+  echo "Add to which Brewfile?"
+  for i in "${!brewfiles[@]}"; do
+    marker=""
+    [[ "${brewfiles[$i]}" == "$default_brewfile" ]] && marker=" ${green}(default)${reset}"
+    echo "  $((i+1)). ${brewfiles[$i]}${marker}"
+  done
+  echo ""
+  read -rp "Choice [$(basename "$default_brewfile")]: " choice
+  if [[ -z "$choice" ]]; then
+    selected="$default_brewfile"
+  elif [[ "$choice" =~ ^[0-9]+$ ]] && (( choice >= 1 && choice <= ${#brewfiles[@]} )); then
+    selected="${brewfiles[$((choice-1))]}"
+  else
+    die "Invalid choice: $choice"
+  fi
+fi
+
+target_file="${BREWFILE_DIR}/${selected}"
+
+# --- Preview diff ---
+echo ""
+echo "${bold}Will append to ${selected}:${reset}"
+if [[ -n "$tap_name" ]]; then
+  if grep -q "'${tap_name}'" "$target_file" 2>/dev/null; then
+    echo "  ${dim}  tap '${tap_name}' (already present)${reset}"
+  else
+    echo "  ${green}+ tap '${tap_name}'${reset}"
+  fi
+fi
+echo "  ${green}+ ${brewfile_line}${reset}"
+
+# --- Confirm ---
+echo ""
+if command -v gum &>/dev/null; then
+  gum confirm "Apply changes?" || { echo "Cancelled."; cleanup_tap; trap - EXIT INT TERM; exit 0; }
+else
+  read -rp "Apply changes? [y/N] " yn
+  [[ "$yn" =~ ^[Yy]$ ]] || { echo "Cancelled."; cleanup_tap; trap - EXIT INT TERM; exit 0; }
+fi
+
+# --- Write ---
+if [[ -n "$tap_name" ]]; then
+  if ! grep -q "'${tap_name}'" "$target_file" 2>/dev/null; then
+    echo "tap '${tap_name}'" >> "$target_file"
+  fi
+fi
+echo "$brewfile_line" >> "$target_file"
+
+# Tap is now persisted in Brewfile — don't untap on exit
+newly_tapped=false
+trap - EXIT INT TERM
+
+echo ""
+echo "${green}✓${reset} Added to ${selected}"
+
+# --- Offer to install ---
+echo ""
+if command -v gum &>/dev/null; then
+  if gum confirm "Run brew bundle now?"; then
+    brew bundle --file="$target_file"
+  fi
+else
+  read -rp "Run brew bundle now? [y/N] " yn
+  if [[ "$yn" =~ ^[Yy]$ ]]; then
+    brew bundle --file="$target_file"
+  fi
+fi
