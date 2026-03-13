@@ -124,6 +124,44 @@ Dependencies split by purpose for selective installation:
 - `gui-apps.Brewfile` — Desktop apps (Firefox, MacVim, 1Password, etc.)
 - `mac-app-store.Brewfile` — App Store apps
 
+### Dotfiles lock/unlock ([`zsh/core/functions.sh`](zsh/core/functions.sh))
+
+Since `.zshrc` is symlinked from the repo, external tools (installers, language managers, etc.) sometimes silently append lines to it. The lock/unlock mechanism prevents this:
+
+```sh
+dotfiles lock      # chmod a-w — makes .zshrc read-only
+dotfiles unlock    # chmod u+w — makes it writable again for intentional edits
+```
+
+When locked, any tool that tries to modify `.zshrc` will fail with a permission error instead of silently polluting the file. As an extra safety net, `.zshrc` itself checks for uncommitted changes on every shell startup and warns you:
+
+```
+⚠ .zshrc has uncommitted changes! Run 'git -C ~/.dotfiles diff zsh/.zshrc' to inspect.
+```
+
+The actual shell configuration lives in [`zsh/zshrc-actual`](zsh/zshrc-actual) — `.zshrc` is kept as a thin, lockable shim that sources it.
+
+### Debug mode ([`bootstrap.sh`](bootstrap.sh))
+
+When shell startup feels slow, enable debug mode to get per-plugin load times:
+
+```sh
+enable_debug_dotfiles    # Creates ~/DEBUG_DOTFILES sentinel, reload to activate
+rld                      # Reload the shell
+disable_debug_dotfiles   # Removes sentinel
+```
+
+In normal mode, the loader shows a braille spinner as plugins load. In debug mode, each plugin prints its load time:
+
+```
++0.002s   1 shared:core         ~/.dotfiles/shared/core/aliases.sh
++0.001s   2 shared:core         ~/.dotfiles/shared/core/functions.sh
++0.045s   3 shared:plugins      ~/.dotfiles/shared/plugins/01_shim_nvm.sh
+...
+```
+
+This is what led to the `01_shim_*.sh` lazy-loading pattern — the timing revealed that nvm, sdkman, and conda were each adding 200-500ms to shell startup.
+
 ### Vim config ([`config/vim/`](config/vim/))
 
 Plugins managed as git submodules under `config/vim/bundle/`. Includes Pathogen, lightline, surround, vim-rails, ctrlp, and markdown support. Leader-key dark/light mode toggle.
