@@ -133,6 +133,8 @@ nnoremap ; :
 
 " Markdown Preview
 :nnoremap <leader>m :silent !open -a 'Typora.app' '%:p'<cr>
+" Open current file in MacVim
+:nnoremap <leader>v :silent !mvim '%:p'<cr>
 " Markdown Table Thing
 command! MDT execute 'normal {j' | execute 'Tabularize/|' | execute 'MarkdownHeader'
 command! MDRightTable execute 'normal {j' | execute 'Tabularize/|/r1' | execute 'MarkdownHeader'
@@ -142,10 +144,11 @@ command! MarkdownColumnCount s/\v\|//eng
 " Markdown Surround BOLD
 let g:surround_{char2nr('o')} = "**\r**"
 
-command! MDHeading1 execute 'normal Yp' | s/[^|]/=/g
-command! MDHeading2 execute 'normal Yp' | s/[^|]/-/g
-nnoremap <leader>1 :MDHeading1 <cr>
-nnoremap <leader>2 :MDHeading2 <cr>
+" Markdown headings (hash style)
+nnoremap <leader>1 :s/^#*\s*//e<CR>I# <Esc>
+nnoremap <leader>2 :s/^#*\s*//e<CR>I## <Esc>
+nnoremap <leader>3 :s/^#*\s*//e<CR>I### <Esc>
+nnoremap <leader>4 :s/^#*\s*//e<CR>I#### <Esc>
 nnoremap <leader>tt :MDT <cr>
 nnoremap <leader>ty :MDRightTable <cr>
 

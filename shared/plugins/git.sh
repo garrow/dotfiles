@@ -46,9 +46,9 @@ alias gd='git diff --color'
 alias gds='git diff --color --staged '
 
 # Operate Patchwise (Interactively)
-alias gap='git add --patch'
-alias grp='git reset --patch'
-alias gcp='git checkout --patch'
+alias gap='git add --patch' # Stage
+alias grp='git reset --patch' # Unstage
+alias gcp='git checkout --patch' # Discard
 alias gvp=gcp
 alias gsp='git stash save --patch'
 
@@ -129,7 +129,7 @@ function __git_prune_automagic()
   fi
 }
 
-# Requires 
+# Requires
 # a git `origin` you have write access to
 # a git remote `upstream` you want to keep in sync
 function git-sync-upstream() {
@@ -156,6 +156,6 @@ function git-sync-upstream() {
   end_task
 
   start_task "Push ${origin}"
-  git push  --verbose "${origin}" "${main_branch}" 
+  git push  --verbose "${origin}" "${main_branch}"
   end_task
 }
