@@ -1,3 +1,5 @@
+# Aliases for the terminal, or shared everday things.
+# Aliases for specific tools can live in the plugin file for that tool, e.g. git
 
 # ls config
 export CLICOLOR=1
@@ -8,13 +10,18 @@ alias l="ls_custom"      # Sort by filename (default)
 alias lr="ls_custom -t"  # Sort by recent
 alias ll="ls_custom -a"  # Everything
 
+# Quality of Life
+
+alias chmox='chmod +x' # Make thing executable
+
 alias md5sum='md5 -r'
 alias o="open"
 
+# MacOS specific
 alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
+alias macos_reset_dns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 
 
-# echo "aliases"
 ### Butterfingers
 alias cd..='cd ..'
 alias xx='cd ..'
@@ -31,12 +38,14 @@ alias k='ag'
 #alias af='ag -g'
 alias af='rg -l'
 
+# Dates
 alias isod='date +%Y.%m.%d.%R'
 alias isof='date +%Y%m%d%H%M'
 alias timetag='date +%Y%m%d%H%M%S'
 alias datestamp='date +%Y-%m-%d_%H%M'
 alias tod='date +%H:%M:%S'
 
+# Filters
 alias newest='ls -t | head -n1'
 
 ### Misc tools
@@ -58,11 +67,8 @@ function dotfiles() {
   cd ~/.dotfiles/
 }
 
-alias chmox='chmod +x'
 
 alias autoprune=__git_prune_automagic
-
-alias macos_reset_dns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 
 # List all paths, one to a line
 alias paths='echo $PATH | tr ":" "\n"'
