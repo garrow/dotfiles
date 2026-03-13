@@ -61,11 +61,6 @@ alias p=python
 
 ## Shortcuts
 alias typora='open -a Typora.app'
-function dotfiles() {
-  __set_iterm_jobname "~/.dotfiles"
-  __set_iterm_tab_color 85 85 105
-  cd ~/.dotfiles/
-}
 
 
 alias autoprune=__git_prune_automagic
