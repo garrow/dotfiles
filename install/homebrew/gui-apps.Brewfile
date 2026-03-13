@@ -27,6 +27,7 @@ cask 'typora'
 cask 'visual-studio-code'
 cask 'jetbrains-toolbox'
 
+
 # # Displayplacer - command line display configs
 # tap 'jakehilborn/jakehilborn'
 # brew 'displayplacer'
@@ -46,3 +47,6 @@ cask 'jetbrains-toolbox'
 # cask 'transmission'
 # cask 'twine'
 # cask 'vlc'
+cask 'zed'
+tap 'PeonPing/tap'
+brew 'peon-ping'
