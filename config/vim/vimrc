@@ -1,3 +1,26 @@
+"2025-05-20 At the very beginning of your .vimrc
+" let s:log_file = expand('~/.vim_startup_log_vimrc.txt') " Define your log file path
+" let s:start_time = reltime()
+
+" Function to append a message to the log file
+" function! s:LogStartupTime(message)
+"     let l:current_time = reltime()
+"     let l:elapsed_since_start = reltimestr(reltime(s:start_time))
+"     let l:prev_time = exists('s:last_log_time') ? s:last_log_time : s:start_time
+"     let l:elapsed_since_prev = reltimestr(reltime(l:prev_time))
+"     let s:last_log_time = l:current_time
+"
+"     let l:log_entry = printf("%-50s | Total: %s | Section: %s", a:message, l:elapsed_since_start, l:elapsed_since_prev)
+"     call writefile([l:log_entry], s:log_file, 'a')
+" endfunction
+
+" Clear the log file on startup if it exists
+" if filereadable(s:log_file)
+"    call delete(s:log_file)
+" endif
+" call s:LogStartupTime("START")
+
+
 " To disable a plugin, add it's bundle name to the following list
 let g:pathogen_disabled = ['vim-pandoc', 'gitgutter']
 
