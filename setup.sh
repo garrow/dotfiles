@@ -93,10 +93,19 @@ function install_vim_config()
 function update_vim_plugins()
 {
   print_info "VIM Plugins"
-  git submodule foreach git pull origin master
-
-
-
+  git submodule foreach --quiet '
+    name=$(basename "$sm_path")
+    printf "🚧 %s ... " "$name"
+    output=$(git pull origin master 2>&1)
+    if echo "$output" | grep -q "Already up to date"; then
+      printf "✅\n"
+    else
+      printf "⬆️\n"
+    fi
+    if [ "${DEBUG_DOTFILES}" = "true" ]; then
+      echo "$output"
+    fi
+  '
 }
 
 
