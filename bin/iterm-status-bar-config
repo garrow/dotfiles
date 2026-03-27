@@ -1,0 +1,138 @@
+#!/usr/bin/env bash
+# Configure iTerm2 status bar layout via PlistBuddy.
+# Run this once (or after a fresh install) to set up the status bar components.
+# iTerm2 must be restarted (or the profile reloaded) for changes to take effect.
+
+set -euo pipefail
+
+PLIST="$HOME/Library/Preferences/com.googlecode.iterm2.plist"
+PB="/usr/libexec/PlistBuddy"
+
+if [[ ! -f "$PLIST" ]]; then
+  echo "Error: iTerm2 plist not found at $PLIST"
+  echo "Is iTerm2 installed?"
+  exit 1
+fi
+
+PROFILE_INDEX=0
+PREFIX=":New Bookmarks:${PROFILE_INDEX}"
+
+echo "Configuring iTerm2 status bar for profile index ${PROFILE_INDEX}..."
+
+# Enable the status bar
+$PB -c "Set '${PREFIX}:Show Status Bar' 1" "$PLIST" 2>/dev/null \
+  || $PB -c "Add '${PREFIX}:Show Status Bar' integer 1" "$PLIST"
+
+# Clear existing Status Bar Layout if present
+$PB -c "Delete '${PREFIX}:Status Bar Layout'" "$PLIST" 2>/dev/null || true
+
+# Create the top-level layout dictionary
+$PB -c "Add '${PREFIX}:Status Bar Layout' dict" "$PLIST"
+
+LAYOUT="${PREFIX}:Status Bar Layout"
+ADV="${LAYOUT}:advanced configuration"
+
+# Advanced configuration (shared across all components)
+$PB -c "Add '${ADV}' dict" "$PLIST"
+$PB -c "Add '${ADV}:algorithm' integer 0" "$PLIST"
+$PB -c "Add '${ADV}:auto-rainbow style' integer 0" "$PLIST"
+$PB -c "Add '${ADV}:font' string '.AppleSystemUIFont 12'" "$PLIST"
+$PB -c "Add '${ADV}:remove empty components' bool true" "$PLIST"
+
+# Components array
+$PB -c "Add '${LAYOUT}:components' array" "$PLIST"
+
+COMP="${LAYOUT}:components"
+
+# Helper: add the shared layout advanced config dict to a component's configuration
+add_layout_advanced_config() {
+  local base="$1"
+  $PB -c "Add '${base}:layout advanced configuration dictionary value' dict" "$PLIST"
+  local lac="${base}:layout advanced configuration dictionary value"
+  $PB -c "Add '${lac}:algorithm' integer 0" "$PLIST"
+  $PB -c "Add '${lac}:auto-rainbow style' integer 0" "$PLIST"
+  $PB -c "Add '${lac}:font' string '.AppleSystemUIFont 12'" "$PLIST"
+  $PB -c "Add '${lac}:remove empty components' bool true" "$PLIST"
+}
+
+# Helper: add common knobs (compression resistance, priority, max/min width)
+add_base_knobs() {
+  local knobs="$1"
+  $PB -c "Add '${knobs}:base: compression resistance' real 1" "$PLIST"
+  $PB -c "Add '${knobs}:base: priority' real 5" "$PLIST"
+  $PB -c "Add '${knobs}:maxwidth' real inf" "$PLIST"
+  $PB -c "Add '${knobs}:minwidth' real 0" "$PLIST"
+}
+
+# --- Component 0: Working Directory ---
+idx=0
+$PB -c "Add '${COMP}:${idx}' dict" "$PLIST"
+$PB -c "Add '${COMP}:${idx}:class' string 'iTermStatusBarWorkingDirectoryComponent'" "$PLIST"
+$PB -c "Add '${COMP}:${idx}:configuration' dict" "$PLIST"
+cfg="${COMP}:${idx}:configuration"
+$PB -c "Add '${cfg}:knobs' dict" "$PLIST"
+add_base_knobs "${cfg}:knobs"
+$PB -c "Add '${cfg}:knobs:path' string 'path'" "$PLIST"
+add_layout_advanced_config "$cfg"
+
+# --- Component 1: Git Branch ---
+idx=1
+$PB -c "Add '${COMP}:${idx}' dict" "$PLIST"
+$PB -c "Add '${COMP}:${idx}:class' string 'iTermStatusBarGitComponent'" "$PLIST"
+$PB -c "Add '${COMP}:${idx}:configuration' dict" "$PLIST"
+cfg="${COMP}:${idx}:configuration"
+$PB -c "Add '${cfg}:knobs' dict" "$PLIST"
+add_base_knobs "${cfg}:knobs"
+$PB -c "Add '${cfg}:knobs:iTermStatusBarGitComponentPollingIntervalKey' real 2" "$PLIST"
+add_layout_advanced_config "$cfg"
+
+# --- Component 2: Current Job ---
+idx=2
+$PB -c "Add '${COMP}:${idx}' dict" "$PLIST"
+$PB -c "Add '${COMP}:${idx}:class' string 'iTermStatusBarJobComponent'" "$PLIST"
+$PB -c "Add '${COMP}:${idx}:configuration' dict" "$PLIST"
+cfg="${COMP}:${idx}:configuration"
+$PB -c "Add '${cfg}:knobs' dict" "$PLIST"
+add_base_knobs "${cfg}:knobs"
+add_layout_advanced_config "$cfg"
+
+# --- Component 3: Swifty String - user.jobName ---
+idx=3
+$PB -c "Add '${COMP}:${idx}' dict" "$PLIST"
+$PB -c "Add '${COMP}:${idx}:class' string 'iTermStatusBarSwiftyStringComponent'" "$PLIST"
+$PB -c "Add '${COMP}:${idx}:configuration' dict" "$PLIST"
+cfg="${COMP}:${idx}:configuration"
+$PB -c "Add '${cfg}:knobs' dict" "$PLIST"
+add_base_knobs "${cfg}:knobs"
+$PB -c "Add '${cfg}:knobs:expression' string '\\(user.jobName)'" "$PLIST"
+$PB -c "Add '${cfg}:knobs:shared font' string ''" "$PLIST"
+add_layout_advanced_config "$cfg"
+
+# --- Component 4: Swifty String - user.attentionNeeded (with custom color) ---
+idx=4
+$PB -c "Add '${COMP}:${idx}' dict" "$PLIST"
+$PB -c "Add '${COMP}:${idx}:class' string 'iTermStatusBarSwiftyStringComponent'" "$PLIST"
+$PB -c "Add '${COMP}:${idx}:configuration' dict" "$PLIST"
+cfg="${COMP}:${idx}:configuration"
+$PB -c "Add '${cfg}:knobs' dict" "$PLIST"
+add_base_knobs "${cfg}:knobs"
+$PB -c "Add '${cfg}:knobs:expression' string '\\(user.attentionNeeded)'" "$PLIST"
+$PB -c "Add '${cfg}:knobs:shared font' string ''" "$PLIST"
+# Custom salmon/pink text color (P3 color space)
+color="${cfg}:knobs:shared text color"
+$PB -c "Add '${color}' dict" "$PLIST"
+$PB -c "Add '${color}:Alpha Component' real 1" "$PLIST"
+$PB -c "Add '${color}:Blue Component' real 0.364705890417099" "$PLIST"
+$PB -c "Add '${color}:Color Space' string 'P3'" "$PLIST"
+$PB -c "Add '${color}:Green Component' real 0.4901960790157318" "$PLIST"
+$PB -c "Add '${color}:Red Component' real 0.800000011920929" "$PLIST"
+add_layout_advanced_config "$cfg"
+
+echo "Done. Status bar configured with 5 components:"
+echo "  0: Working Directory"
+echo "  1: Git Branch (polls every 2s)"
+echo "  2: Current Job"
+echo "  3: Swifty String — \\(user.jobName)"
+echo "  4: Swifty String — \\(user.attentionNeeded) [salmon text]"
+echo ""
+echo "Restart iTerm2 for changes to take effect."

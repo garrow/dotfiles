@@ -30,6 +30,8 @@ function install_configs() {
   install_direnv_config
   install_vim_config
   install_git_config
+  install_iterm2_scripts
+  install_iterm2_status_bar
   update_vim_plugins
 }
 
@@ -115,6 +117,19 @@ function install_git_config(){
   ln -vsnf "${CONFIG_BASE_DIR}/git/gitignore_global" "${HOME}"/.gitignore_global
 }
 
+function install_iterm2_scripts(){
+  print_info "iTerm2 scripts"
+  defaults write com.googlecode.iterm2 EnableAPIServer -bool true
+  local iterm2_autolaunch="${HOME}/Library/Application Support/iTerm2/Scripts/AutoLaunch"
+  mkdir -p "${iterm2_autolaunch}"
+  ln -vsnf "${CONFIG_BASE_DIR}/iterm2/claude_pending.py" "${iterm2_autolaunch}/claude_pending.py"
+}
+
+function install_iterm2_status_bar(){
+  print_info "iTerm2 status bar"
+  "${WORKING_DIR}/bin/iterm-status-bar-config"
+}
+
 # ------------- Only available by menu choice -------
 
 #  Unused, but available via menu
@@ -155,7 +170,7 @@ function menu() {
 }
 
 # Echo a no-op to allow selecting any item
-sub_commands=(install install_configs install_zsh_config install_bash_config install_homebrew_apps install_homebrew_cli check_repo_config setup_app_defaults echo)
+sub_commands=(install install_configs install_zsh_config install_bash_config install_homebrew_apps install_homebrew_cli check_repo_config setup_app_defaults install_iterm2_status_bar echo)
 
 function entry() {
   if [[ "$1" == "menu" ]]; then
