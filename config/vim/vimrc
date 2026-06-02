@@ -155,7 +155,7 @@ set linebreak " Don't wrap in the middle of words
 nnoremap ; :
 
 " Markdown Preview
-:nnoremap <leader>m :silent !open -a 'Typora.app' '%:p'<cr>:redraw!<cr>
+:nnoremap <leader>t :silent !open -a 'Typora.app' '%:p'<cr>:redraw!<cr>
 " Open current file in MacVim
 :nnoremap <leader>v :silent !mvim '%:p'<cr>
 " Markdown Table Thing
