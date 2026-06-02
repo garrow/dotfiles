@@ -155,7 +155,7 @@ set linebreak " Don't wrap in the middle of words
 nnoremap ; :
 
 " Markdown Preview
-:nnoremap <leader>m :silent !open -a 'Typora.app' '%:p'<cr>
+:nnoremap <leader>m :silent !open -a 'Typora.app' '%:p'<cr>:redraw!<cr>
 " Open current file in MacVim
 :nnoremap <leader>v :silent !mvim '%:p'<cr>
 " Markdown Table Thing
@@ -168,10 +168,10 @@ command! MarkdownColumnCount s/\v\|//eng
 let g:surround_{char2nr('o')} = "**\r**"
 
 " Markdown headings (hash style)
-nnoremap <leader>1 :s/^#*\s*//e<CR>I# <Esc>
-nnoremap <leader>2 :s/^#*\s*//e<CR>I## <Esc>
-nnoremap <leader>3 :s/^#*\s*//e<CR>I### <Esc>
-nnoremap <leader>4 :s/^#*\s*//e<CR>I#### <Esc>
+nnoremap <leader>1 :s/^#*\s*//e<CR>I# <Esc>:if getline('.') ==# '# '<Bar>startinsert!<Bar>endif<CR>
+nnoremap <leader>2 :s/^#*\s*//e<CR>I## <Esc>:if getline('.') ==# '## '<Bar>startinsert!<Bar>endif<CR>
+nnoremap <leader>3 :s/^#*\s*//e<CR>I### <Esc>:if getline('.') ==# '### '<Bar>startinsert!<Bar>endif<CR>
+nnoremap <leader>4 :s/^#*\s*//e<CR>I#### <Esc>:if getline('.') ==# '#### '<Bar>startinsert!<Bar>endif<CR>
 nnoremap <leader>tt :MDT <cr>
 nnoremap <leader>ty :MDRightTable <cr>
 
