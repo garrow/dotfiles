@@ -30,6 +30,7 @@ function install_configs() {
   install_direnv_config
   install_vim_config
   install_git_config
+  install_yazi_config
   install_iterm2_scripts
   install_iterm2_status_bar
   update_vim_plugins
@@ -116,6 +117,15 @@ function install_git_config(){
   ln -vsnf "${CONFIG_BASE_DIR}/git/gitconfig" "${HOME}"/.gitconfig
   ln -vsnf "${CONFIG_BASE_DIR}/git/gitignore_global" "${HOME}"/.gitignore_global
 }
+
+
+
+function install_yazi_config(){
+  print_info "yazi config"
+  ln -vsnf "${CONFIG_BASE_DIR}/yazi/" "${HOME}"/.config
+}
+
+
 
 function install_iterm2_scripts(){
   print_info "iTerm2 scripts"
