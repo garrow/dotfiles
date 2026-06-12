@@ -25,6 +25,9 @@ brew 'fzf'
 brew 'csvkit'
 brew 'visidata'
 brew 'plantuml'
+brew 'fd'
+brew 'yazi'
+
 
 # Env Management
 brew 'chruby'

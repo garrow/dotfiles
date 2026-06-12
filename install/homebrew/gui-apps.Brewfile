@@ -28,6 +28,10 @@ cask 'visual-studio-code'
 cask 'jetbrains-toolbox'
 
 
+## Custom fonts
+cask 'font-atkinson-hyperlegible-next'
+cask 'font-atkinson-hyperlegible-mono'
+
 # # Displayplacer - command line display configs
 # tap 'jakehilborn/jakehilborn'
 # brew 'displayplacer'
