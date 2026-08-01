@@ -56,7 +56,7 @@ set encoding=utf-8
 "endif
 
 " Enable mouse in visual mode
-" set mouse=n
+set mouse=n
 " Show partially completed command sequences in bottom row.
 set showcmd
 
