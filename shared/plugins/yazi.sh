@@ -1,5 +1,8 @@
 # shellcheck shell=bash
 
+# Custom config dir
+export YAZI_CONFIG_HOME=${base_dotfiles_path}/config/yazi
+
 # Yazi helper function to change current directory on exit.
 #  - `q` to quit with CWD changed.
 #  - `Q` to quit without changing.
