@@ -10,7 +10,8 @@
 #   .local.dev domains (a real-ish domain name, to allow for HSTS locked Google SSO redirects)
 
 # List of TLDs that puma-dev will support by default.
-puma_domains_supported='test:local.dev'
+# puma_domains_supported='test:local.dev' ## .dev is now locked out by HSTS on chrome.
+puma_domains_supported='test'
 
 # Main Entry Point, is invoked at the end of the file.
 function main() {
