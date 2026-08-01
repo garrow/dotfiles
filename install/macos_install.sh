@@ -52,6 +52,9 @@ function setup_app_defaults()
   echo "Chrome: Group Tab"
   defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Group Tab" "@~^b"
 
+  echo "Chrome: Show Tabs Vertically"
+  defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Show Tabs Vertically" "@~t"
+
   echo "Show path icon in Finder toolbar"
   echo BEFORE
   defaults read com.apple.finder "NSToolbar Configuration Browser" | grep com.apple.finder.PATH
