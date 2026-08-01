@@ -132,7 +132,6 @@ function install_iterm2_scripts(){
   defaults write com.googlecode.iterm2 EnableAPIServer -bool true
   local iterm2_autolaunch="${HOME}/Library/Application Support/iTerm2/Scripts/AutoLaunch"
   mkdir -p "${iterm2_autolaunch}"
-  ln -vsnf "${CONFIG_BASE_DIR}/iterm2/claude_pending.py" "${iterm2_autolaunch}/claude_pending.py"
 }
 
 function install_iterm2_status_bar(){

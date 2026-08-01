@@ -6,6 +6,8 @@
 # __set_iterm_tab_color 40 40 40   # Dark Grey
 # __set_iterm_tab_color 20 224 110 # Kickstarter Green
 # __set_iterm_tab_color 30 215 96  # Spotify Green
+# __set_iterm_tab_color 204 125 93 # Claude Orange
+#
 function __set_iterm_tab_color
 {
   local red=$1
