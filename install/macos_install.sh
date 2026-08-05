@@ -52,7 +52,7 @@ function setup_app_defaults()
   echo "Chrome: Group Tab"
   defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Group Tab" "@~^b"
 
-  echo "Chrome: Show Tabs Vertically"
+  echo "Chrome: Show Tabs Vertically Cmd+alt+t"
   defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Show Tabs Vertically" "@~t"
 
   echo "Show path icon in Finder toolbar"
