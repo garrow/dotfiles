@@ -55,6 +55,9 @@ function setup_app_defaults()
   echo "Chrome: Show Tabs Vertically Cmd+alt+t"
   defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Show Tabs Vertically" "@~t"
 
+  echo "Chrome: Rename window"
+  defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Name Window..." "@~^w"
+
   echo "Show path icon in Finder toolbar"
   echo BEFORE
   defaults read com.apple.finder "NSToolbar Configuration Browser" | grep com.apple.finder.PATH
@@ -67,6 +70,11 @@ function setup_app_defaults()
   defaults write 'Apple Global Domain' AppleTemperatureUnit Celsius
   defaults write 'Apple Global Domain' AppleMetricUnits 1
   defaults write 'Apple Global Domain' AppleICUDateFormatStrings -dict-add 1 "y-MM-dd"
+
+
+  echo "Three finger/four finger swipes instead of 2/3"
+  defaults write 'com.apple.AppleMultitouchTrackpad' TrackpadThreeFingerHorizSwipeGesture 1
+  defaults write 'com.apple.AppleMultitouchTrackpad' TrackpadFourFingerHorizSwipeGesture 2
 }
 
 function setup_apps()
