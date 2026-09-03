@@ -31,8 +31,9 @@ function install_configs() {
   install_vim_config
   install_git_config
   install_yazi_config
-  install_iterm2_scripts
-  install_iterm2_status_bar
+  # Temporarily disabled: preserve the iTerm2 setup helpers for easy re-enabling.
+  # install_iterm2_scripts
+  # install_iterm2_status_bar
   update_vim_plugins
 }
 
