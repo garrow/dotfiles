@@ -4,6 +4,7 @@ cask_args appdir: '/Applications'
 brew 'starship'
 brew 'shellcheck'
 brew 'tmux'
+cask 'codex'
 
 # Utils
 brew 'ag'
@@ -38,12 +39,11 @@ brew 'nvm'
 
 
 # Trying out
-brew 'tldr'
+brew 'tlrc'
 # brew 'neovim'
 brew 'mkcert'
 brew 'pyenv'
 brew 'pyenv-virtualenv'
-cask 'go-shiori'
 brew 'ttyd'
 brew 'mermaid-cli'
 brew 'tennis'
