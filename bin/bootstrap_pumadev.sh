@@ -62,7 +62,7 @@ function brew_bundle() {
 function __actually_brew_bundle(){
 brew bundle --file=- <<EOF
 tap "puma/puma" # For puma-dev
-brew "puma-dev"
+brew "puma/puma/puma-dev", trusted: true
 EOF
 }
 

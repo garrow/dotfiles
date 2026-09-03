@@ -53,4 +53,4 @@ cask 'opera'
 # cask 'vlc'
 cask 'zed'
 tap 'PeonPing/tap'
-brew 'peon-ping'
+brew 'peonping/tap/peon-ping', trusted: true
