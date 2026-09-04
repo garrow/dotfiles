@@ -22,9 +22,9 @@
 	editor = vim
 	excludesfile = /Users/garrow/.gitignore_global
 
-[user]
-	name = Garrow Bedrossian
-	email = garrow.bedrossian@gmail.com
+# Load the personal identity before any context-specific overrides.
+[include]
+	path = ~/.dotfiles/config/git/gitconfig.user
 
 # Relies on work specific dotfiles repo existing.
 # Always included, so must use conditional logic in entrypoint file

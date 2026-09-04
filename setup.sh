@@ -157,14 +157,14 @@ function check_repo_config()
   print_info "➡️  test for remotes"
   git remote -v
 
-  local DOTFILES_GIT_CONFIG="${CONFIG_BASE_DIR}/git/gitconfig"
+  local DOTFILES_GIT_USER_CONFIG="${CONFIG_BASE_DIR}/git/gitconfig.user"
 
-  if [[ -e "${DOTFILES_GIT_CONFIG}" ]]; then
+  if [[ -e "${DOTFILES_GIT_USER_CONFIG}" ]]; then
     print_info "Username:"
-    git config --local --replace-all user.name "$(git config --file "${DOTFILES_GIT_CONFIG}" --get user.name)"
+    git config --local --replace-all user.name "$(git config --file "${DOTFILES_GIT_USER_CONFIG}" --get user.name)"
     git config --local --get user.name
     print_info "Email:"
-    git config --local --replace-all user.email "$(git config --file "${DOTFILES_GIT_CONFIG}" --get user.email)"
+    git config --local --replace-all user.email "$(git config --file "${DOTFILES_GIT_USER_CONFIG}" --get user.email)"
     git config --local --get user.email
   fi
 }
