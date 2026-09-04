@@ -7,3 +7,4 @@ brew 'mas'
 mas 'maccy', id: 1527619437 # Clipboard Manager
 mas 'Things', id: 904280696 # todo list
 mas 'DaisyDisk', id: 411643860 # Disk Space analyzer
+mas 'Soulver 4', id: 1508732804 # Notepad calculator

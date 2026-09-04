@@ -19,7 +19,6 @@ cask 'firefox'
 cask 'homerow'
 cask 'kindle'
 cask 'logseq'
-cask 'soulver'
 cask 'spotify'
 cask 'typora'
 
