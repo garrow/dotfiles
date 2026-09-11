@@ -2,9 +2,7 @@ function macos_install() {
   print_info "macOS install"
 
   install_homebrew
-  install_homebrew_cli
-  install_homebrew_apps
-  install_appstore_apps
+  install_homebrew_combined
   install_work_specific_apps
   setup_apps
 }
@@ -17,21 +15,9 @@ function install_homebrew() {
   fi
 }
 
-function install_homebrew_cli() {
-  print_info "🖥️  command line tools"
-  brew bundle --file "${WORKING_DIR}"/install/homebrew/command-line.Brewfile
-}
-
-function install_homebrew_apps()
-{
-  print_info "🖥️  GUI Apps"
-  brew bundle --file "${WORKING_DIR}"/install/homebrew/gui-apps.Brewfile
-}
-
-function install_appstore_apps()
-{
-  print_info "🖥️  App Store Apps"
-  brew bundle --file "${WORKING_DIR}"/install/homebrew/mac-app-store.Brewfile
+function install_homebrew_combined() {
+  print_info "🖥️  COMBINED HOMEBREW"
+  brew bundle --file "${WORKING_DIR}"/Brewfile
 }
 
 function install_work_specific_apps()
