@@ -47,5 +47,4 @@ brew 'ttyd'
 brew 'mermaid-cli'
 brew 'gurgeous/tap/tennis', trusted: true
 brew 'jq'
-brew 'anomalyco/tap/opencode', trusted: true
 cask 'soulver-cli'
