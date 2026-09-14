@@ -16,7 +16,37 @@ function __git_main_branch() {
 }
 
 # Status
-alias gs='git status'
+gs()
+{
+  local arg current_dir git_root has_pathspec options_done
+  current_dir=$(pwd -P)
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+  has_pathspec=0
+  options_done=0
+
+  for arg in "$@"; do
+    if [ "$options_done" -eq 1 ]; then
+      has_pathspec=1
+      break
+    fi
+
+    case "$arg" in
+      --) options_done=1 ;;
+      -*) ;;
+      *) has_pathspec=1; break ;;
+    esac
+  done
+
+  if [ -n "$git_root" ] && [ "$current_dir" != "$git_root" ]; then
+    printf '\033[33m⚠ working below repo root: %s\033[0m\n' "$git_root" >&2
+  fi
+
+  if [ "$has_pathspec" -eq 1 ]; then
+    git -c core.fsmonitor=false status "$@"
+  else
+    git -c core.fsmonitor=false status "$@" .
+  fi
+}
 alias gsf='git status --untracked-files=no'
 alias gse='git status --ignored'
 

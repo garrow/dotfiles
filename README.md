@@ -71,7 +71,7 @@ The most substantial plugin. Highlights:
 | Alias | Command | What it does |
 |-------|---------|-------------|
 | `g` | `git` | |
-| `gs` | `git status` | |
+| `gs` | `git status <path or current_dir>` | Scoped to the current directory; warns when below the repo root |
 | `gap` | `git add --patch` | Stage hunks interactively |
 | `grp` | `git reset --patch` | Unstage hunks interactively |
 | `gcp` | `git checkout --patch` | Discard hunks interactively |
