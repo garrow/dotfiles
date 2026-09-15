@@ -48,7 +48,7 @@ gs()
   fi
 }
 alias gsf='git status --untracked-files=no'
-alias gse='git status --ignored'
+alias gse='git status --ignored' # show everything
 
 # Logs
 alias gsl='git log --pretty="format:%Cblue%h%d%Creset %ar %Cgreen%an%Creset %s"'
@@ -63,6 +63,9 @@ alias gcwip=git-save
 alias gcm=__git_commit_splat
 alias pick='git cherry-pick'
 
+# Create a commit message by globbing all arguments into a string
+# $ gcm foo bar baz
+# "foo bar baz" commit message
 __git_commit_splat()
 {
   TEMP_FILE=$(mktemp '/tmp/git.simplecommit.msg.XXXX')
@@ -72,15 +75,15 @@ __git_commit_splat()
 }
 
 # Diff
-alias gd='git diff --color'
+alias gd='git diff --color '
 alias gds='git diff --color --staged '
 
 # Operate Patchwise (Interactively)
 alias gap='git add --patch' # Stage
 alias grp='git reset --patch' # Unstage
 alias gcp='git checkout --patch' # Discard
-alias gvp=gcp
-alias gsp='git stash save --patch'
+# alias gvp=gcp
+alias gsp='git stash push --patch'
 
 # Remote
 alias gup='git up; echo "PRUNE"; __git_prune_automagic'
