@@ -48,3 +48,4 @@ brew 'mermaid-cli'
 brew 'gurgeous/tap/tennis', trusted: true
 brew 'jq'
 cask 'soulver-cli'
+brew 'herdr'
