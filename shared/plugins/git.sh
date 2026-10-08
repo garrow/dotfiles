@@ -86,7 +86,7 @@ alias gcp='git checkout --patch' # Discard
 alias gsp='git stash push --patch'
 
 # Remote
-alias gup='git up; echo "PRUNE"; __git_prune_automagic'
+alias gup='git up'
 alias gpushnew='git push --set-upstream origin $(git-current-branch)'
 alias __git_prune_merged_branches='git checkout $(__git_main_branch) && git branch --merged |grep -v "\*" | grep -v $(__git_main_branch) |grep -v stable | xargs -I {} git branch -d "{}"'
 

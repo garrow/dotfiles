@@ -18,7 +18,8 @@ brew 'macvim'
 cask 'firefox'
 cask 'homerow'
 cask 'kindle'
-cask 'logseq'
+#cask 'logseq' # 2026-10-05 Disabled, moving back to `og` markdown app
+cask 'logseq-og'
 cask 'spotify'
 cask 'typora'
 
