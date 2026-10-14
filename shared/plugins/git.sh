@@ -1,3 +1,5 @@
+export GIT_TERMINAL_PROMPT=1
+
 alias g=git
 function git-current-branch() { git rev-parse --abbrev-ref HEAD; }
 
@@ -41,10 +43,13 @@ gs()
     printf '\033[33m⚠ working below repo root: %s\033[0m\n' "$git_root" >&2
   fi
 
+  # 2026-10-14 core.fsmonitor=true IS actually faster on large monorepo, despite earlier testing
   if [ "$has_pathspec" -eq 1 ]; then
-    git -c core.fsmonitor=false status "$@"
+    git -c core.fsmonitor=true status "$@"
+    #git -c core.fsmonitor=false status "$@"
   else
-    git -c core.fsmonitor=false status "$@" .
+    git -c core.fsmonitor=true status "$@" .
+    #git -c core.fsmonitor=false status "$@" .
   fi
 }
 alias gsf='git status --untracked-files=no'
